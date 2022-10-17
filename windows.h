@@ -6,8 +6,8 @@ class windows
 {
 public:
     windows();
-    string nameWindows;
-    virtual void showWindow() = 0;
+    std::string nameWindows;
+    virtual void showNameWindow() = 0;
 };
 
 #endif // WINDOWS_H
