@@ -1,7 +1,6 @@
 #ifndef AUTHENTICATION_H
 #define AUTHENTICATION_H
 
-
 #include <QMainWindow> //класс, который можно использовать в качестве главного окна приложения.
 #include <QObject> //Этот атрибут используется для идентификации каждого элемента
 #include <QSharedDataPointer> // создает копию данных
@@ -26,7 +25,7 @@ public:
     ~Authentication();
 
 private:
-    QSharedDataPointer<AuthenticationData> data;
+    QSharedDataPointer <AuthenticationData> data; // создание копии данных 
 };
 
 #endif // AUTHENTICATION_H

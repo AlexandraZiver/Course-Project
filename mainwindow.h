@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include <windows.h>
 
-
-class MainWindow
+class MainWindow : virtual public windows
 {
 public:
     MainWindow();
