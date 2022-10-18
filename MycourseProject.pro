@@ -24,6 +24,7 @@ SOURCES += \
     windowsglobal.cpp
 
 HEADERS += \
+    Box2D/Box2D.h \
     authentication.h \
     ball.h \
     data.h \
@@ -49,3 +50,11 @@ CONFIG += embed_translations
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32: LIBS += -L$$PWD/./ -lBox2D
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
