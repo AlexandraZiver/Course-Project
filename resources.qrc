@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/arrow-l.png</file>
+        <file>images/arrow-r.png</file>
+        <file>images/arrow-right.png</file>
+        <file>images/ball.png</file>
+        <file>images/ballt.png</file>
+        <file>images/crown.ico</file>
+        <file>images/Fon.png</file>
+        <file>images/gamefon.png</file>
+        <file>images/icon.ico</file>
+        <file>images/Menyu_igry_fon.png</file>
+        <file>images/no-volume.png</file>
+        <file>images/player1.png</file>
+        <file>images/player1-2.png</file>
+        <file>images/player2.png</file>
+        <file>images/player3.png</file>
+        <file>images/player3-2.png</file>
+        <file>images/player4.png</file>
+        <file>images/question.png</file>
+        <file>images/resources.qrc</file>
+        <file>images/volume.png</file>
+        <file>images/winner.jpg</file>
+    </qresource>
+</RCC>

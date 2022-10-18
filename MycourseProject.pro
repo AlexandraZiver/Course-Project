@@ -39,6 +39,7 @@ HEADERS += \
     windowsglobal.h
 
 FORMS += \
+    authentication.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
@@ -58,3 +59,6 @@ DEPENDPATH += $$PWD/.
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
+
+RESOURCES += \
+    resources.qrc

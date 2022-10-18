@@ -1,31 +1,42 @@
 #ifndef AUTHENTICATION_H
 #define AUTHENTICATION_H
 
-#include <QMainWindow> //класс, который можно использовать в качестве главного окна приложения.
-#include <QObject> //Этот атрибут используется для идентификации каждого элемента
-#include <QSharedDataPointer> // создает копию данных
-#include <QWidget> //базовый класс для всех объектов пользовательского интерфейса.
+#include <QDialog>
 
+namespace Ui {
+class authentication;
+}
 
-class AuthenticationData;
-
-class Authentication
+class authentication : public QDialog
 {
+    Q_OBJECT
 
 public:
-    Authentication();
-    Authentication(const Authentication &);
-    Authentication &operator=(const Authentication &);
-        void showWindow();
-        void enterName();
-        void enterPassword();
-        void buttonSafeToData();
-        void buttonBackToMenu();
-        void buttonStartGame();
-    ~Authentication();
+    explicit authentication(QWidget *parent = nullptr);
+    ~authentication();
+
+signals:
+    void firstWindow();
+
+private slots:
+
+
+    void on_back_clicked();
+
+
+
+
+
+
+public slots:
+    void pl1_change();
+    void pl2_change();
+
+
 
 private:
-    QSharedDataPointer <AuthenticationData> data; // создание копии данных
+    Ui::authentication *ui;
+
 };
 
 #endif // AUTHENTICATION_H
