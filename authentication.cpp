@@ -1,4 +1,5 @@
 #include "authentication.h"
+#include "gamescene.h"
 #include "ui_authentication.h"
 #include <mainwindow.h>
 #include <QDebug>
@@ -53,6 +54,13 @@ void authentication::on_back_clicked()
 }
 
 
+void authentication::on_pushButton_clicked()
+{
+    gameScene *gamescene;
+    gamescene = new gameScene;
+    gamescene->show();
+    this->close();
+}
 
 
 void authentication::pl1_change()
@@ -81,7 +89,5 @@ void authentication::pl2_change()
     }
 
 }
-
-
 
 

@@ -16,6 +16,7 @@ SOURCES += \
     error.cpp \
     exception.cpp \
     gamer.cpp \
+    gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
     pausewindow.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     error.h \
     exception.h \
     gamer.h \
+    gamescene.h \
     mainwindow.h \
     pausewindow.h \
     player.h \
@@ -44,6 +46,7 @@ HEADERS += \
 
 FORMS += \
     authentication.ui \
+    gamescene.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
