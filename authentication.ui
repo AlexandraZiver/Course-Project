@@ -234,48 +234,6 @@ padding-left: 30px;</string>
     <string>Player2</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushBtnSizeSmall">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>470</y>
-     <width>71</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Small</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushBtnSizeMed">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>470</y>
-     <width>71</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Medium</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushBtnSizeBig">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>470</y>
-     <width>71</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Big</string>
-   </property>
-  </widget>
  </widget>
  <resources>
   <include location="resources.qrc"/>
