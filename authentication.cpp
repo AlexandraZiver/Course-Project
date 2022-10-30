@@ -23,6 +23,8 @@
 QString player1Skin = "player1";
 QString player2Skin = "player2";
 
+qreal ballSize = 0.4;
+
 
 
 authentication::authentication(QWidget *parent) :
@@ -90,4 +92,32 @@ void authentication::pl2_change()
 
 }
 
+
+
+
+void authentication::on_pushBtnSizeMed_clicked()
+{
+    ui->pushBtnSizeSmall->setEnabled(true);
+    ui->pushBtnSizeMed->setEnabled(false);
+        ui->pushBtnSizeBig->setEnabled(true);
+    ballSize = 0.4;
+}
+
+
+void authentication::on_pushBtnSizeBig_clicked()
+{
+    ui->pushBtnSizeSmall->setEnabled(true);
+    ui->pushBtnSizeMed->setEnabled(true);
+    ui->pushBtnSizeBig->setEnabled(false);
+    ballSize = 0.55;
+}
+
+
+void authentication::on_pushBtnSizeSmall_clicked()
+{
+    ui->pushBtnSizeSmall->setEnabled(false);
+    ui->pushBtnSizeMed->setEnabled(true);
+    ui->pushBtnSizeBig->setEnabled(true);
+    ballSize = 0.3;
+}
 

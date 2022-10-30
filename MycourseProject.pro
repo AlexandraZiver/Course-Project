@@ -21,9 +21,9 @@ SOURCES += \
     mainwindow.cpp \
     pausewindow.cpp \
     player.cpp \
-    playplace.cpp \
     record.cpp \
     rules.cpp \
+    wall.cpp \
     windowsglobal.cpp
 
 HEADERS += \
@@ -39,7 +39,6 @@ HEADERS += \
     mainwindow.h \
     pausewindow.h \
     player.h \
-    playplace.h \
     record.h \
     rules.h \
     windowsglobal.h

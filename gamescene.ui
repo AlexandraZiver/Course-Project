@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>VolleyBall</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
@@ -21,6 +25,9 @@
      <width>1020</width>
      <height>651</height>
     </rect>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="startNewGame">
@@ -125,6 +132,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

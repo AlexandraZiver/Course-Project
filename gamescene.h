@@ -23,22 +23,12 @@
 
 
 
-class Circle : public QGraphicsEllipseItem {
-public:
-     Circle(b2World *world, qreal radius, QPointF initPos);
-    ~Circle();
-private:
-    b2Body* body;
-public:
-    virtual void advance(int phase);
-};
 
 
-
-class GroundRect : public QGraphicsRectItem {   // Статический елемент
+class Wall : public QGraphicsRectItem {   // Статический елемент
 public:
-    GroundRect(b2World *world, QSizeF size, QPointF initPos, qreal angle);
-    ~GroundRect();
+    Wall(b2World *world, QSizeF size, QPointF initPos, qreal angle);
+    ~Wall();
 private:
     b2Body* body;
 };
@@ -54,9 +44,6 @@ public slots:
 private:
     b2World* world;
 
-    // QGraphicsScene interface
-protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
     // QGraphicsScene interface
 protected:
@@ -95,9 +82,7 @@ public slots:
 
 private slots:
     void on_startNewGame_clicked();
-
     void on_pauseGame_clicked();
-
     void on_unPauseGame_2_clicked();
 
 private:
@@ -106,7 +91,6 @@ private:
     QTimer* frameTimer;
     QTimer* scoreTimer;
     b2World* world;
-    Circle* ball1;
 };
 
 class Player_1 : public QGraphicsRectItem {

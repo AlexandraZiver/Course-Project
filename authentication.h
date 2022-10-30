@@ -31,6 +31,13 @@ private slots:
 
     void on_pushButton_clicked();
 
+
+    void on_pushBtnSizeMed_clicked();
+
+    void on_pushBtnSizeBig_clicked();
+
+    void on_pushBtnSizeSmall_clicked();
+
 public slots:
     void pl1_change();
     void pl2_change();
