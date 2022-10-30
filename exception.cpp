@@ -1,6 +1,15 @@
-#ifndef EXCEPTION_H
-#define EXCEPTION_H
+//#ifndef EXCEPTION_H
+//#define EXCEPTION_H
+#include "nainwindow.h"
+#include <QApplication>
+#include <QLabel>
+#include <iostream>
+#include <string>
+#include <fstream>
 
+
+
+using namespace std;
 
 
 class Exception
@@ -10,11 +19,8 @@ public:
     // exception.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
     //
 
-    #include <iostream>
-    #include <string>
-    #include <fstream>
 
-    using namespace std;
+
 
 
     //исключения регистрация
@@ -28,7 +34,11 @@ public:
                 if (!isdigit(name)) // если имя написано, тогда попадает в базу данных
                     count++; //увеличение имен в базе данных
                 else {
-                    cout << "Ошибка! Вы должны ввести имя пользователя.";
+                    //cout << "Ошибка! Вы должны ввести имя пользователя.";
+                    QLabel *label = new QLabel(this);
+                        label->setFrameStyle(QFrame::Panel | QFrame::Sunken);
+                        label->setText("first line\nsecond line");
+                        label->setAlignment(Qt::AlignBottom | Qt::AlignRight);
                 }
         }
         if (count)
@@ -58,7 +68,8 @@ public:
                 cin.clear();
 
                 while (cin.get() != '\n');
-                    cout << "Ошибка! Вводить можно только положительные числа!" << endl;
+                    QLabel *label = new QLabel("Ошибка! Введите другой пароль.");
+                    label->show();
             }
     }
 
