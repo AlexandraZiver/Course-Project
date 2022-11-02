@@ -2,6 +2,7 @@
 #define AUTHENTICATION_H
 
 #include <QDialog>
+#include "gamescene.h"
 
 namespace Ui {
 class authentication;
@@ -27,6 +28,15 @@ private slots:
 
 
 
+
+    void on_pushButton_clicked();
+
+
+    void on_pushBtnSizeMed_clicked();
+
+    void on_pushBtnSizeBig_clicked();
+
+    void on_pushBtnSizeSmall_clicked();
 
 public slots:
     void pl1_change();
