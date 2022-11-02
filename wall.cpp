@@ -1,5 +1,6 @@
 #include "gamescene.h"
 
+
 extern qreal fromB2(qreal value);
 
 Wall::Wall(b2World *world, QSizeF size, QPointF initPos, qreal angle):
