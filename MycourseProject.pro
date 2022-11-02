@@ -16,13 +16,14 @@ SOURCES += \
     error.cpp \
     exception.cpp \
     gamer.cpp \
+    gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
     pausewindow.cpp \
     player.cpp \
-    playplace.cpp \
     record.cpp \
     rules.cpp \
+    wall.cpp \
     windowsglobal.cpp
 
 HEADERS += \
@@ -34,16 +35,17 @@ HEADERS += \
     error.h \
     exception.h \
     gamer.h \
+    gamescene.h \
     mainwindow.h \
     pausewindow.h \
     player.h \
-    playplace.h \
     record.h \
     rules.h \
     windowsglobal.h
 
 FORMS += \
     authentication.ui \
+    gamescene.ui \
     mainwindow.ui
 
 TRANSLATIONS += \
