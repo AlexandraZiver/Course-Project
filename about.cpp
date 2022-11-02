@@ -1,24 +1,25 @@
-#include "record.h"
-#include "ui_record.h"
+#include "about.h"
+#include "ui_about.h"
 #include "mainwindow.h"
 
-record::record(QWidget *parent) :
+about::about(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::record)
+    ui(new Ui::about)
 {
     ui->setupUi(this);
 }
 
-record::~record()
+about::~about()
 {
     delete ui;
 }
 
-void record::on_back_clicked()
+void about::on_back_clicked()
 {
     MainWindow *mWindow;
     mWindow = new MainWindow;
     mWindow->show();
     this->close();
+
 }
 

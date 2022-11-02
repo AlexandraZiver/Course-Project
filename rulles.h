@@ -1,12 +1,27 @@
 #ifndef RULLES_H
 #define RULLES_H
 
+#include <QDialog>
 
-class Rulles
+namespace Ui {
+class rulles;
+}
+
+class rulles : public QDialog
 {
+    Q_OBJECT
+
 public:
-    Rulles();
-    void showRulles();
+    explicit rulles(QWidget *parent = nullptr);
+    ~rulles();
+
+private slots:
+
+
+    void on_play_game_clicked();
+
+private:
+    Ui::rulles *ui;
 };
 
-#endif // RULLES_H
+#endif // RULES_H

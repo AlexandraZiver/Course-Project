@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    about.cpp \
     authentication.cpp \
     ball.cpp \
     data.cpp \
@@ -20,11 +21,13 @@ SOURCES += \
     player.cpp \
     playplace.cpp \
     record.cpp \
+    registr.cpp \
     rulles.cpp \
     windowsglobal.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
+    about.h \
     authentication.h \
     ball.h \
     data.h \
@@ -35,12 +38,17 @@ HEADERS += \
     player.h \
     playplace.h \
     record.h \
+    registr.h \
     rulles.h \
     windowsglobal.h
 
 FORMS += \
+    about.ui \
     authentication.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    record.ui \
+    registr.ui \
+    rulles.ui
 
 TRANSLATIONS += \
     MycourseProject_ru_RU.ts

@@ -57,7 +57,7 @@ text-transform: uppercase;
 </string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="start_game">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -232,6 +232,59 @@ padding-left: 30px;</string>
    </property>
    <property name="text">
     <string>Player2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ball">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>290</y>
+     <width>81</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/ball.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ball_rchange">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>340</y>
+     <width>30</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0;
+background-image: url(:/images/arrow-r.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ball_lchange">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>340</y>
+     <width>30</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0;
+background-image:url(:/images/arrow-l.png)</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

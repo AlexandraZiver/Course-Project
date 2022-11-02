@@ -4,8 +4,10 @@
         <file>images/arrow-r.png</file>
         <file>images/arrow-right.png</file>
         <file>images/ball.png</file>
-        <file>images/ballt.png</file>
+        <file>images/ball2.png</file>
+        <file>images/ball3.png</file>
         <file>images/crown.ico</file>
+        <file>images/dev.png</file>
         <file>images/Fon.png</file>
         <file>images/gamefon.png</file>
         <file>images/icon.ico</file>
@@ -18,7 +20,10 @@
         <file>images/player3-2.png</file>
         <file>images/player4.png</file>
         <file>images/question.png</file>
-        <file>images/resources.qrc</file>
+        <file>images/records.png</file>
+        <file>images/regmenu.png</file>
+        <file>images/rules.png</file>
+        <file>images/test.png</file>
         <file>images/volume.png</file>
         <file>images/winner.jpg</file>
     </qresource>

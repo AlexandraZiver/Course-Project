@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include "authentication.h"
+#include "registr.h"
+#include "rulles.h"
+#include "about.h"
+#include "record.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,9 +25,17 @@ private slots:
 
     void on_Start_Game_clicked();
 
+    void on_About_clicked();
+
+    void on_Records_clicked();
+
 private:
     Ui::MainWindow *ui;
     authentication *auth;
+    registr *reg;
+    about *_about;
+    record *rec;
+
 
 
 };

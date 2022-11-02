@@ -21,7 +21,7 @@
 
 QString player1Skin = "player1";
 QString player2Skin = "player2";
-
+QString ballSkin = "ball1";
 
 
 authentication::authentication(QWidget *parent) :
@@ -33,6 +33,9 @@ authentication::authentication(QWidget *parent) :
     connect(ui->plr1_lchange, SIGNAL(clicked()), this, SLOT(pl1_change()));
     connect(ui->plr2_rchange, SIGNAL(clicked()), this, SLOT(pl2_change()));
     connect(ui->plr2_lchange, SIGNAL(clicked()), this, SLOT(pl2_change()));
+
+    connect(ui->ball_rchange, SIGNAL(clicked()), this, SLOT(ball_change()));
+    connect(ui->ball_lchange, SIGNAL(clicked()), this, SLOT(ball_change()));
 
 }
 
@@ -84,4 +87,29 @@ void authentication::pl2_change()
 
 
 
+
+
+void authentication::on_start_game_clicked()
+{
+    rulles *_rules;
+    _rules = new rulles;
+    _rules->show();
+    this->close();
+}
+
+void authentication::ball_change() {
+
+    if(ballSkin=="ball1"){
+        ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
+        ballSkin="ball2";
+    }
+    else if(ballSkin=="ball2"){
+        ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
+        ballSkin="ball3";
+    }
+    else if (ballSkin=="ball3") {
+        ui->ball->setPixmap(QPixmap(":/images/ball.png"));
+        ballSkin="ball1";
+    }
+}
 
