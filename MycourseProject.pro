@@ -11,40 +11,27 @@ CONFIG += c++17
 SOURCES += \
     about.cpp \
     authentication.cpp \
-    ball.cpp \
-    data.cpp \
-    error.cpp \
-    exception.cpp \
-    gamer.cpp \
     main.cpp \
     mainwindow.cpp \
-    pausewindow.cpp \
-    player.cpp \
-    playplace.cpp \
     record.cpp \
-    rules.cpp \
-    windowsglobal.cpp
+    registr.cpp \
+    rules.cpp
 
 HEADERS += \
-    Box2D/Box2D.h \
     about.h \
     authentication.h \
-    ball.h \
-    data.h \
-    error.h \
-    exception.h \
-    gamer.h \
     mainwindow.h \
-    pausewindow.h \
-    player.h \
-    playplace.h \
     record.h \
-    rules.h \
-    windowsglobal.h
+    registr.h \
+    rules.h
 
 FORMS += \
+    about.ui \
     authentication.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    record.ui \
+    registr.ui \
+    rules.ui
 
 TRANSLATIONS += \
     MycourseProject_ru_RU.ts
@@ -56,13 +43,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/./ -lBox2D
+
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
 
 RESOURCES += \
-    resources.qrc
+    recources.qrc

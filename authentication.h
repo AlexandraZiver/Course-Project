@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+
 namespace Ui {
 class authentication;
 }
@@ -28,9 +29,12 @@ private slots:
 
 
 
+    void on_start_game_clicked();
+
 public slots:
     void pl1_change();
     void pl2_change();
+    void ball_change();
 
 
 
