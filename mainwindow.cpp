@@ -26,8 +26,27 @@ void MainWindow::on_Exit_clicked()
 
 void MainWindow::on_Start_Game_clicked()
 {
-    auth = new authentication();
-    auth->show();
+    reg = new registr();
+    reg->show();
+    this->close();
+
+}
+
+
+void MainWindow::on_About_clicked()
+{
+    _about = new about;
+    _about->show();
+    this->close();
+
+
+}
+
+
+void MainWindow::on_Records_clicked()
+{
+    rec = new record;
+    rec->show();
     this->close();
 }
 

@@ -1,12 +1,27 @@
 #ifndef RULES_H
 #define RULES_H
 
+#include <QDialog>
 
-class Rules
+namespace Ui {
+class rules;
+}
+
+class rules : public QDialog
 {
+    Q_OBJECT
+
 public:
-    Rules();
-    void showRulles();
+    explicit rules(QWidget *parent = nullptr);
+    ~rules();
+
+private slots:
+
+
+    void on_play_game_clicked();
+
+private:
+    Ui::rules *ui;
 };
 
 #endif // RULES_H
