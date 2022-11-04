@@ -11,23 +11,38 @@ CONFIG += c++17
 SOURCES += \
     about.cpp \
     authentication.cpp \
+    ball.cpp \
+    data.cpp \
+    error.cpp \
+    exception.cpp \
+    gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
+    player.cpp \
     record.cpp \
     registr.cpp \
-    rules.cpp
+    rules.cpp \
+    wall.cpp
 
 HEADERS += \
     about.h \
     authentication.h \
+    ball.h \
+    data.h \
+    error.h \
+    exception.h \
+    gamescene.h \
     mainwindow.h \
+    player.h \
     record.h \
     registr.h \
-    rules.h
+    rules.h \
+    wall.h
 
 FORMS += \
     about.ui \
     authentication.ui \
+    gamescene.ui \
     mainwindow.ui \
     record.ui \
     registr.ui \
