@@ -1,22 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <QWidget>
 
-namespace Ui {
-class Player;
-}
-
-class Player : public QWidget
+class Player
 {
-    Q_OBJECT
-
 public:
-    explicit Player(QWidget *parent = nullptr);
-    ~Player();
-
-private:
-    Ui::Player *ui;
+    Player();
 };
 
 #endif // PLAYER_H

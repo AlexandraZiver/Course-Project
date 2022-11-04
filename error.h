@@ -1,22 +1,11 @@
 #ifndef ERROR_H
 #define ERROR_H
 
-#include <QWidget>
 
-namespace Ui {
-class Error;
-}
-
-class Error : public QWidget
+class Error
 {
-    Q_OBJECT
-
 public:
-    explicit Error(QWidget *parent = nullptr);
-    ~Error();
-
-private:
-    Ui::Error *ui;
+    Error();
 };
 
 #endif // ERROR_H

@@ -18,7 +18,6 @@ SOURCES += \
     gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
-    pausewindow.cpp \
     player.cpp \
     record.cpp \
     registr.cpp \
@@ -34,7 +33,6 @@ HEADERS += \
     exception.h \
     gamescene.h \
     mainwindow.h \
-    pausewindow.h \
     player.h \
     record.h \
     registr.h \
@@ -46,7 +44,6 @@ FORMS += \
     authentication.ui \
     gamescene.ui \
     mainwindow.ui \
-    pausewindow.ui \
     record.ui \
     registr.ui \
     rules.ui
