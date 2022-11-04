@@ -25,6 +25,7 @@ SOURCES += \
     wall.cpp
 
 HEADERS += \
+    Box2D/Box2D.h \
     about.h \
     authentication.h \
     ball.h \
@@ -66,3 +67,11 @@ DEPENDPATH += $$PWD/.
 
 RESOURCES += \
     recources.qrc
+
+win32: LIBS += -L$$PWD/./ -lBox2D
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
