@@ -21,6 +21,7 @@ int ScoreToWin = 7;
 
 bool is_player_1_goal = false;      // true - первый (левый) игрок забил, false - второй (правый) игрок забил
 bool is_created = true;             // Создан ли мяч? true потому что в начале он создан
+bool is_paused = false;             // Стоит ли пауза. Изначально не стоит - false
 
 int counterPlayer1 = 0;             // double jump for Player1     200 row
 int counterPlayer2 = 0;             // double jump for Player2
@@ -43,7 +44,6 @@ GameScene::GameScene(QWidget *parent) :
     ui->setupUi(this);
     ui->winLabel->hide();
     ui->startNewGame->hide();
-    ui->back->hide();
 
     world = new b2World(b2Vec2(0.00f, 10.00f));
 
@@ -114,8 +114,8 @@ void GameScene::score() {
         is_created = true;
     }
 
-    Ball* gameBall;
-    if(!is_created && is_player_1_goal) {                   // is_created = false когда был гол и мячик удалился в Ball::advance() | первый игрок забил
+//    Ball* gameBall;
+    if(!is_created && is_player_1_goal && !is_paused) {                   // is_created = false когда был гол и мячик удалился в Ball::advance() | первый игрок забил
         is_created = true;
         gameBall = new Ball(world, ballSize, QPointF(3, 2));
         ballBody->SetType(b2_staticBody);
@@ -124,7 +124,7 @@ void GameScene::score() {
         ui->scorePlayer1->setText(QString::number(player_1_Score));
         qDebug()  << "Score: " << player_1_Score << " : " << player_2_Score;
     }
-    else if(!is_created && !is_player_1_goal) {             // второй игрок забил
+    else if(!is_created && !is_player_1_goal && !is_paused) {             // второй игрок забил
         is_created = true;
         gameBall = new Ball(world, ballSize, QPointF(7, 2));
         ballBody->SetType(b2_staticBody);
@@ -138,7 +138,9 @@ void GameScene::score() {
 
 
 void GameScene::ballSleep() {
-    ballBody->SetType(b2_dynamicBody);
+    if(!is_paused) {
+        ballBody->SetType(b2_dynamicBody);
+    }
 }
 
 
@@ -249,7 +251,8 @@ b2Vec2 pastPlayer1Vel;
 b2Vec2 pastPLayer2Vel;
 void GameScene::on_pauseGame_clicked()
 {
-    if(PlayerBody1->GetType() == b2_dynamicBody && PlayerBody2->GetType() == b2_dynamicBody) {
+    if(PlayerBody1->GetType() == b2_dynamicBody && PlayerBody2->GetType() == b2_dynamicBody) {      // paused
+        is_paused = true;
         pastBallVel = ballBody->GetLinearVelocity();
         pastPlayer1Vel = PlayerBody1->GetLinearVelocity();
         pastPLayer2Vel = PlayerBody2->GetLinearVelocity();
@@ -258,9 +261,9 @@ void GameScene::on_pauseGame_clicked()
         PlayerBody2->SetType(b2_staticBody);
         ballBody->SetType(b2_staticBody);
         ui->pauseGame->setText("Unpause");
-        ui->back->show();
     }
-    else if(PlayerBody1->GetType() == b2_staticBody && PlayerBody2->GetType() == b2_staticBody) {
+    else if(PlayerBody1->GetType() == b2_staticBody && PlayerBody2->GetType() == b2_staticBody) {   // unpaused
+        is_paused = false;
         PlayerBody1->SetType(b2_dynamicBody);
         PlayerBody2->SetType(b2_dynamicBody);
         ballBody->SetType(b2_dynamicBody);
@@ -269,17 +272,7 @@ void GameScene::on_pauseGame_clicked()
         PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
         PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
         ui->pauseGame->setText("Pause");
-        ui->back->hide();
     }
 }
 
-
-
-void GameScene::on_back_clicked()
-{
-    authentication* authent;
-    authent = new authentication();
-    authent->show();
-    this->close();
-}
 

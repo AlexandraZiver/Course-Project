@@ -8,6 +8,8 @@ extern qreal fromB2(qreal value);
 extern int counterPlayer1;
 extern int counterPlayer2;
 
+extern bool is_restart;
+
 Player_1::Player_1(b2World* world, QSizeF size, QPointF initPos, qreal angle)
     : QGraphicsRectItem(0)
 {

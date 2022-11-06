@@ -8,6 +8,8 @@ extern bool is_created;
 extern int player_1_Score;
 extern int player_2_Score;
 
+extern bool is_restart;
+
 extern qreal fromB2(qreal value);
 
 Ball::Ball(b2World* world, qreal radius, QPointF initPos)
@@ -37,6 +39,7 @@ Ball::~Ball() {
 
 void Ball::advance(int phase) {
     if(phase) {
+
         b2Vec2 pos = ballBody->GetPosition();
         setPos(fromB2(ballBody->GetPosition().x),
                fromB2(ballBody->GetPosition().y));
@@ -53,9 +56,7 @@ void Ball::advance(int phase) {
             }
             is_created = false;
             delete(this);
-
         }
-
 
     }
 }

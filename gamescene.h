@@ -59,7 +59,6 @@ private slots:
     void on_startNewGame_clicked();
     void on_pauseGame_clicked();
 
-    void on_back_clicked();
 
 private:
     Ui::GameScene *ui;
