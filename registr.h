@@ -21,6 +21,8 @@ private slots:
 
     void on_playNoReg_clicked();
 
+    void on_reg_clicked();
+
 private:
     Ui::registr *ui;
 };
