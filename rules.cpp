@@ -1,4 +1,6 @@
 #include "rules.h"
+#include <mainwindow.h>
+#include "gamescene.h"
 #include "ui_rules.h"
 
 rules::rules(QWidget *parent) :
@@ -18,6 +20,9 @@ rules::~rules()
 
 void rules::on_play_game_clicked()
 {
-
+    GameScene* gameScene;
+    gameScene = new GameScene();
+    gameScene->show();
+    this->close();
 }
 

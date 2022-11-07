@@ -23,6 +23,8 @@ QString player1Skin = "player1";
 QString player2Skin = "player2";
 QString ballSkin = "ball1";
 
+qreal ballSize = 0.4;
+
 
 authentication::authentication(QWidget *parent) :
     QDialog(parent),
@@ -99,17 +101,20 @@ void authentication::on_start_game_clicked()
 
 void authentication::ball_change() {
 
-    if(ballSkin=="ball1"){
+    if(ballSkin=="ball1"){                                      // Средний мяч
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
+        ballSize = 0.4;
     }
-    else if(ballSkin=="ball2"){
+    else if(ballSkin=="ball2"){                                 // Большой мяч
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
+        ballSize = 0.55;
     }
-    else if (ballSkin=="ball3") {
+    else if (ballSkin=="ball3") {                               // Маленький мяч
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
+        ballSize = 0.3;
     }
 }
 
