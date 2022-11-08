@@ -53,8 +53,6 @@ void authentication::on_back_clicked()
     mWindow->show();
     this->close();
 
-
-
 }
 
 
