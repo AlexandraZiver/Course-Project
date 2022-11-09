@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>231</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Script MT Bold</family>
+     <pointsize>15</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+color: rgb(255, 0, 127);
+font: 700 15pt &quot;Script MT Bold&quot;;</string>
+   </property>
+   <property name="title">
+    <string>Авторизация</string>
+   </property>
+   <widget class="QLabel" name="name">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>31</y>
+      <width>71</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 12pt &quot;Segoe UI&quot;;
+background-color: rgb(255, 0, 0);
+border: 2px solid #fff; 
+color: #fff;</string>
+    </property>
+    <property name="text">
+     <string>ИМЯ</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>59</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="pass">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>100</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 12pt &quot;Segoe UI&quot;;
+background-color: rgb(255, 0, 0);
+border: 2px solid #fff; 
+color: #fff;</string>
+    </property>
+    <property name="text">
+     <string>Пароль</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_password">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_passwordCheck">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>121</width>
+      <height>27</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="passCheck">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>170</y>
+      <width>221</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 12pt &quot;Segoe UI&quot;;
+background-color: rgb(255, 0, 0);
+border: 2px solid #fff; 
+color: #fff;</string>
+    </property>
+    <property name="text">
+     <string>Подтвердите пароль</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGraphicsView" name="graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>411</width>
+     <height>371</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/images/regmenu.png);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="back">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>71</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/images/arrow-right.png);
+background-repeat: no-repeat;
+border: 0;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>330</y>
+     <width>251</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>12</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0);
+font: 700 12pt &quot;Segoe UI&quot;;
+text-decoration: underline;
+</string>
+   </property>
+   <property name="text">
+    <string>(Рекорды не сохраняются)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="playNoReg">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>309</y>
+     <width>191</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Играть без регистрации</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reg">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>279</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Регистрация</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="play">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>279</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Вход</string>
+   </property>
+  </widget>
+  <zorder>graphicsView</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>back</zorder>
+  <zorder>label_3</zorder>
+  <zorder>playNoReg</zorder>
+  <zorder>reg</zorder>
+  <zorder>play</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

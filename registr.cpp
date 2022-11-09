@@ -36,3 +36,12 @@ void registr::on_playNoReg_clicked()
 
 }
 
+
+void registr::on_reg_clicked()
+{
+    registration *reg;
+    reg = new registration;
+    reg->show();
+    this->close();
+}
+

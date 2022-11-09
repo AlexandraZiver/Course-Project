@@ -14,7 +14,7 @@
    <string>Register</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="recources.qrc">
+   <iconset>
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <widget class="QGroupBox" name="groupBox">
@@ -231,8 +231,6 @@ border: 0;
   <zorder>reg</zorder>
   <zorder>playNoReg</zorder>
  </widget>
- <resources>
-  <include location="recources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
