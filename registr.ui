@@ -14,6 +14,7 @@
    <string>Register</string>
   </property>
   <property name="windowIcon">
+
    <iconset>
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
@@ -231,6 +232,8 @@ border: 0;
   <zorder>reg</zorder>
   <zorder>playNoReg</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>

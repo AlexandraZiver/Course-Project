@@ -1,6 +1,11 @@
 #include "registr.h"
 #include "ui_registr.h"
 #include <mainwindow.h>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QMainWindow>
+#include <QTextStream>
+
 
 
 registr::registr(QWidget *parent) :
@@ -39,9 +44,37 @@ void registr::on_playNoReg_clicked()
 
 void registr::on_reg_clicked()
 {
-    registration *reg;
-    reg = new registration;
-    reg->show();
-    this->close();
+    QString login = ui->lineEdit->text();
+
+    QString password = ui->lineEdit_2->text();
+    int _userRecord = 0;
+    //int n ;
+   // n = AmountOfData() + 1;
+
+
+    QFile fileOut("Baza.txt");
+    QFile RecOut("Record.txt");
+    if(fileOut.open(QIODevice::Append | QIODevice::WriteOnly))
+    {
+        qDebug() << "Файл существует 1";
+
+        if( RecOut.open(QIODevice::Append | QIODevice::WriteOnly))
+       {
+                qDebug() << "Файл существует";
+                //Если первый файл открыт для  записи успешн
+                QTextStream stream(&fileOut);
+                QTextStream Rec(&RecOut);
+                stream << login << '\n';
+                stream << password<<'\n';
+                Rec << login <<'\n';
+                Rec << _userRecord <<'\n';
+        }
+
+    }
+
+    fileOut.close();
+    RecOut.close();
+    close();
+
 }
 
