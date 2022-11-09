@@ -21,6 +21,7 @@ SOURCES += \
     player.cpp \
     record.cpp \
     registr.cpp \
+    registration.cpp \
     rules.cpp \
     wall.cpp
 
@@ -37,6 +38,7 @@ HEADERS += \
     player.h \
     record.h \
     registr.h \
+    registration.h \
     rules.h \
     wall.h
 
@@ -47,6 +49,8 @@ FORMS += \
     mainwindow.ui \
     record.ui \
     registr.ui \
+    registration.ui \
+    registration2.ui \
     rules.ui
 
 TRANSLATIONS += \

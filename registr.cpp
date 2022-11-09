@@ -78,6 +78,3 @@ void registr::on_reg_clicked()
 
 }
 
-
-
-

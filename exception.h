@@ -2,10 +2,11 @@
 #define EXCEPTION_H
 
 
-class Exception
+
+class exception
 {
 public:
-    Exception();
+    exception();
 };
 
 #endif // EXCEPTION_H
