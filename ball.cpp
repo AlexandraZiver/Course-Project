@@ -1,4 +1,4 @@
-#include "gamescene.h"
+#include "ball.h"
 
 extern b2Body* ballBody;
 
@@ -23,6 +23,7 @@ Ball::Ball(b2World* world, qreal radius, QPointF initPos)
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(initPos.x(), initPos.y());
     bodyDef.linearDamping = 0.6;
+
 
     ballBody = world->CreateBody(&bodyDef);
 

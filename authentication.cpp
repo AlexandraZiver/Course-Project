@@ -24,6 +24,7 @@ QString player2Skin = "player2";
 QString ballSkin = "ball1";
 
 qreal ballSize = 0.4;
+qreal ballWeight = 0.8;
 
 
 authentication::authentication(QWidget *parent) :
