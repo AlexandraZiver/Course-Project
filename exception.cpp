@@ -57,17 +57,17 @@ void registration::on_reg_clicked()
 
 
 
-        try {
-            if (password != passwordCheck) {
-                QMessageBox::critical(this, "stop", "Помилка! Паролі не співпадають!");
-                ui->lineEdit_password->setText("");
-                ui->lineEdit_passwordCheck->setText("");
-            }
+    try {
+        if (password != passwordCheck) {
+            QMessageBox::critical(this, "stop", "Помилка! Паролі не співпадають!");
+            ui->lineEdit_password->setText("");
+            ui->lineEdit_passwordCheck->setText("");
         }
-        catch(QString password) {
-            QMessageBox::critical(this, "stop", "Помилка!");
-            return;
-        }
+    }
+    catch(QString password) {
+        QMessageBox::critical(this, "stop", "Помилка!");
+        return;
+    }
 
 }
 
