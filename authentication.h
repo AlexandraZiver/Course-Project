@@ -31,6 +31,8 @@ private slots:
 
     void on_start_game_clicked();
 
+    void on_player2_linkActivated(const QString &link);
+
 public slots:
     void pl1_change();
     void pl2_change();
