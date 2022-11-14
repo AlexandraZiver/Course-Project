@@ -5,6 +5,10 @@
 #include <QMainWindow>
 #include "Box2D/Box2D.h"
 
+#include "ball.h"
+#include "wall.h"
+#include "player.h"
+
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 
@@ -66,45 +70,6 @@ private:
     QTimer* frameTimer;
     QTimer* scoreTimer;
     b2World* world;
-};
-
-
-
-class Wall : public QGraphicsRectItem {   // Статический елемент
-public:
-    Wall(b2World *world, QSizeF size, QPointF initPos, qreal angle);
-    ~Wall();
-private:
-    b2Body* body;
-};
-
-
-
-class Ball : public QGraphicsEllipseItem {
-public:
-    Ball(b2World* world, qreal Radius, QPointF initPos);
-    ~Ball();
-    //sleep?
-    void advance(int phase);
-private:
-
-};
-
-
-
-class Player_1 : public QGraphicsRectItem {
-public:
-    Player_1(b2World* world, QSizeF size, QPointF initPos, qreal angel);
-    ~Player_1();
-    void advance(int phase);
-};
-
-class Player_2 : public QGraphicsRectItem {
-public:
-    Player_2(b2World* world, QSizeF size, QPointF initPos, qreal angle);
-    ~Player_2();
-    void advance(int phase);
-
 };
 
 #endif // GAMESCENE_H
