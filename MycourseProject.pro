@@ -23,6 +23,7 @@ SOURCES += \
     registr.cpp \
     registration.cpp \
     rules.cpp \
+    scene.cpp \
     wall.cpp
 
 HEADERS += \
@@ -40,6 +41,7 @@ HEADERS += \
     registr.h \
     registration.h \
     rules.h \
+    scene.h \
     wall.h
 
 FORMS += \
