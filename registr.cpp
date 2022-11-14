@@ -44,7 +44,13 @@ void registr::on_playNoReg_clicked()
 
 void registr::on_reg_clicked()
 {
-    QString login = ui->lineEdit->text();
+
+    registration *reg;
+    reg = new registration;
+    reg->show();
+    this->close();
+
+   /*  QString playerName = ui->lineEdit->text();
 
     QString password = ui->lineEdit_2->text();
     int _userRecord = 0;
@@ -64,17 +70,24 @@ void registr::on_reg_clicked()
                 //Если первый файл открыт для  записи успешн
                 QTextStream stream(&fileOut);
                 QTextStream Rec(&RecOut);
-                stream << login << '\n';
+                stream << playerName << '\n';
                 stream << password<<'\n';
-                Rec << login <<'\n';
+                Rec << playerName <<'\n';
                 Rec << _userRecord <<'\n';
         }
+
 
     }
 
     fileOut.close();
     RecOut.close();
-    close();
+    close();  */
+
+}
+
+
+void registr::on_play_clicked()
+{
 
 }
 
