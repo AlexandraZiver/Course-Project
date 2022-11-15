@@ -124,16 +124,6 @@ void authentication::ball_change() {
 
 
 
-
-
-void authentication::on_massa_clicked()
-{
-
-}
-
-
-
-
 void authentication::on_plr1_rchange_clicked()
 {
 
@@ -144,19 +134,19 @@ void authentication::on_lineEdit_3_textEdited(const QString &arg1)
 {
     int massa = ui->lineEdit_3->text().toInt();
 
-    if( massa > 5 &&  massa < 10 ){                                      // Средний мяч
+    if( massa > 5 &&  massa < 10 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
         ballSize = 0.4;
 
     }
-    if( massa > 10 &&  massa < 15){                                 // Большой мяч
+    if( massa > 10 &&  massa < 15){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
         ballSize = 0.55;
 
     }
-    if ( massa < 5 ) {                               // Маленький мяч
+    if ( massa < 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
         ballSize = 0.3;
@@ -170,19 +160,19 @@ void authentication::on_lineEdit_3_textChanged(const QString &arg1)
 
     int massa = ui->lineEdit_3->text().toInt();
 
-    if( massa > 5 &&  massa < 10 ){                                      // Средний мяч
+    if( massa > 5 &&  massa < 10 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
         ballSize = 0.4;
 
     }
-    if( massa > 10 &&  massa < 15){                                 // Большой мяч
+    if( massa > 10 &&  massa < 15){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
         ballSize = 0.55;
 
     }
-    if ( massa < 5 ) {                               // Маленький мяч
+    if ( massa < 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
         ballSize = 0.3;
@@ -194,5 +184,33 @@ void authentication::on_lineEdit_3_textChanged(const QString &arg1)
 void authentication::on_placeChange_clicked()
 {
 
+}
+
+
+void authentication::on_pushButton_2_clicked()
+{
+    if(place=="place"){
+            ui->place->setPixmap(QPixmap(":/images/ship33.png"));
+            place="place2";
+        }
+
+        else if(place=="place2"){
+            ui->place->setPixmap(QPixmap(":/images/island3.png"));
+            place="place";
+        }
+}
+
+
+void authentication::on_pushButton_clicked()
+{
+    if(place=="place"){
+            ui->place->setPixmap(QPixmap(":/images/ship33.png"));
+            place="place2";
+        }
+
+        else if(place=="place2"){
+            ui->place->setPixmap(QPixmap(":/images/island3.png"));
+            place="place";
+        }
 }
 

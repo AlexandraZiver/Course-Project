@@ -43,6 +43,10 @@ private slots:
 
     void on_placeChange_clicked();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
+
 public slots:
     void pl1_change();
     void pl2_change();
