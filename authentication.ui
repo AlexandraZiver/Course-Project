@@ -104,7 +104,7 @@ border: 0;
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image: url(:/images/arrow-r.png);</string>
+background-image: url(:/images/arrow-r.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -140,7 +140,7 @@ background-image: url(:/images/arrow-r.png);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image:url(:/images/arrow-l.png)</string>
+background-image:url(:/images/arrow-l.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -173,7 +173,7 @@ background-image:url(:/images/arrow-l.png)</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image:url(:/images/arrow-l.png)</string>
+background-image:url(:/images/arrow-l.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -190,7 +190,7 @@ background-image:url(:/images/arrow-l.png)</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image: url(:/images/arrow-r.png);</string>
+background-image: url(:/images/arrow-r.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -274,7 +274,7 @@ border-radius:10%;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image: url(:/images/arrow-r.png);</string>
+background-image: url(:/images/arrow-r.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -291,7 +291,7 @@ background-image: url(:/images/arrow-r.png);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image:url(:/images/arrow-l.png)</string>
+background-image:url(:/images/arrow-l.png);background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
@@ -319,8 +319,8 @@ border-radius:10%;</string>
   <widget class="QLineEdit" name="location">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>520</y>
+     <x>380</x>
+     <y>550</y>
      <width>113</width>
      <height>22</height>
     </rect>
@@ -338,38 +338,56 @@ border-radius:10%;</string>
     <string>Локація</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="placeChange2">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>340</x>
      <y>460</y>
-     <width>30</width>
-     <height>50</height>
+     <width>41</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image: url(:/images/arrow-r.png);</string>
+background-image:url(:/images/arrow-l.png);
+background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="placeChange">
+  <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>510</x>
      <y>460</y>
-     <width>30</width>
-     <height>50</height>
+     <width>41</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 0;
-background-image:url(:/images/arrow-l.png)</string>
+background-image:url(:/images/arrow-r.png);
+background-repeat: no-repeat;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="place">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>440</y>
+     <width>111</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="recources.qrc">:/images/ship33.png</pixmap>
    </property>
   </widget>
  </widget>

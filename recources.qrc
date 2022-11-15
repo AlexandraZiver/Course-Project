@@ -35,5 +35,8 @@
         <file>images/regg.png</file>
         <file>images/island.png</file>
         <file>images/ship.PNG</file>
+        <file>images/island33.png</file>
+        <file>images/ship33.png</file>
+        <file>images/island3.png</file>
     </qresource>
 </RCC>
