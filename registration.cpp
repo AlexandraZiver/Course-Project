@@ -1,5 +1,6 @@
 #include "registration.h"
 #include <mainwindow.h>
+#include "registr.h"
 
 registration::registration(QWidget *parent) :
     QWidget(parent),
@@ -23,6 +24,10 @@ void registration::on_playNoReg_clicked()
 
 
 
+
+
+
+
 void registration::on_back_clicked()
 {
     registr *reg;
@@ -30,4 +35,7 @@ void registration::on_back_clicked()
     reg->show();
     this->close();
 }
+
+
+
 

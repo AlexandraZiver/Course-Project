@@ -26,5 +26,14 @@
         <file>images/test.png</file>
         <file>images/volume.png</file>
         <file>images/winner.jpg</file>
+        <file>images/place1.png</file>
+        <file>images/zyro-image.png</file>
+        <file>images/au.png</file>
+        <file>images/zyr2.png</file>
+        <file>images/zyro2.png</file>
+        <file>images/zyro1-image.png</file>
+        <file>images/regg.png</file>
+        <file>images/island.png</file>
+        <file>images/ship.PNG</file>
     </qresource>
 </RCC>
