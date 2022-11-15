@@ -44,7 +44,6 @@ void registr::on_playNoReg_clicked()
 
 void registr::on_reg_clicked()
 {
-
     registration *reg;
     reg = new registration;
     reg->show();
@@ -86,8 +85,33 @@ void registr::on_reg_clicked()
 }
 
 
+
+
+
+
 void registr::on_play_clicked()
 {
 
+}
+
+
+
+void registr::on_not_reg_clicked()
+{
+    authentication *auth2;
+    auth2 = new authentication;
+    auth2->show();
+    this->close();
+}
+
+
+void registr::on_done_clicked()
+{
+    QString login = ui->lineEdit->text();
+    QString password = ui->lineEdit_2 ->text();
+    authentication *auth;
+    auth = new authentication;
+    auth->show();
+    this->close();
 }
 

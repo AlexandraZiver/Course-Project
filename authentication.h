@@ -33,6 +33,16 @@ private slots:
 
     void on_player2_linkActivated(const QString &link);
 
+    void on_massa_clicked();
+
+    void on_plr1_rchange_clicked();
+
+    void on_lineEdit_3_textEdited(const QString &arg1);
+
+    void on_lineEdit_3_textChanged(const QString &arg1);
+
+    void on_placeChange_clicked();
+
 public slots:
     void pl1_change();
     void pl2_change();

@@ -26,7 +26,7 @@
    <string>Start game</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="recources.qrc">
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
@@ -60,7 +60,7 @@ text-transform: uppercase;
   <widget class="QPushButton" name="start_game">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>400</x>
      <y>20</y>
      <width>181</width>
      <height>251</height>
@@ -96,8 +96,8 @@ border: 0;
   <widget class="QPushButton" name="plr1_rchange">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>410</y>
+     <x>160</x>
+     <y>420</y>
      <width>30</width>
      <height>50</height>
     </rect>
@@ -113,10 +113,10 @@ background-image: url(:/images/arrow-r.png);</string>
   <widget class="QLabel" name="player1">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>350</y>
+     <x>70</x>
+     <y>370</y>
      <width>71</width>
-     <height>151</height>
+     <height>141</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -132,8 +132,8 @@ background-image: url(:/images/arrow-r.png);</string>
   <widget class="QPushButton" name="plr1_lchange">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>410</y>
+     <x>30</x>
+     <y>420</y>
      <width>30</width>
      <height>50</height>
     </rect>
@@ -149,8 +149,8 @@ background-image:url(:/images/arrow-l.png)</string>
   <widget class="QLabel" name="player2">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>350</y>
+     <x>630</x>
+     <y>370</y>
      <width>71</width>
      <height>151</height>
     </rect>
@@ -165,7 +165,7 @@ background-image:url(:/images/arrow-l.png)</string>
   <widget class="QPushButton" name="plr2_lchange">
    <property name="geometry">
     <rect>
-     <x>540</x>
+     <x>580</x>
      <y>410</y>
      <width>30</width>
      <height>50</height>
@@ -182,7 +182,7 @@ background-image:url(:/images/arrow-l.png)</string>
   <widget class="QPushButton" name="plr2_rchange">
    <property name="geometry">
     <rect>
-     <x>660</x>
+     <x>730</x>
      <y>410</y>
      <width>30</width>
      <height>50</height>
@@ -196,51 +196,61 @@ background-image: url(:/images/arrow-r.png);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="Gamer1">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>510</y>
+     <x>50</x>
+     <y>520</y>
      <width>113</width>
      <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 0, 0);
+
+color: rgb(253, 177, 167);
 border: 2px solid #fff; 
 color: #fff;
-padding-left: 30px;</string>
+background-color: rgb(255, 176, 167);
+
+padding-left: 30px;
+
+border-radius:10%;
+</string>
    </property>
    <property name="text">
-    <string>Player1</string>
+    <string>Гравець 2</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="Gamer2">
    <property name="geometry">
     <rect>
-     <x>560</x>
-     <y>510</y>
+     <x>620</x>
+     <y>520</y>
      <width>113</width>
      <height>22</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(253, 177, 167);
 border: 2px solid #fff; 
 color: #fff;
-padding-left: 30px;</string>
+background-color: rgb(255, 176, 167);
+padding-left: 30px;
+border-radius:10%;</string>
    </property>
    <property name="text">
-    <string>Player2</string>
+    <string>Гравець 1</string>
    </property>
   </widget>
   <widget class="QLabel" name="ball">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>290</y>
+     <x>400</x>
+     <y>270</y>
      <width>81</width>
-     <height>151</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -250,14 +260,14 @@ padding-left: 30px;</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="resources.qrc">:/images/ball.png</pixmap>
+    <pixmap resource="recources.qrc">:/images/ball.png</pixmap>
    </property>
   </widget>
   <widget class="QPushButton" name="ball_rchange">
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>340</y>
+     <x>480</x>
+     <y>300</y>
      <width>30</width>
      <height>50</height>
     </rect>
@@ -273,8 +283,83 @@ background-image: url(:/images/arrow-r.png);</string>
   <widget class="QPushButton" name="ball_lchange">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>340</y>
+     <x>350</x>
+     <y>300</y>
+     <width>30</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0;
+background-image:url(:/images/arrow-l.png)</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>360</y>
+     <width>101</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 2px solid rgb(233, 160, 157); 
+
+background-color: #fff;
+
+
+  opacity: 0.4;
+border-radius:10%;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="location">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>520</y>
+     <width>113</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(253, 177, 167);
+border: 2px solid #fff; 
+color: #fff;
+background-color: rgb(255, 176, 167);
+padding-left: 30px;
+border-radius:10%;</string>
+   </property>
+   <property name="text">
+    <string>Локація</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="placeChange2">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>460</y>
+     <width>30</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 0;
+background-image: url(:/images/arrow-r.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="placeChange">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>460</y>
      <width>30</width>
      <height>50</height>
     </rect>
@@ -289,7 +374,7 @@ background-image:url(:/images/arrow-l.png)</string>
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="recources.qrc"/>
  </resources>
  <connections/>
 </ui>
