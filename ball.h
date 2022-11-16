@@ -16,6 +16,7 @@ public:
     ~Ball();
     //sleep?
     void advance(int phase);
+    int attractivePover();
 private:
 
 };
