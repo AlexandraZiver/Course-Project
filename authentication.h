@@ -39,11 +39,13 @@ private slots:
 
     void on_lineEdit_3_textChanged(const QString &arg1);
 
-    void on_placeChange_clicked();
-
     void on_pushButton_2_clicked();
 
     void on_pushButton_clicked();
+    void checkWeight (int weight);
+
+
+    void on_lineEdit_3_editingFinished();
 
 public slots:
     void pl1_change();

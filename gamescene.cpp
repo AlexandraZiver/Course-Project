@@ -28,6 +28,7 @@ int counterPlayer2 = 0;             // double jump for Player2
 
 extern qreal ballSize;              // приходит с authentication.cpp
 
+
 qreal fromB2(qreal value) {
     return value * SCALE;
 }

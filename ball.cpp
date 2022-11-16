@@ -7,7 +7,7 @@ extern bool is_created;
 
 extern int player_1_Score;
 extern int player_2_Score;
-
+extern qreal ballWeight;            // приходит с authentication.cpp
 extern bool is_restart;
 
 extern qreal fromB2(qreal value);
@@ -22,7 +22,7 @@ Ball::Ball(b2World* world, qreal radius, QPointF initPos)
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(initPos.x(), initPos.y());
-    bodyDef.linearDamping = 0.6;
+    bodyDef.linearDamping = attractivePover();
 
 
     ballBody = world->CreateBody(&bodyDef);
@@ -38,6 +38,10 @@ Ball::~Ball() {
     ballBody->GetWorld()->DestroyBody(ballBody);
 }
 
+int  Ball::attractivePover() {
+    float attractivePover = float(ballWeight)*0.98;
+    return attractivePover;
+}
 void Ball::advance(int phase) {
     if(phase) {
 

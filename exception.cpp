@@ -2,8 +2,9 @@
 #include "registration.h"
 #include "authentication.h"
 #include <QMessageBox>
-#include <mainwindow.h>
+#include <mainwindow.h>;
 #include "registration.h"
+
 exception::exception()
 {
 
@@ -71,7 +72,7 @@ void registration::on_reg_clicked()
           QMessageBox::critical(this, "stop", "Помилка! Паролі не співпадають!");
           ui->lineEdit_password->setText(password);
           ui->lineEdit_passwordCheck->setText("");
-//          QMessageBox::critical(this, "stop", "Помилка!");
+//
 //          return;
       }
 
@@ -83,3 +84,22 @@ void registration::on_reg_clicked()
   {
 
   }
+
+  void authentication::checkWeight(int weight)
+  {
+
+try{
+           if( weight < 1 ||  weight > 30 || !weight ){
+
+                  throw(weight);
+                  }
+
+      }
+      catch(int weight) {
+
+          QMessageBox::critical(this, "Помилка","Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
+
+      }
+
+  }
+
