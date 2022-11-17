@@ -44,23 +44,20 @@ void Player_1::advance(int phase)
 
         b2Vec2 vel = PlayerBody1->GetLinearVelocity();
         b2Vec2 pos = PlayerBody1->GetPosition();
-        // Мир 10 на 6 WxH
-//        qDebug() << vel.x << vel.y;
-
-        // x = 4.3008 был
         if(pos.x > 4.3658 && pos.x < 5.661) {   // Перегородка, движение в этом интервале сводится к 0.
-//            qDebug() << pos.x;
             vel.x = 0;
             PlayerBody1->SetLinearVelocity(vel);
         }
-
-
-//        qDebug() << pos.y;
         // Для double jump. Когда герой на земле а это y = 5.385
         if(pos.y <= 5.400 && pos.y >= 5.30) {
             counterPlayer1 = 0;
         }
 
+    }
+    else {
+        foreach(QGraphicsItem* item, collidingItems()) {
+            item->setData(0, true);
+        }
     }
 }
 
@@ -101,10 +98,7 @@ void Player_2::advance(int phase) {
         b2Vec2 vel = PlayerBody2->GetLinearVelocity();
         b2Vec2 pos = PlayerBody2->GetPosition();
 
-//        qDebug() << pos.x;
-//        qDebug() << vel.x << vel.y;
         if(pos.x > 4.3658 && pos.x < 5.639) {   // Перегородка, движение в этом интервале сводится к 0.
-//            qDebug() << vel.x << vel.y;
             vel.x = 0;
             PlayerBody2->SetLinearVelocity(vel);
         }
@@ -113,6 +107,11 @@ void Player_2::advance(int phase) {
             counterPlayer2 = 0;
         }
 
+    }
+    else {
+        foreach(QGraphicsItem* item, collidingItems()) {
+            item->setData(1, true);
+        }
     }
 }
 

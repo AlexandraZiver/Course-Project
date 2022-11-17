@@ -42,14 +42,13 @@ int  Ball::attractivePover() {
     float attractivePover = float(ballWeight)*0.98;
     return attractivePover;
 }
+
 void Ball::advance(int phase) {
     if(phase) {
 
         b2Vec2 pos = ballBody->GetPosition();
         setPos(fromB2(ballBody->GetPosition().x),
                fromB2(ballBody->GetPosition().y));
-//                qDebug() << pos.x << "  " << pos.y;
-
         if(pos.y >= 5.3) {
             if(pos.x >= 5) {
                 is_player_1_goal = true;                    // Забил левый игрок

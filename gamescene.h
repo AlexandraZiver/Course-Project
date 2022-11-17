@@ -8,6 +8,7 @@
 #include "ball.h"
 #include "wall.h"
 #include "player.h"
+#include "bonus.h"
 
 #include <QGraphicsScene>
 #include <QGraphicsItem>
@@ -35,11 +36,12 @@ public slots:
 private:
     b2World* world;
 
-
     // QGraphicsScene interface
 protected:
     void keyPressEvent(QKeyEvent *event);
 };
+
+
 
 namespace Ui {
 class GameScene;
@@ -62,6 +64,7 @@ public slots:
 private slots:
     void on_startNewGame_clicked();
     void on_pauseGame_clicked();
+    void generateNewBonus();
 
 
 private:
@@ -69,7 +72,9 @@ private:
     Scene* scene;
     QTimer* frameTimer;
     QTimer* scoreTimer;
+    QTimer* generateBonus;
     b2World* world;
 };
+
 
 #endif // GAMESCENE_H
