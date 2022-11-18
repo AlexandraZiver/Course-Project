@@ -7,11 +7,9 @@
         <file>images/ball2.png</file>
         <file>images/ball3.png</file>
         <file>images/crown.ico</file>
-        <file>images/dev.png</file>
         <file>images/Fon.png</file>
         <file>images/gamefon.png</file>
         <file>images/icon.ico</file>
-        <file>images/Menyu_igry_fon.png</file>
         <file>images/no-volume.png</file>
         <file>images/player1.png</file>
         <file>images/player1-2.png</file>
@@ -22,10 +20,14 @@
         <file>images/question.png</file>
         <file>images/records.png</file>
         <file>images/regmenu.png</file>
-        <file>images/rules.png</file>
         <file>images/test.png</file>
         <file>images/volume.png</file>
         <file>images/winner.jpg</file>
+
+        <file>images/dev.png</file>
+        <file>images/gamemenu.png</file>
+        <file>images/rules.png</file>
+
         <file>images/place1.png</file>
         <file>images/zyro-image.png</file>
         <file>images/au.png</file>
@@ -38,5 +40,6 @@
         <file>images/island33.png</file>
         <file>images/ship33.png</file>
         <file>images/island3.png</file>
+
     </qresource>
 </RCC>
