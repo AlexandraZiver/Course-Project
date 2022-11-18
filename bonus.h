@@ -1,20 +1,26 @@
 #ifndef BONUS_H
 #define BONUS_H
+
 #include "Box2D/Box2D.h"
 #include <QGraphicsItem>
 
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 
-#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
 
 #include <QGraphicsPixmapItem>
 
 
-class Bonus
-{
+class Bonus : public QGraphicsEllipseItem {
 public:
-    Bonus();
+    Bonus(int xspread);
+    void advance(int phase);
+    int yspeed =  2;
+private:
+    QString bonusType;
+    QColor bonusColor;
+
 };
 
 #endif // BONUS_H
