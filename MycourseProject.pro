@@ -12,6 +12,7 @@ SOURCES += \
     about.cpp \
     authentication.cpp \
     ball.cpp \
+    bonus.cpp \
     data.cpp \
     error.cpp \
     exception.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
     registr.cpp \
     registration.cpp \
     rules.cpp \
+    scene.cpp \
     wall.cpp
 
 HEADERS += \
@@ -30,6 +32,7 @@ HEADERS += \
     about.h \
     authentication.h \
     ball.h \
+    bonus.h \
     data.h \
     error.h \
     exception.h \
@@ -40,6 +43,7 @@ HEADERS += \
     registr.h \
     registration.h \
     rules.h \
+    scene.h \
     wall.h
 
 FORMS += \
@@ -79,3 +83,6 @@ DEPENDPATH += $$PWD/.
 
 win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
+
+DISTFILES += \
+    ../../../Downloads/Пауза.png

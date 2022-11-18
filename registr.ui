@@ -6,143 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>539</width>
+    <height>695</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Register</string>
   </property>
   <property name="windowIcon">
-
-   <iconset>
+   <iconset resource="recources.qrc">
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>40</y>
-     <width>191</width>
-     <height>171</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Script MT Bold</family>
-     <pointsize>15</pointsize>
-     <italic>false</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-color: rgb(255, 0, 127);
-font: 700 15pt &quot;Script MT Bold&quot;;</string>
-   </property>
-   <property name="title">
-    <string>Авторизация</string>
-   </property>
-   <widget class="QLabel" name="name">
-    <property name="geometry">
-     <rect>
-      <x>11</x>
-      <y>31</y>
-      <width>71</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Segoe UI</family>
-      <pointsize>12</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 700 12pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 0, 0);
-border: 2px solid #fff; 
-color: #fff;</string>
-    </property>
-    <property name="text">
-     <string>ИМЯ</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>59</y>
-      <width>121</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="pass">
-    <property name="geometry">
-     <rect>
-      <x>11</x>
-      <y>100</y>
-      <width>71</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 700 12pt &quot;Segoe UI&quot;;
-background-color: rgb(255, 0, 0);
-border: 2px solid #fff; 
-color: #fff;</string>
-    </property>
-    <property name="text">
-     <string>Пароль</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>121</width>
-      <height>27</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>271</y>
-     <width>211</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <pointsize>12</pointsize>
-     <italic>false</italic>
-     <bold>true</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 0, 0);
-font: 700 12pt &quot;Segoe UI&quot;;
-text-decoration: underline;
-</string>
-   </property>
-   <property name="text">
-    <string>(Рекорды не сохраняются)</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true"> background: rgba( 0,0,0,.0);</string>
+  </property>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>10</x>
+     <y>10</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -157,80 +39,122 @@ border: 0;
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="play">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>220</y>
-     <width>75</width>
-     <height>24</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1411</width>
+     <height>1191</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <bold>true</bold>
-    </font>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/images/zyro1-image.png);
+background-size: contain;
+background-repeat: no-repeat;</string>
    </property>
    <property name="text">
-    <string>Вход</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>230</y>
+     <width>281</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba( 0,0,0,.0);
+border:none;
+color: rgb(255, 255, 255);
+font-size: 20px;
+font-weiht:500;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="done">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>460</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgba( 225,225,225,.0);
+border:none;
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>320</y>
+     <width>291</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba( 0,0,0,.0);
+
+color: rgb(255, 255, 255);
+font-size: 20px;
+font-weiht:500;
+border:none;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="reg">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>220</y>
-     <width>81</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Регистрация</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="playNoReg">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>250</y>
-     <width>151</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Играть без регистрации</string>
-   </property>
-  </widget>
-  <widget class="QGraphicsView" name="graphicsView">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>411</width>
-     <height>371</height>
+     <x>110</x>
+     <y>400</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image: url(:/images/regmenu.png);</string>
+    <string notr="true"> background-color: rgba( 225,225,225,.0);
+border:none;
+</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
-  <zorder>graphicsView</zorder>
-  <zorder>groupBox</zorder>
-  <zorder>label_3</zorder>
+  <widget class="QPushButton" name="not_reg">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>400</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgba( 225,225,225,.0);
+border:none;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label_2</zorder>
   <zorder>back</zorder>
-  <zorder>play</zorder>
+  <zorder>done</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>lineEdit_2</zorder>
   <zorder>reg</zorder>
-  <zorder>playNoReg</zorder>
+  <zorder>not_reg</zorder>
  </widget>
  <resources>
   <include location="recources.qrc"/>

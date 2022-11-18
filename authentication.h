@@ -31,6 +31,22 @@ private slots:
 
     void on_start_game_clicked();
 
+    void on_player2_linkActivated(const QString &link);
+
+    void on_plr1_rchange_clicked();
+
+    void on_lineEdit_3_textEdited(const QString &arg1);
+
+    void on_lineEdit_3_textChanged(const QString &arg1);
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_clicked();
+    void checkWeight (int weight);
+
+
+    void on_lineEdit_3_editingFinished();
+
 public slots:
     void pl1_change();
     void pl2_change();

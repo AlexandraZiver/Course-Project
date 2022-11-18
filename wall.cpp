@@ -1,4 +1,4 @@
-#include "gamescene.h"
+#include "wall.h"
 
 
 extern qreal fromB2(qreal value);
