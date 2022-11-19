@@ -9,9 +9,6 @@
 #include <QGraphicsEllipseItem>
 
 #include <QGraphicsPixmapItem>
-#include <cmath>
-#include <QDebug>
-
 
 class Ball : public QGraphicsEllipseItem {
 public:
@@ -20,7 +17,6 @@ public:
     //sleep?
     void advance(int phase);
     int attractivePover();
-    qreal destinyCalculation();
 private:
 
 };
