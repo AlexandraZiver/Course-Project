@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 
-<!-- Written by QtCreator 8.0.1, 2022-11-13T23:07:14. -->
+<!-- Written by QtCreator 8.0.1, 2022-11-19T11:31:06. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{b31d22ec-88c6-4878-a324-53a30c6ec4a4}</value>
+  <value type="QByteArray">{73fd060b-8b3e-4700-aa6e-4652c6611886}</value>
 
  </data>
  <data>
@@ -181,7 +181,6 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.2">
     <value type="int" key="EnableQmlDebugging">0</value>
 
-
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\MSI\Documents\fresh2VolleyBall\build-MycourseProject-Desktop_Qt_6_3_2_MinGW_64_bit-Profile</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/MSI/Documents/fresh2VolleyBall/build-MycourseProject-Desktop_Qt_6_3_2_MinGW_64_bit-Profile</value>
 
@@ -245,15 +244,15 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
 
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.CustomExecutableRunConfiguration</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/MSI/Documents/fresh2VolleyBall/Course-Project/MycourseProject.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/MSI/Documents/fresh2VolleyBall/Course-Project/MycourseProject.pro</value>
 
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
 
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/User/Documents/coursep/build-MycourseProject-Desktop_Qt_6_4_0_MinGW_64_bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/MSI/Documents/fresh2VolleyBall/build-MycourseProject-Desktop_Qt_6_3_2_MinGW_64_bit-Debug</value>
 
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>

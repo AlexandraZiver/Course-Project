@@ -70,6 +70,7 @@ void authentication::pl1_change()
 
     if(player1Skin=="player1"){
         ui->player1->setPixmap(QPixmap(":/images/player3.png"));
+
         player1Skin="player3";
     }
     else if(player1Skin=="player3"){
@@ -136,7 +137,7 @@ void authentication::on_plr1_rchange_clicked()
 void authentication::on_lineEdit_3_textEdited(const QString &arg1)
 {
     int weight = ui->lineEdit_3->text().toInt();
-
+    ballWeight = weight;
     if( weight > 5 &&  weight < 10 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
@@ -162,6 +163,8 @@ void authentication::on_lineEdit_3_textChanged(const QString &arg1)
 {
 
  int weight = ui->lineEdit_3->text().toInt();
+ ballWeight = weight;
+
     if( weight > 5 &&  weight < 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";

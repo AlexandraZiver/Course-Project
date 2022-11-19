@@ -16,6 +16,7 @@ Player_1::Player_1(b2World* world, QSizeF size, QPointF initPos, qreal angle)
     setRect(-fromB2(size.width()/2), -fromB2(size.height()/2),
             fromB2(size.width()), fromB2(size.height()));
     setBrush(Qt::red);
+
     setPos(fromB2(initPos.x()), fromB2(initPos.y()));
     b2BodyDef playerBodyDef;
     playerBodyDef.position.Set(initPos.x(), initPos.y());
@@ -25,12 +26,14 @@ Player_1::Player_1(b2World* world, QSizeF size, QPointF initPos, qreal angle)
     b2CircleShape c;
     b2PolygonShape shape;
 
-    shape.SetAsBox(size.width()/2, size.width()/2);
+    shape.SetAsBox(size.width()/2, size.height()/2);
 
     PlayerBody1 = world->CreateBody(&playerBodyDef);
     PlayerBody1->CreateFixture(&shape, 5);
     PlayerBody1->CreateFixture(&c, 1.0f);
     PlayerBody1->SetFixedRotation(true);
+
+
 
 }
 
@@ -72,6 +75,7 @@ Player_2::Player_2(b2World* world, QSizeF size, QPointF initPos, qreal angle)
     setRect(-fromB2(size.width()/2), -fromB2(size.height()/2),
             fromB2(size.width()), fromB2(size.height()));
     setBrush(Qt::blue);
+
     setPos(fromB2(initPos.x()), fromB2(initPos.y()));
     b2BodyDef playerBodyDef;
     playerBodyDef.position.Set(initPos.x(), initPos.y());
@@ -81,7 +85,7 @@ Player_2::Player_2(b2World* world, QSizeF size, QPointF initPos, qreal angle)
     b2CircleShape c;
     b2PolygonShape shape;
 
-    shape.SetAsBox(size.width()/2, size.width()/2);
+    shape.SetAsBox(size.width()/2, size.height()/2);
 
     PlayerBody2 = world->CreateBody(&playerBodyDef);
     PlayerBody2->CreateFixture(&shape, 5);
