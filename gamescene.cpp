@@ -26,6 +26,7 @@ bool is_paused = false;             // Стоит ли пауза. Изнача�
 
 bool bonusCreated = false;
 
+
 int plr_1_Speed = PlayerSpeed;              // Швидкість гравця
 int plr_1_HeightJump = PlayerHeightJump;    // Высота стрибка
 
@@ -80,7 +81,9 @@ GameScene::GameScene(QWidget *parent) :
     generateBonus = new QTimer(this);
     connect(generateBonus, SIGNAL(timeout()),
             this, SLOT(generateNewBonus()));
+
     generateBonus->start(30000);
+
 
     frameTimer = new QTimer(this);
     connect(frameTimer, SIGNAL(timeout()),
@@ -289,8 +292,10 @@ void GameScene::on_pauseGame_clicked()
         PlayerBody2->SetType(b2_staticBody);
         ballBody->SetType(b2_staticBody);
 
+
         if(bonusCreated)
         gameBonus->yspeed = 0;
+
 
         ui->pauseGame->setText("Unpause");
     }
@@ -303,6 +308,7 @@ void GameScene::on_pauseGame_clicked()
         ballBody->SetLinearVelocity(pastBallVel);
         PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
         PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
+
 
         if(bonusCreated)
         gameBonus->yspeed = 2;
@@ -317,7 +323,9 @@ void GameScene::generateNewBonus()
     if(!is_paused) {
         gameBonus = new Bonus(scene->sceneRect().width());
         scene->addItem(gameBonus);
+
         bonusCreated = true;
+
     }
 }
 

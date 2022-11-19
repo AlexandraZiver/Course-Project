@@ -29,7 +29,7 @@
    <string>Volleyball</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset resource="recources.qrc">
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <property name="autoFillBackground">
@@ -46,7 +46,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/Menyu_igry_fon.png);
+     <string notr="true">background-image: url(:/images/gamemenu.png);
 background-repeat: no-repeat;
 
 </string>
@@ -126,7 +126,7 @@ border: 0;
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="recources.qrc"/>
  </resources>
  <connections/>
 </ui>
