@@ -42,7 +42,6 @@ protected:
 };
 
 
-
 namespace Ui {
 class GameScene;
 }
