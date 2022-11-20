@@ -39,6 +39,7 @@ private:
     // QGraphicsScene interface
 protected:
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent * event);
 };
 
 

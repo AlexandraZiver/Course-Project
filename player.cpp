@@ -37,6 +37,7 @@ Player_1::Player_1(b2World* world, QSizeF size, QPointF initPos, qreal angle)
 
 }
 
+
 void Player_1::advance(int phase)
 {
 
@@ -63,6 +64,9 @@ void Player_1::advance(int phase)
         }
     }
 }
+
+
+
 
 Player_1::~Player_1()
 {

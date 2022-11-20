@@ -199,6 +199,12 @@ void GameScene::startGame() {
 }
 
 
+bool keyAPressed = false;
+bool keyDPressed = false;
+
+bool keyLeftPressed = false;
+bool keyRightPressed = false;
+
 void Scene::keyPressEvent(QKeyEvent *event) {
     // Player 1
        b2Vec2 pos = PlayerBody1->GetPosition();
@@ -210,14 +216,14 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 
     switch(event->key()) {
     case Qt::Key_A:
-
             vel.x = -plr_1_Speed;
-
+            keyAPressed = true;
         break;
     case Qt::Key_D:
 
         if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
             vel.x = plr_1_Speed;
+            keyDPressed = true;
         }
         break;
 
@@ -234,11 +240,13 @@ void Scene::keyPressEvent(QKeyEvent *event) {
     case Qt::Key_Left:
         if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке  // зацепка
             vel2.x = -plr_2_Speed;
+            keyLeftPressed = true;
         }
         break;
 
     case Qt::Key_Right:
             vel2.x = plr_2_Speed;
+            keyRightPressed = true;
         break;
 
     case Qt::Key_Up:
@@ -252,6 +260,60 @@ void Scene::keyPressEvent(QKeyEvent *event) {
     }
     PlayerBody1->SetLinearVelocity(vel);
     PlayerBody2->SetLinearVelocity(vel2);
+}
+
+
+
+void Scene::keyReleaseEvent(QKeyEvent * event)
+{
+    // Player 1
+       b2Vec2 pos = PlayerBody1->GetPosition();
+       b2Vec2 vel = PlayerBody1->GetLinearVelocity();
+
+    // Player 2
+       b2Vec2 pos2 = PlayerBody2->GetPosition();
+       b2Vec2 vel2 = PlayerBody2->GetLinearVelocity();
+
+
+       // player 1
+       if(event->key() == Qt::Key_A && !keyDPressed) {
+           vel.x = 0;
+       }
+       else if(event->key() == Qt::Key_D && !keyAPressed) {
+           if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
+                vel.x = 0;
+           }
+       }
+
+       // player 2
+       if(event->key() == Qt::Key_Left && !keyRightPressed) {
+           if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке
+               vel2.x = 0;
+           }
+       }
+       else if(event->key() == Qt::Key_Right && !keyLeftPressed) {
+            vel2.x = 0;
+       }
+
+       switch(event->key()) {
+       case Qt::Key_A:
+                keyAPressed = false;
+            break;
+       case Qt::Key_D:
+                keyDPressed = false;
+            break;
+       case Qt::Key_Left:
+           keyLeftPressed = false;
+           break;
+       case Qt::Key_Right:
+           keyRightPressed = false;
+           break;
+
+}
+
+    PlayerBody1->SetLinearVelocity(vel);
+    PlayerBody2->SetLinearVelocity(vel2);
+
 }
 
 
