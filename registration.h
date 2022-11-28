@@ -4,6 +4,8 @@
 #include "ui_registration.h"
 #include <QWidget>
 #include <QObject>
+#include <QFile>
+
 
 namespace Ui {
 class registration;
@@ -23,7 +25,7 @@ private slots:
     void on_reg_clicked();
 
     void on_back_clicked();
-
+    void funct_registr();
    
 
 private:
