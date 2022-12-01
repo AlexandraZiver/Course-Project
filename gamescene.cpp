@@ -23,6 +23,7 @@ int ScoreToWin = 7;
 bool is_player_1_goal = false;      // true - первый (левый) игрок забил, false - второй (правый) игрок забил
 bool is_created = true;             // Создан ли мяч? true потому что в начале он создан
 bool is_paused = false;             // Стоит ли пауза. Изначально не стоит - false
+bool bonusCreated = false;          // Чи створен Бонус
 
 int plr_1_Speed = PlayerSpeed;              // Швидкість гравця
 int plr_1_HeightJump = PlayerHeightJump;    // Высота стрибка
@@ -78,7 +79,7 @@ GameScene::GameScene(QWidget *parent) :
     generateBonus = new QTimer(this);
     connect(generateBonus, SIGNAL(timeout()),
             this, SLOT(generateNewBonus()));
-    generateBonus->start(5000);
+    generateBonus->start(30000);
 
     frameTimer = new QTimer(this);
     connect(frameTimer, SIGNAL(timeout()),
@@ -197,6 +198,12 @@ void GameScene::startGame() {
 }
 
 
+bool keyAPressed = false;
+bool keyDPressed = false;
+
+bool keyLeftPressed = false;
+bool keyRightPressed = false;
+
 void Scene::keyPressEvent(QKeyEvent *event) {
     // Player 1
        b2Vec2 pos = PlayerBody1->GetPosition();
@@ -208,14 +215,14 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 
     switch(event->key()) {
     case Qt::Key_A:
-
             vel.x = -plr_1_Speed;
-
+            keyAPressed = true;
         break;
     case Qt::Key_D:
 
         if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
             vel.x = plr_1_Speed;
+            keyDPressed = true;
         }
         break;
 
@@ -232,11 +239,13 @@ void Scene::keyPressEvent(QKeyEvent *event) {
     case Qt::Key_Left:
         if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке  // зацепка
             vel2.x = -plr_2_Speed;
+            keyLeftPressed = true;
         }
         break;
 
     case Qt::Key_Right:
             vel2.x = plr_2_Speed;
+            keyRightPressed = true;
         break;
 
     case Qt::Key_Up:
@@ -248,6 +257,58 @@ void Scene::keyPressEvent(QKeyEvent *event) {
         }
         break;
     }
+    PlayerBody1->SetLinearVelocity(vel);
+    PlayerBody2->SetLinearVelocity(vel2);
+}
+
+
+
+void Scene::keyReleaseEvent(QKeyEvent * event)
+{
+    // Player 1
+       b2Vec2 pos = PlayerBody1->GetPosition();
+       b2Vec2 vel = PlayerBody1->GetLinearVelocity();
+
+    // Player 2
+       b2Vec2 pos2 = PlayerBody2->GetPosition();
+       b2Vec2 vel2 = PlayerBody2->GetLinearVelocity();
+
+
+       // player 1
+       if(event->key() == Qt::Key_A && !keyDPressed) {
+           vel.x = 0;
+       }
+       else if(event->key() == Qt::Key_D && !keyAPressed) {
+           if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
+                vel.x = 0;
+           }
+       }
+
+       // player 2
+       if(event->key() == Qt::Key_Left && !keyRightPressed) {
+           if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке
+               vel2.x = 0;
+           }
+       }
+       else if(event->key() == Qt::Key_Right && !keyLeftPressed) {
+            vel2.x = 0;
+       }
+
+       switch(event->key()) {
+       case Qt::Key_A:
+                keyAPressed = false;
+            break;
+       case Qt::Key_D:
+                keyDPressed = false;
+            break;
+       case Qt::Key_Left:
+           keyLeftPressed = false;
+           break;
+       case Qt::Key_Right:
+           keyRightPressed = false;
+           break;
+
+        }
     PlayerBody1->SetLinearVelocity(vel);
     PlayerBody2->SetLinearVelocity(vel2);
 }
@@ -286,6 +347,8 @@ void GameScene::on_pauseGame_clicked()
         PlayerBody1->SetType(b2_staticBody);
         PlayerBody2->SetType(b2_staticBody);
         ballBody->SetType(b2_staticBody);
+
+        if(bonusCreated)
         gameBonus->yspeed = 0;
         ui->pauseGame->setText("Unpause");
     }
@@ -298,6 +361,8 @@ void GameScene::on_pauseGame_clicked()
         ballBody->SetLinearVelocity(pastBallVel);
         PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
         PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
+
+        if(bonusCreated)
         gameBonus->yspeed = 2;
         ui->pauseGame->setText("Pause");
     }
@@ -309,6 +374,7 @@ void GameScene::generateNewBonus()
     if(!is_paused) {
         gameBonus = new Bonus(scene->sceneRect().width());
         scene->addItem(gameBonus);
+        bonusCreated = true;
     }
 }
 
