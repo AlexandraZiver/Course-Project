@@ -17,6 +17,7 @@ public:
     //sleep?
     void advance(int phase);
     int attractivePover();
+    qreal destinyCalculation();
 private:
 
 };

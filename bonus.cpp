@@ -7,6 +7,9 @@ extern int plr_1_HeightJump;
 extern int plr_2_Speed;
 extern int plr_2_HeightJump;
 
+extern bool bonusCreated;
+
+
 extern qreal toB2(qreal value);
 
 Bonus::Bonus(int xspread) : QGraphicsEllipseItem(0)
@@ -59,6 +62,7 @@ void Bonus::advance(int phase)
             }
 
             delete this;
+            bonusCreated = false;
         }
 
         if(data(1).toBool()) {                          // player 2
@@ -74,8 +78,8 @@ void Bonus::advance(int phase)
             {
                 plr_2_Speed = 2;
             }
-
             delete this;
+            bonusCreated = false;
         }
     }
 }
