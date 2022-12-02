@@ -9,8 +9,45 @@ exception::exception()
 {
 
 }
+
+// Function Samira
+void registration::funct_registr() {
+
+    QString login = ui->lineEdit_PlayerName->text();
+
+    QString password = ui->lineEdit_password->text();
+    int _userRecord = 0;
+
+    QFile fileOut("Baza.json");
+    QFile RecOut("Record.csv");
+    if(fileOut.open(QIODevice::Append | QIODevice::WriteOnly))
+    {
+        qDebug() << "Файл существует 1";
+
+        if( RecOut.open(QIODevice::Append | QIODevice::WriteOnly))
+       {
+                qDebug() << "Файл существует";
+                //Если первый файл открыт для  записи успешн
+                QTextStream stream(&fileOut);
+                QTextStream Rec(&RecOut);
+                stream << login << ' ';
+                stream << password<<'\n';
+                Rec << login <<'\n';
+                Rec << _userRecord <<'\n';
+        }
+
+    }
+
+    fileOut.close();
+    RecOut.close();
+    close();
+}
+
+
 void registration::on_reg_clicked()
 {
+    funct_registr();
+
     QString playerName = ui->lineEdit_PlayerName->text();
       QString password = ui->lineEdit_password->text();
       QString passwordCheck = ui->lineEdit_passwordCheck->text();
