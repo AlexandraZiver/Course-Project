@@ -2,6 +2,7 @@
 #include "ui_gamescene.h"
 #include <mainwindow.h>
 
+
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 #include <QMessageBox>
@@ -35,7 +36,8 @@ int counterPlayer1 = 0;             // double jump for Player1     200 row
 int counterPlayer2 = 0;             // double jump for Player2
 
 extern qreal ballSize;              // приходит с authentication.cpp
-
+extern qreal exitBool;              // приходит с паузы
+extern qreal continueBool;          // приходит с паузы
 
 qreal fromB2(qreal value) {
     return value * SCALE;
@@ -50,6 +52,7 @@ GameScene::GameScene(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameScene)
 {
+
     ui->setupUi(this);
     ui->winLabel->hide();
     ui->startNewGame->hide();
@@ -336,6 +339,7 @@ void GameScene::on_startNewGame_clicked()
 b2Vec2 pastBallVel;
 b2Vec2 pastPlayer1Vel;
 b2Vec2 pastPLayer2Vel;
+
 void GameScene::on_pauseGame_clicked()
 {
     if(PlayerBody1->GetType() == b2_dynamicBody && PlayerBody2->GetType() == b2_dynamicBody) {      // paused
@@ -350,24 +354,35 @@ void GameScene::on_pauseGame_clicked()
 
         if(bonusCreated)
         gameBonus->yspeed = 0;
-        ui->pauseGame->setText("Unpause");
-    }
-    else if(PlayerBody1->GetType() == b2_staticBody && PlayerBody2->GetType() == b2_staticBody) {   // unpaused
-        is_paused = false;
-        PlayerBody1->SetType(b2_dynamicBody);
-        PlayerBody2->SetType(b2_dynamicBody);
-        ballBody->SetType(b2_dynamicBody);
-
-        ballBody->SetLinearVelocity(pastBallVel);
-        PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
-        PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
-
-        if(bonusCreated)
-        gameBonus->yspeed = 2;
-        ui->pauseGame->setText("Pause");
-    }
+//Alex
+        hide();
+        pause = new Pause();
+        pause->setModal(true);
+        pause->exec();
+       if(exitBool) {
+       this->close();
+       exitBool= false;
 }
 
+if(continueBool) {
+    this->show();
+//Alex
+        is_paused = false;
+               PlayerBody1->SetType(b2_dynamicBody);
+               PlayerBody2->SetType(b2_dynamicBody);
+               ballBody->SetType(b2_dynamicBody);
+
+               ballBody->SetLinearVelocity(pastBallVel);
+               PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
+               PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
+
+               if(bonusCreated)
+               gameBonus->yspeed = 2;
+               continueBool = false;//Alex
+
+}
+    }
+        }
 
 void GameScene::generateNewBonus()
 {
@@ -377,6 +392,11 @@ void GameScene::generateNewBonus()
         bonusCreated = true;
     }
 }
+
+
+
+
+
 
 
 

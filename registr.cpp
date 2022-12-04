@@ -63,7 +63,7 @@ void registr::on_play_clicked()
 }
 
 
-
+//Alex
 void registr::on_not_reg_clicked()
 {
     authentication *auth2;
