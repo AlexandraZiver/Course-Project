@@ -29,6 +29,8 @@ private slots:
 
     void on_done_clicked();
 
+    void Entrancy();
+
 private:
     Ui::registr *ui;
 };

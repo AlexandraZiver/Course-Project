@@ -2,6 +2,7 @@
 #include <mainwindow.h>
 #include "registr.h"
 
+
 registration::registration(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::registration)
