@@ -50,19 +50,18 @@ authentication::~authentication()
 {
     delete ui;
 }
-
+//Alex
 void authentication::on_back_clicked()
 {
+
     registr *reg;
-
-
     reg = new registr;
     reg->show();
     this->close();
 
 }
 
-
+//Alex
 
 
 void authentication::pl1_change()
@@ -106,20 +105,21 @@ void authentication::on_start_game_clicked()
 
 void authentication::ball_change() {
 
-
-
     if(ballSkin=="ball1"){                                      // Средний мяч
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
+ ui->lineEdit_3->setText(""); // удаление строки введения при выборе мяча кнопками Александра
         ballSkin="ball2";
         ballSize = 0.4;
     }
     else if(ballSkin=="ball2"){                                 // Большой мяч
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
+        ui->lineEdit_3->setText("");
         ballSkin="ball3";
         ballSize = 0.55;
     }
     else if (ballSkin=="ball3") {                               // Маленький мяч
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
+        ui->lineEdit_3->setText("");
         ballSkin="ball1";
         ballSize = 0.3;
     }
@@ -132,24 +132,24 @@ void authentication::on_plr1_rchange_clicked()
 
 }
 
-
-void authentication::on_lineEdit_3_textEdited(const QString &arg1)
+// Alex
+void authentication::on_lineEdit_3_textEdited()
 {
     int weight = ui->lineEdit_3->text().toInt();
     ballWeight = weight;
-    if( weight > 5 &&  weight < 10 ){
+    if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
         ballSize = 0.4;
 
     }
-    if( weight > 10 &&  weight < 15){
+    if( weight > 20 &&  weight <= 30){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
         ballSize = 0.55;
 
     }
-    if ( weight < 5 ) {
+    if ( weight <= 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
         ballSize = 0.3;
@@ -158,24 +158,24 @@ void authentication::on_lineEdit_3_textEdited(const QString &arg1)
 }
 
 
-void authentication::on_lineEdit_3_textChanged(const QString &arg1)
+void authentication::on_lineEdit_3_textChanged()
 {
 
     int weight = ui->lineEdit_3->text().toInt();
     ballWeight = weight;
-    if( weight > 5 &&  weight < 20 ){
+    if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
         ballSize = 0.4;
 
     }
-    if( weight > 20 &&  weight < 30){
+    if( weight > 20 &&  weight <= 30){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
         ballSize = 0.55;
 
     }
-    if ( weight < 5 ) {
+    if ( weight <= 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
         ballSize = 0.3;
@@ -223,4 +223,4 @@ void authentication::on_lineEdit_3_editingFinished()
         checkWeight(weight);}
 
 }
-
+// Alex

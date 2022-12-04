@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QMainWindow>
 #include "Box2D/Box2D.h"
+#include "pause.h"
+#include "mainwindow.h"
 
 #include "ball.h"
 #include "wall.h"
@@ -70,11 +72,13 @@ private slots:
 
 private:
     Ui::GameScene *ui;
+    Pause* pause;
     Scene* scene;
     QTimer* frameTimer;
     QTimer* scoreTimer;
     QTimer* generateBonus;
     b2World* world;
+
 };
 
 

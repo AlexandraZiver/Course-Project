@@ -54,7 +54,7 @@ void registration::on_reg_clicked()
 
 
 
-
+//Alex
       try {
           if (password == passwordCheck) {
               authentication *auth;
@@ -72,34 +72,34 @@ void registration::on_reg_clicked()
           QMessageBox::critical(this, "stop", "Помилка! Паролі не співпадають!");
           ui->lineEdit_password->setText(password);
           ui->lineEdit_passwordCheck->setText("");
-//
-//          return;
+
       }
 
   }
 
+void authentication::checkWeight(int weight)
+{
 
+try{
+         if( weight < 1 ||  weight > 30 || !weight ){
+
+                throw(weight);
+                }
+
+    }
+    catch(int weight) {
+
+        QMessageBox::critical(this, "Помилка","Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
+
+    }
+
+}
+//Alex
 
   void authentication::on_player2_linkActivated(const QString &link)
   {
 
   }
 
-  void authentication::checkWeight(int weight)
-  {
 
-try{
-           if( weight < 1 ||  weight > 30 || !weight ){
-
-                  throw(weight);
-                  }
-
-      }
-      catch(int weight) {
-
-          QMessageBox::critical(this, "Помилка","Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
-
-      }
-
-  }
 

@@ -19,6 +19,7 @@ SOURCES += \
     gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
+    pause.cpp \
     player.cpp \
     record.cpp \
     registr.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     exception.h \
     gamescene.h \
     mainwindow.h \
+    pause.h \
     player.h \
     record.h \
     registr.h \
@@ -51,6 +53,7 @@ FORMS += \
     authentication.ui \
     gamescene.ui \
     mainwindow.ui \
+    pause.ui \
     record.ui \
     registr.ui \
     registration.ui \
@@ -85,4 +88,6 @@ win32:!win32-g++: PRE_TARGETDEPS += $$PWD/./Box2D.lib
 else:win32-g++: PRE_TARGETDEPS += $$PWD/./libBox2D.a
 
 DISTFILES += \
-    ../../../Downloads/Пауза.png
+    ../../../Downloads/Пауза.png \
+    .DS_Store \
+    images/Pause.png
