@@ -10,6 +10,7 @@ Wall::Wall(b2World *world, QSizeF size, QPointF initPos, qreal angle):
             fromB2(size.width()), fromB2(size.height()));          // Задаём геометрию
 
     setBrush(QBrush(Qt::transparent));             // Задаём цвет
+    setPen(QPen(Qt::transparent));
     setPos(fromB2(initPos.x()), fromB2(initPos.y()));
     setRotation(angle);                     // Поворот
 

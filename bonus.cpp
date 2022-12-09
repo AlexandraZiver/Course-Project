@@ -12,27 +12,24 @@ extern bool bonusCreated;
 
 extern qreal toB2(qreal value);
 
-Bonus::Bonus(int xspread) : QGraphicsEllipseItem(0)
+Bonus::Bonus(int xspread) : QGraphicsPixmapItem(0)
 {
     int bonusTypeRand = rand() % 3 +1;
-    QColor color = Qt::black;
 
     if(bonusTypeRand == 1) {
-        color = Qt::yellow;
+        setPixmap(QPixmap(":/images/speedBonus.png"));
         bonusType = "speedBonus";
     }
     else if(bonusTypeRand == 2) {
-        color = Qt::green;
+        setPixmap(QPixmap(":/images/jumpBonus.png"));
         bonusType = "jumpBonus";
     }
     else if(bonusTypeRand == 3) {
-        color = Qt::red;
+        setPixmap(QPixmap(":/images/negativeSpeedBonus.png"));
         bonusType = "negativeSpeedBonus";
     }
 
-    setBrush(color);
-    setRect(0, 0, 50, 50);
-    setPos(rand() % (xspread - 50), 0);
+    setPos(rand() % (xspread - pixmap().width()), 0);
 }
 
 void Bonus::advance(int phase)
@@ -45,7 +42,6 @@ void Bonus::advance(int phase)
             delete this;
             return;
         }
-
 
         if(data(0).toBool()) {                          // player 1
             if(bonusType == "speedBonus")
