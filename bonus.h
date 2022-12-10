@@ -12,7 +12,7 @@
 #include <QGraphicsPixmapItem>
 
 
-class Bonus : public QGraphicsEllipseItem {
+class Bonus : public QGraphicsPixmapItem {
 public:
     Bonus(int xspread);
     void advance(int phase);

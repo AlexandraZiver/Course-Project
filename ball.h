@@ -10,9 +10,9 @@
 
 #include <QGraphicsPixmapItem>
 
-class Ball : public QGraphicsEllipseItem {
+class Ball : public QGraphicsPixmapItem {
 public:
-    Ball(b2World* world, qreal Radius, QPointF initPos);
+    Ball(b2World* world, qreal Radius, QPointF initPos, QString skinPath);
     ~Ball();
     //sleep?
     void advance(int phase);

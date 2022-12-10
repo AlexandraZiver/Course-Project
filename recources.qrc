@@ -5,7 +5,6 @@
         <file>images/arrow-right.png</file>
         <file>images/ball.png</file>
         <file>images/ball2.png</file>
-        <file>images/ball3.png</file>
         <file>images/crown.ico</file>
         <file>images/Fon.png</file>
         <file>images/gamefon.png</file>
@@ -41,5 +40,12 @@
         <file>images/pause.png</file>
         <file>images/pause1.png</file>
         <file>images/bg.png</file>
+        <file>images/place1020.png</file>
+        <file>images/ship1020.png</file>
+        <file>images/jumpBonus.png</file>
+        <file>images/negativeSpeedBonus.png</file>
+        <file>images/speedBonus.png</file>
+        <file>images/ball3.png</file>
+        <file>images/ball4.png</file>
     </qresource>
 </RCC>

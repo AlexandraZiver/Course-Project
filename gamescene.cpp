@@ -39,6 +39,11 @@ extern qreal ballSize;              // приходит с authentication.cpp
 extern qreal exitBool;              // приходит с паузы
 extern qreal continueBool;          // приходит с паузы
 
+extern QString gameMapPath;         // Карта
+extern QString player1SkinPath;     // Шлях до модельки гравця 1
+extern QString player2SkinPath;     // Шлях до модельки гравця 2
+extern QString ballSkinPath;        // Шлях до модельки м'яча
+
 qreal fromB2(qreal value) {
     return value * SCALE;
 }
@@ -62,20 +67,21 @@ GameScene::GameScene(QWidget *parent) :
     scene = new Scene(0, 0, 10, 6, world);      // x, y, width, height
 
     ui->graphicsView->setScene(scene);
+    ui->graphicsView->setStyleSheet(gameMapPath);
 
-    scene->addRect(scene->sceneRect());
+//    scene->addRect(scene->sceneRect());                   // Квадрат сцени
 
     scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, 5.95), 0));    // Пол
     scene->addItem(new Wall(world, QSizeF(10, 0.15), QPointF(0, 3), 90));       // Стена слева
     scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(10, 3), 90));       // Стена справа
-    scene->addItem(new Wall(world, QSizeF(3, 0.1), QPointF(5, 4.5), 90));      // Перегородка по середине
+    scene->addItem(new Wall(world, QSizeF(4, 0.2), QPointF(5, 4.5), 90));      // Перегородка по середине
 
-    pl1 = new Player_1(world, QSizeF(1, 1), QPointF(1, 5.40), 0);
-    pl2 = new Player_2(world, QSizeF(1, 1), QPointF(7, 5.40), 0);
+    pl1 = new Player_1(world, QPointF(1, 5.40), player1SkinPath);
+    pl2 = new Player_2(world, QPointF(7, 5.40), player2SkinPath);
     scene->addItem(pl1);
     scene->addItem(pl2);
 
-    gameBall = new Ball(world, ballSize, QPointF(5, 0.5));
+    gameBall = new Ball(world, ballSize, QPointF(5, 0.5), ballSkinPath);
     scene->addItem(gameBall);
 
 
@@ -138,7 +144,7 @@ void GameScene::score() {
 
     if(!is_created && is_player_1_goal && !is_paused) {                   // is_created = false когда был гол и мячик удалился в Ball::advance() | первый игрок забил
         is_created = true;
-        gameBall = new Ball(world, ballSize, QPointF(3, 2));
+        gameBall = new Ball(world, ballSize, QPointF(3, 2), ballSkinPath);
         ballBody->SetType(b2_staticBody);
         QTimer::singleShot(1000, this, SLOT(ballSleep()));
         scene->addItem(gameBall);
@@ -153,7 +159,7 @@ void GameScene::score() {
     }
     else if(!is_created && !is_player_1_goal && !is_paused) {             // второй игрок забил
         is_created = true;
-        gameBall = new Ball(world, ballSize, QPointF(7, 2));
+        gameBall = new Ball(world, ballSize, QPointF(7, 2), ballSkinPath);
         ballBody->SetType(b2_staticBody);
         QTimer::singleShot(1000, this, SLOT(ballSleep()));
         scene->addItem(gameBall);
