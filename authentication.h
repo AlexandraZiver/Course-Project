@@ -49,6 +49,8 @@ private slots:
     void on_lineEdit_3_editingFinished();
     //Alex
 
+    void on_player1_linkActivated(const QString &link);
+
 public slots:
     void pl1_change();
     void pl2_change();

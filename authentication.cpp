@@ -241,3 +241,7 @@ void authentication::on_lineEdit_3_editingFinished()
 
 }
 // Alex
+
+
+
+
