@@ -15,7 +15,7 @@
 class Bonus : public QGraphicsPixmapItem {
 public:
     Bonus(int xspread);
-    void advance(int phase);
+    void advance(int phase) override;
     int yspeed =  2;
 private:
     QString bonusType;
