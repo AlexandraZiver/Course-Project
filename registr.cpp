@@ -53,10 +53,6 @@ void registr::on_reg_clicked()
 }
 
 
-
-
-
-
 void registr::on_play_clicked()
 {
 
@@ -117,9 +113,84 @@ void registr::Entrancy() {
 
 void registr::on_done_clicked()
 {
-    Entrancy();
-    QString login = ui->lineEdit->text();
+    // Перевірка на латинські букви імені
+    QString playerName = ui->lineEdit->text();
     QString password = ui->lineEdit_2 ->text();
+
+    char wordName;
+    bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
+    for (auto wordName : playerName) {
+        int buff = wordName.toLatin1();
+        qDebug() << buff;
+        if( (buff >= 48 && buff <= 57) || (buff >= 65 && buff <= 90) || (buff >= 97 && buff <= 122))
+        {
+
+        }
+        else {
+            qDebug() << buff;
+            checkBadSymbolsName = true;
+            break;
+        }
+    }
+
+    if(checkBadSymbolsName) {
+        QMessageBox::information(this, "kirillica", "Помилка в імені! Можна використовувати тільки латинські букви");
+        ui->lineEdit->setText("");
+        return;
+    }
+
+    // Перевірка на латинські букви пароля
+    char wordPassword;
+    bool checkBadSymbolsPassword = false;             // Якщо true це означає що присутні заборонені символи
+    for (auto wordPassword : password) {
+        int latinica = wordPassword.toLatin1();
+        qDebug() << latinica;
+        if( (latinica >= 48 && latinica <= 57) || (latinica >= 65 && latinica <= 90) || (latinica >= 97 && latinica <= 122))
+        {
+
+        }
+        else {
+            qDebug() << latinica;
+            checkBadSymbolsPassword = true;
+            break;
+        }
+
+    }
+
+    if(checkBadSymbolsPassword) {
+        QMessageBox::information(this, "kirillica", "Помилка в паролі! Можна використовувати тільки латинські букви");
+        ui->lineEdit_2->setText("");
+        return;
+    }
+
+    try{
+        if (playerName.length() <= 3)
+            throw (Error(101));
+        else if(password.length() <= 3)
+            throw (Error(102));
+        else if(password.length() >= 15)
+            throw (Error(103));
+
+    }
+    catch(Error &ex){
+        if(ex.getErrorCode() == 101) {
+            ex.whatError();
+            ui->lineEdit->setText("");
+            return;
+        }
+        else if(ex.getErrorCode() == 102) {
+            ex.whatError();
+            ui->lineEdit_2->setText("");
+            return;
+        }
+        else if(ex.getErrorCode() == 103) {
+            ex.whatError();
+            ui->lineEdit_2->setText("");
+            return;
+        }
+    }
+
+    Entrancy();
     authentication *auth;
     auth = new authentication;
     auth->show();

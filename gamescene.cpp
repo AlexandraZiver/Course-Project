@@ -88,7 +88,7 @@ GameScene::GameScene(QWidget *parent) :
     generateBonus = new QTimer(this);
     connect(generateBonus, SIGNAL(timeout()),
             this, SLOT(generateNewBonus()));
-    generateBonus->start(30000);
+    generateBonus->start(10000);
 
     frameTimer = new QTimer(this);
     connect(frameTimer, SIGNAL(timeout()),

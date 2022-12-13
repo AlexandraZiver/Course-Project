@@ -12,6 +12,7 @@
 #include "bonus.h"
 #include "gamescene.h"
 #include <fstream>
+#include "error.h"
 
 exception::exception()
 {
@@ -48,7 +49,7 @@ void registration::funct_registr() {
 
     fileOut.close();
     RecOut.close();
-    close();
+   // close();
 }
 
 
@@ -108,55 +109,50 @@ void registration::on_reg_clicked()
                  QMessageBox::information(this, "kirillica", "Помилка в паролі! Можна використовувати тільки латинські букви");
                  ui->lineEdit_password->setText("");
                  ui->lineEdit_passwordCheck->setText("");
+                 return;
               }
 
-             // Перевірка довжини ім'я
-             try {
-                 if (playerName.length() <= 3) {
-                    throw (playerName);}
-              }
-              catch(QString playerName) {
-                  QMessageBox::information(this, "name", "Помилка! Ім'я має перевищувати 3 символи");
-                  ui->lineEdit_PlayerName->setText("");
-                  isNameCorrect = false;
-              }
 
-             try {
-                            if (password.length() <= 3) {
-                              throw (password); }
-                        }
-                        catch(QString password) {
-                              QMessageBox::information(this, "password", "Помилка! Пароль має містити більше 3 символів!");
-                              ui->lineEdit_password->setText("");
-                              ui->lineEdit_passwordCheck->setText("");
-                        }
+             try{
+                 if (playerName.length() <= 3)
+                     throw (Error(101));
+                 else if(password.length() <= 3)
+                     throw (Error(102));
+                 else if(password.length() >= 15)
+                     throw (Error(103));
 
+                 //Alex   //перевірка на збіг паролей
+                 if(password == passwordCheck) {
+                     isPasswordCorrect = true;
+                 }
+                 else{ throw (Error(104)); }
 
-                         try {
-                             if (password.length() >= 15) {
-                                 throw (password);
-                             }
-                          }
-                          catch(QString password) {
-                                QMessageBox::information(this, "password", "Помилка! Пароль має містити не більше 15 символів!");
-                                 ui->lineEdit_password->setText("");
-                                 ui->lineEdit_passwordCheck->setText("");
-                          }
+             }
+             catch(Error &ex){
+                 if(ex.getErrorCode() == 101) {
+                     ex.whatError();
+                     ui->lineEdit_PlayerName->setText("");
+                     isNameCorrect = false;
+                     return;
+                 }
+                 else if(ex.getErrorCode() == 102) {
+                     ex.whatError();
+                     ui->lineEdit_password->setText("");
+                     ui->lineEdit_passwordCheck->setText("");
+                     return;
+                 }
+                 else if(ex.getErrorCode() == 103) {
+                     ex.whatError();
+                     ui->lineEdit_password->setText("");
+                     ui->lineEdit_passwordCheck->setText("");
+                     return;
+                 }
+                 else if(ex.getErrorCode() == 104) {
+                     ex.whatError();
+                     ui->lineEdit_passwordCheck->setText("");
+                 }
+             }
 
-
-             //Alex   //перевірка на збіг паролей
-                   QString Помилка404;
-                   try {
-                       if (password == passwordCheck) {
-                           isPasswordCorrect = true;
-                       }
-                       else{ throw (Помилка404);}
-                   }
-                   catch (QString Помилка404) {
-                       QMessageBox::information(this, "stop", "Помилка! Паролі не співпадають!");
-                       ui->lineEdit_password->setText(password);
-                       ui->lineEdit_passwordCheck->setText("");
-                   }
 
              //Якщо пароль, ім'я введено корректно і написано все латиницею, то користувач переходить на наступне вікно гри
                    if(isPasswordCorrect && isNameCorrect && !checkBadSymbolsPassword && !checkBadSymbolsName){
@@ -175,21 +171,20 @@ void registration::on_reg_clicked()
              try{
                       if( weight < 1 ||  weight > 30 || !weight ){
 
-                             throw(weight);
+                             throw(Error(105));
                              }
 
                  }
-                 catch(int weight) {
-
-                     QMessageBox::critical(this, "Помилка","Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
+                 catch(Error &ex) {
+                    ex.whatError();
                  }
              }
 
-//Alex
+
 
   void authentication::on_player2_linkActivated(const QString &link)
   {
-      QString player1Skin = "player1";
+    //  QString player1Skin = "player1";
             QString player2Skin = "player2";
             try {
                 if (player2Skin != "player2" && player2Skin != "player4") {

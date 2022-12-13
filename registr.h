@@ -2,6 +2,8 @@
 #define REGISTR_H
 
 #include <QDialog>
+#include <QMessageBox>
+#include "error.h"
 
 namespace Ui {
 class registr;
