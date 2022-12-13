@@ -35,7 +35,7 @@ int plr_2_HeightJump = PlayerHeightJump;
 int counterPlayer1 = 0;             // double jump for Player1     200 row
 int counterPlayer2 = 0;             // double jump for Player2
 
-extern qreal ballSize;              // приходит с authentication.cpp
+extern qreal ballSize;              // приходит с gamepreparation.cpp
 extern qreal exitBool;              // приходит с паузы
 extern qreal continueBool;          // приходит с паузы
 
@@ -61,8 +61,11 @@ GameScene::GameScene(QWidget *parent) :
     ui->setupUi(this);
     ui->winLabel->hide();
     ui->startNewGame->hide();
+    setAttribute(Qt::WA_DeleteOnClose);//alex
 
     world = new b2World(b2Vec2(0.00f, 10.00f));
+
+
 
     scene = new Scene(0, 0, 10, 6, world);      // x, y, width, height
 
@@ -366,8 +369,15 @@ void GameScene::on_pauseGame_clicked()
         pause->setModal(true);
         pause->exec();
        if(exitBool) {
+           player_1_Score = 0;
+           player_2_Score = 0;
+           ui->scorePlayer1->setText(QString::number(player_1_Score));
+           ui->scorePlayer2->setText(QString::number(player_2_Score));
+           scene->clear();
+           exitBool= false;
+           is_paused = false;
        this->close();
-       exitBool= false;
+
 }
 
 if(continueBool) {
@@ -384,7 +394,9 @@ if(continueBool) {
 
                if(bonusCreated)
                gameBonus->yspeed = 2;
-               continueBool = false;//Alex
+               continueBool = false;
+
+               //Alex
 
 }
     }
