@@ -14,7 +14,7 @@ class Player_1 : public QGraphicsPixmapItem, public Obj {
 public:
     Player_1(b2World* world, QPointF initPos, QString skinPath);
     ~Player_1();
-    void advance(int phase);
+    void advance(int phase) override;
 };
 
 class Player_2 : public QGraphicsPixmapItem {
