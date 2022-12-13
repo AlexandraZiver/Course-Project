@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    auth = new authentication();
+    gameprep = new gamepreparation();
 
-    connect(auth, &authentication::firstWindow, this, &MainWindow::show);
+    connect(gameprep, &gamepreparation::firstWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -26,8 +26,8 @@ void MainWindow::on_Exit_clicked()
 
 void MainWindow::on_Start_Game_clicked()
 {
-    reg = new registr();
-    reg->show();
+    aut = new authorization();
+    aut->show();
     this->close();
 
 }

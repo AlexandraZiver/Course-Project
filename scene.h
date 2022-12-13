@@ -6,6 +6,7 @@ class Scene
 {
 public:
     Scene();
+
 };
 
 #endif // SCENE_H

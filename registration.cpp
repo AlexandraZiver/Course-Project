@@ -1,6 +1,6 @@
 #include "registration.h"
 #include <mainwindow.h>
-#include "registr.h"
+#include "authorization.h"
 
 
 registration::registration(QWidget *parent) :
@@ -17,8 +17,8 @@ registration::~registration()
 
 void registration::on_playNoReg_clicked()
 {
-    authentication *auth;
-    auth = new authentication;
+    gamepreparation *auth;
+    auth = new gamepreparation;
     auth->show();
     this->close();
 }
@@ -31,8 +31,8 @@ void registration::on_playNoReg_clicked()
 
 void registration::on_back_clicked()
 {
-    registr *reg;
-    reg = new registr;
+    authorization *reg;
+    reg = new authorization;
     reg->show();
     this->close();
 }

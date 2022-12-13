@@ -10,19 +10,20 @@ CONFIG += c++17
 
 SOURCES += \
     about.cpp \
-    authentication.cpp \
+    authorization.cpp \
     ball.cpp \
     bonus.cpp \
     data.cpp \
     error.cpp \
     exception.cpp \
+    gamepreparation.cpp \
     gamescene.cpp \
     main.cpp \
     mainwindow.cpp \
+    obj.cpp \
     pause.cpp \
     player.cpp \
     record.cpp \
-    registr.cpp \
     registration.cpp \
     rules.cpp \
     scene.cpp \
@@ -31,18 +32,19 @@ SOURCES += \
 HEADERS += \
     Box2D/Box2D.h \
     about.h \
-    authentication.h \
+    authorization.h \
     ball.h \
     bonus.h \
     data.h \
     error.h \
     exception.h \
+    gamepreparation.h \
     gamescene.h \
     mainwindow.h \
+    obj.h \
     pause.h \
     player.h \
     record.h \
-    registr.h \
     registration.h \
     rules.h \
     scene.h \
@@ -50,14 +52,13 @@ HEADERS += \
 
 FORMS += \
     about.ui \
-    authentication.ui \
+    authorization.ui \
+    gamepreparation.ui \
     gamescene.ui \
     mainwindow.ui \
     pause.ui \
     record.ui \
-    registr.ui \
     registration.ui \
-    registration2.ui \
     rules.ui
 
 TRANSLATIONS += \

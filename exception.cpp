@@ -1,7 +1,7 @@
 #include "exception.h"
 #include "registration.h"
-#include "authentication.h"
-#include "ui_authentication.h"
+#include "gamepreparation.h"
+#include "ui_gamepreparation.h"
 #include <QMessageBox>
 #include <QChar>
 #include <QString>
@@ -160,8 +160,8 @@ void registration::on_reg_clicked()
 
              //Якщо пароль, ім'я введено корректно і написано все латиницею, то користувач переходить на наступне вікно гри
                    if(isPasswordCorrect && isNameCorrect && !checkBadSymbolsPassword && !checkBadSymbolsName){
-                       authentication *auth;
-                       auth = new authentication;
+                       gamepreparation *auth;
+                       auth = new gamepreparation;
                        auth->show();
                        this->close();
                    }
@@ -169,7 +169,7 @@ void registration::on_reg_clicked()
 
              //Alex перевірка на вагу м'яча
 
-             void authentication::checkWeight(int weight)
+             void gamepreparation::checkWeight(int weight)
              {
 
              try{
@@ -187,7 +187,7 @@ void registration::on_reg_clicked()
 
 //Alex
 
-  void authentication::on_player2_linkActivated(const QString &link)
+  void gamepreparation::on_player2_linkActivated(const QString &link)
   {
       QString player1Skin = "player1";
             QString player2Skin = "player2";
@@ -207,7 +207,7 @@ void registration::on_reg_clicked()
              }
   }
 
-  void authentication::on_player1_linkActivated(const QString &link)
+  void gamepreparation::on_player1_linkActivated(const QString &link)
   {
       QString player1Skin = "player1";
             QString player2Skin = "player2";

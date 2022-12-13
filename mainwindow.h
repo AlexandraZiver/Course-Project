@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "authentication.h"
-#include "registr.h"
+#include "gamepreparation.h"
+#include "authorization.h"
 #include "rules.h"
 #include "about.h"
 #include "record.h"
@@ -32,8 +32,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    authentication *auth;
-    registr *reg;
+    gamepreparation *gameprep;
+    authorization *aut;
     about *_about;
     record *rec;
 

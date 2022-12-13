@@ -7,7 +7,7 @@ extern bool is_created;
 
 extern int player_1_Score;
 extern int player_2_Score;
-extern qreal ballWeight;            // приходит с authentication.cpp
+extern qreal ballWeight;            // приходит с gamepreparation.cpp
 extern qreal ballSize;
 extern bool is_restart;
 
