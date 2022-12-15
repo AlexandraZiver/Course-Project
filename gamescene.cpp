@@ -74,10 +74,11 @@ GameScene::GameScene(QWidget *parent) :
 
 //    scene->addRect(scene->sceneRect());                   // Квадрат сцени
 
-    scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, 5.95), 0));    // Пол
-    scene->addItem(new Wall(world, QSizeF(10, 0.15), QPointF(0, 3), 90));       // Стена слева
-    scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(10, 3), 90));       // Стена справа
-    scene->addItem(new Wall(world, QSizeF(4, 0.2), QPointF(5, 4.5), 90));      // Перегородка по середине
+    scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, 5.95), 0));    // Підлога
+    scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, -8), 0));    // Потолок
+    scene->addItem(new Wall(world, QSizeF(20, 0.15), QPointF(0, 3), 90));       // Стіна зліва
+    scene->addItem(new Wall(world, QSizeF(20, 0.1), QPointF(10, 3), 90));       // Стіна справа
+    scene->addItem(new Wall(world, QSizeF(4, 0.2), QPointF(5, 4.5), 90));      // Перегородка по центру (сітка)
 
     pl1 = new Player_1(world, QPointF(1, 5.40), player1SkinPath);
     pl2 = new Player_2(world, QPointF(7, 5.40), player2SkinPath);
