@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <string>
 #include <iostream>
-#include <exception.h>>
+#include <exception.h>
 
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -27,12 +27,12 @@ QString player2Skin = "player2";
 QString place = "place";
 QString ballSkin = "ball1";
 
-qreal ballSize = 0.3;
-qreal ballWeight = 1;
-QString gameMapPath = "background-image: url(:/images/ship1020.png)";              // За замовчуванням буде карта з кораблем
-QString player1SkinPath = ":/images/player3.png";
-QString player2SkinPath = ":/images/player4.png";
-QString ballSkinPath = ":/images/ball.png";
+qreal ballSize;
+qreal ballWeight;
+QString gameMapPath;
+QString player1SkinPath;
+QString player2SkinPath;
+QString ballSkinPath;
 
 
 
@@ -48,7 +48,15 @@ gamepreparation::gamepreparation(QWidget *parent) :
 
     connect(ui->ball_rchange, SIGNAL(clicked()), this, SLOT(ball_change()));
     connect(ui->ball_lchange, SIGNAL(clicked()), this, SLOT(ball_change()));
+    ui->player1->setPixmap(QPixmap(":/images/player1.png"));
+    ui->player2->setPixmap(QPixmap(":/images/player2.png"));
 
+    gameMapPath = "background-image: url(:/images/ship1020.png)";           // За замовчуванням буде карта з кораблем
+    player1SkinPath = ":/images/player1.png";
+    player2SkinPath = ":/images/player2.png";
+    ballSkinPath = ":/images/ball.png";
+    ballSize = 0.3;
+    ballWeight = 1;
 }
 
 gamepreparation::~gamepreparation()
