@@ -12,6 +12,7 @@
 #include "bonus.h"
 #include "gamescene.h"
 #include <fstream>
+#include "error.h"
 
 exception::exception()
 {
@@ -48,124 +49,82 @@ void registration::funct_registr() {
 
     fileOut.close();
     RecOut.close();
-    close();
+    // close();
 }
 
 
-void registration::on_reg_clicked()
+// При реєстрції
+int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwordCheck)
 {
-    funct_registr();
+          // Перевірка на латинські букви імені
+          char wordName;
+          bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
+          for (auto wordName : playerName) {
+              int buff = wordName.toLatin1();
+              qDebug() << buff;
+              if( (buff >= 48 && buff <= 57) || (buff >= 65 && buff <= 90) || (buff >= 97 && buff <= 122))
+              {
 
-    QString playerName = ui->lineEdit_PlayerName->text();
-       QString password = ui->lineEdit_password->text();
-       QString passwordCheck = ui->lineEdit_passwordCheck->text();
-       QString login;
-       bool isNameCorrect = true;
-       bool isPasswordCorrect = false;
+              }
+              else {
+                  qDebug() << buff;
+                  checkBadSymbolsName = true;
+                  break;
+              }
+          }
 
-             // Перевірка на латинські букви імені
-             char wordName;
-             bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
-             for (auto wordName : playerName) {
-                 int buff = wordName.toLatin1();
-                 qDebug() << buff;
-                 if( (buff >= 48 && buff <= 57) || (buff >= 65 && buff <= 90) || (buff >= 97 && buff <= 122))
-                 {
+          if(checkBadSymbolsName) {
+              return 106;
+          }
 
-                 }
-                 else {
-                     qDebug() << buff;
-                     checkBadSymbolsName = true;
-                     break;
-                 }
-             }
+           // Перевірка на латинські букви пароля
+          char wordPassword;
+          bool checkBadSymbolsPassword = false;             // Якщо true це означає що присутні заборонені символи
+          for (auto wordPassword : password) {
+              int latinica = wordPassword.toLatin1();
+              qDebug() << latinica;
+              if( (latinica >= 48 && latinica <= 57) || (latinica >= 65 && latinica <= 90) || (latinica >= 97 && latinica <= 122))
+              {
 
-             if(checkBadSymbolsName) {
-                 isNameCorrect = false;
-                 QMessageBox::information(this, "kirillica", "Помилка в імені! Можна використовувати тільки латинські букви");
-                 ui->lineEdit_PlayerName->setText("");
-             }
-
-              // Перевірка на латинські букви пароля
-             char wordPassword;
-             bool checkBadSymbolsPassword = false;             // Якщо true це означає що присутні заборонені символи
-             for (auto wordPassword : password) {
-                 int latinica = wordPassword.toLatin1();
-                 qDebug() << latinica;
-                 if( (latinica >= 48 && latinica <= 57) || (latinica >= 65 && latinica <= 90) || (latinica >= 97 && latinica <= 122))
-                 {
-
-                 }
-                 else {
-                     qDebug() << latinica;
-                     checkBadSymbolsPassword = true;
-                     break;
-                 }
-
-             }
-
-             if(checkBadSymbolsPassword) {
-                 QMessageBox::information(this, "kirillica", "Помилка в паролі! Можна використовувати тільки латинські букви");
-                 ui->lineEdit_password->setText("");
-                 ui->lineEdit_passwordCheck->setText("");
+              }
+              else {
+                  qDebug() << latinica;
+                  checkBadSymbolsPassword = true;
+                  break;
               }
 
-             // Перевірка довжини ім'я
-             try {
-                 if (playerName.length() <= 3) {
-                    throw (playerName);}
+          }
+
+          if(checkBadSymbolsPassword) {
+              return 107;
+           }
+
+          // Перевірка довжини ім'я
+          try{
+              if(playerName.length() == 0 && password.length() == 0 && passwordCheck.length() == 0)
+                  throw(Error(108));
+              else if (playerName.length() <= 3)
+                  throw (Error(101));
+              else if(password.length() <= 3)
+                  throw (Error(102));
+              else if(password.length() >= 15)
+                  throw (Error(103));
+              else if(password != passwordCheck)            // Alex перевірка на збіг паролей
+                  throw (Error(104));
+
+
+              /*
+              //Alex   //перевірка на збіг паролей
+              if(password == passwordCheck) {
               }
-              catch(QString playerName) {
-                  QMessageBox::information(this, "name", "Помилка! Ім'я має перевищувати 3 символи");
-                  ui->lineEdit_PlayerName->setText("");
-                  isNameCorrect = false;
-              }
-
-             try {
-                            if (password.length() <= 3) {
-                              throw (password); }
-                        }
-                        catch(QString password) {
-                              QMessageBox::information(this, "password", "Помилка! Пароль має містити більше 3 символів!");
-                              ui->lineEdit_password->setText("");
-                              ui->lineEdit_passwordCheck->setText("");
-                        }
-
-
-                         try {
-                             if (password.length() >= 15) {
-                                 throw (password);
-                             }
-                          }
-                          catch(QString password) {
-                                QMessageBox::information(this, "password", "Помилка! Пароль має містити не більше 15 символів!");
-                                 ui->lineEdit_password->setText("");
-                                 ui->lineEdit_passwordCheck->setText("");
-                          }
-
-
-             //Alex   //перевірка на збіг паролей
-                   QString Помилка404;
-                   try {
-                       if (password == passwordCheck) {
-                           isPasswordCorrect = true;
-                       }
-                       else{ throw (Помилка404);}
-                   }
-                   catch (QString Помилка404) {
-                       QMessageBox::information(this, "stop", "Помилка! Паролі не співпадають!");
-                       ui->lineEdit_password->setText(password);
-                       ui->lineEdit_passwordCheck->setText("");
-                   }
-
-             //Якщо пароль, ім'я введено корректно і написано все латиницею, то користувач переходить на наступне вікно гри
-                   if(isPasswordCorrect && isNameCorrect && !checkBadSymbolsPassword && !checkBadSymbolsName){
-                       gamepreparation *auth;
-                       auth = new gamepreparation;
-                       auth->show();
-                       this->close();
-                   }
-             }
+              else{ throw (Error(104)); }
+              */
+          }
+          catch(Error &ex){
+              return ex.getErrorCode();
+          }
+          return 1;                                 // Коли повертається 1, то все гаразд
+}
 
              //Alex перевірка на вагу м'яча
 
@@ -175,59 +134,73 @@ void registration::on_reg_clicked()
              try{
                       if( weight < 1 ||  weight > 30 || !weight ){
 
-                             throw(weight);
+                             throw(Error(105));
                              }
 
                  }
-                 catch(int weight) {
-
-                     QMessageBox::critical(this, "Помилка","Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
+                 catch(Error &ex) {
+                    ex.whatError();
                  }
              }
 
-//Alex
+// При авторизації
+int ExeptionOn_done_clicked(QString playerName, QString password)
+{
+    char wordName;
+    bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
+    for (auto wordName : playerName) {
+        int buff = wordName.toLatin1();
+        qDebug() << buff;
+        if( (buff >= 48 && buff <= 57) || (buff >= 65 && buff <= 90) || (buff >= 97 && buff <= 122))
+        {
 
-  void gamepreparation::on_player2_linkActivated(const QString &link)
-  {
-      QString player1Skin = "player1";
-            QString player2Skin = "player2";
-            try {
-                if (player2Skin != "player2" && player2Skin != "player4") {
-                   GameScene *gm;
-                   gm = new GameScene;
-                   gm->show();
-                   this->close();
-                 }
-                else { throw (player2Skin); }
+        }
+        else {
+            qDebug() << buff;
+            checkBadSymbolsName = true;
+            break;
+        }
+    }
 
-             }
-             catch (QString player2Skin) {
-                   ui->player2->setPixmap(QPixmap(":/images/player2.png"));
-                   player2Skin="player2";
-             }
-  }
+    if(checkBadSymbolsName) {
+        return 106;
+    }
 
-  void gamepreparation::on_player1_linkActivated(const QString &link)
-  {
-      QString player1Skin = "player1";
-            QString player2Skin = "player2";
+    // Перевірка на латинські букви пароля
+    char wordPassword;
+    bool checkBadSymbolsPassword = false;             // Якщо true це означає що присутні заборонені символи
+    for (auto wordPassword : password) {
+        int latinica = wordPassword.toLatin1();
+        qDebug() << latinica;
+        if( (latinica >= 48 && latinica <= 57) || (latinica >= 65 && latinica <= 90) || (latinica >= 97 && latinica <= 122))
+        {
 
-            try {
-                if (player1Skin != "player1" && player1Skin != "player3") {
-                    GameScene *gm;
-                    gm = new GameScene;
-                    gm->show();
-                    this->close();
-                }
-                else { throw (player1Skin); }
+        }
+        else {
+            qDebug() << latinica;
+            checkBadSymbolsPassword = true;
+            break;
+        }
 
-             }
-             catch (QString player1Skin) {
-                        // QMessageBox::critical(this, "players", "Помилка! Треба вибрати персонажа!");
-                    ui->player1->setPixmap(QPixmap(":/images/player3.png"));
-                    player1Skin="player3  ";
-             }
-  }
+    }
 
+    if(checkBadSymbolsPassword) {
+        return 107;
+    }
 
+    try{
+        if(playerName.length() == 0 && password.length() == 0)          // Коли нічого не введено
+            throw(Error(108));
+        else if (playerName.length() <= 3)
+            throw (Error(101));
+        else if(password.length() <= 3)
+            throw (Error(102));
+        else if(password.length() >= 15)
+            throw (Error(103));
 
+    }
+    catch(Error &ex){
+        return ex.getErrorCode();
+    }
+    return 1;
+}

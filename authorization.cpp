@@ -30,8 +30,6 @@ void authorization::on_back_clicked()
 
 
 
-
-
 void authorization::on_playNoReg_clicked()
 {
     gamepreparation *auth;
@@ -48,8 +46,6 @@ void authorization::on_reg_clicked()
     reg = new registration;
     reg->show();
     this->close();
-
-
 }
 
 
@@ -83,7 +79,7 @@ void authorization::Entrancy() {
 
     QFile fileOut("Baza.json");
 
-    if(fileOut.open( QIODevice::ReadOnly))
+    if(fileOut.open(QIODevice::ReadOnly))
     {
         qDebug() << "Файл существует 2";
 
@@ -107,22 +103,53 @@ void authorization::Entrancy() {
 
                 }
       }
-
     }
 
     fileOut.close();
-
     close();
 }
 
 void authorization::on_done_clicked()
 {
-    Entrancy();
-    QString login = ui->lineEdit->text();
+    // Перевірка на латинські букви імені
+    QString playerName = ui->lineEdit->text();
     QString password = ui->lineEdit_2 ->text();
+
+    int errorCode = ExeptionOn_done_clicked(playerName, password);
+    Error *error = new Error(errorCode);
+    error->whatError();
+
+    switch (error->getErrorCode()) {
+    case 101:
+        ui->lineEdit->setText("");
+        return;
+
+    case 102:
+        ui->lineEdit_2->setText("");
+        return;
+
+    case 103:
+        ui->lineEdit_2->setText("");
+        return;
+
+    case 106:
+        ui->lineEdit->setText("");
+        return;
+
+    case 107:
+        ui->lineEdit_2->setText("");
+        return;
+
+    case 108:
+        return;
+
+    default:
+        break;
+    }
+
+    Entrancy();
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();
     this->close();
 }
-

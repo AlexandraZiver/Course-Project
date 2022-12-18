@@ -2,6 +2,8 @@
 #define REGISTRATION_H
 
 #include "ui_registration.h"
+#include "exception.h"
+#include "error.h"
 #include <QWidget>
 #include <QObject>
 #include <QFile>

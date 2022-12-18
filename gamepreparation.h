@@ -31,7 +31,7 @@ private slots:
 
     void on_start_game_clicked();
 
-    void on_player2_linkActivated(const QString &link);
+
 
     void on_plr1_rchange_clicked();
     //Alex
@@ -49,7 +49,7 @@ private slots:
     void on_lineEdit_3_editingFinished();
     //Alex
 
-    void on_player1_linkActivated(const QString &link);
+
 
 public slots:
     void pl1_change();
