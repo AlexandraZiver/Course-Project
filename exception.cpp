@@ -9,6 +9,7 @@
 #include "ball.h"
 #include "wall.h"
 #include "player.h"
+#include "bonus.h"
 #include "gamescene.h"
 #include <fstream>
 #include "error.h"
@@ -55,10 +56,6 @@ void registration::funct_registr() {
 // При реєстрції
 int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwordCheck)
 {
-
-    Error * ex;
-    ex = new Error;
-
           // Перевірка на латинські букви імені
           char wordName;
           bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
@@ -77,10 +74,6 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
           }
 
           if(checkBadSymbolsName) {
-
-              ex->getErrorCode(106);
-              ex->whatError(106);
-
               return 106;
           }
 
@@ -98,53 +91,61 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
                   qDebug() << latinica;
                   checkBadSymbolsPassword = true;
                   break;
-
               }
 
           }
 
           if(checkBadSymbolsPassword) {
-              ex->getErrorCode(107);
-              ex->whatError(107);
               return 107;
            }
 
           // Перевірка довжини ім'я
           try{
               if(playerName.length() == 0 && password.length() == 0 && passwordCheck.length() == 0)
-                  throw(108);
+                  throw(Error(108));
               else if (playerName.length() <= 3)
-                  throw (101);
+                  throw (Error(101));
               else if(password.length() <= 3)
-                  throw (102);
+                  throw (Error(102));
               else if(password.length() >= 15)
-                  throw (103);
+                  throw (Error(103));
               else if(password != passwordCheck)            // Alex перевірка на збіг паролей
-                  throw (104);
+                  throw (Error(104));
 
 
               /*
               //Alex   //перевірка на збіг паролей
               if(password == passwordCheck) {
-
               }
               else{ throw (Error(104)); }
               */
           }
-          catch(int codeError){
-              Error * ex;
-              ex = new Error;
-              ex->whatError(codeError);
-              return ex->getErrorCode(codeError);
+          catch(Error &ex){
+              return ex.getErrorCode();
           }
-        return 1;                                 // Коли повертається 1, то все гаразд
+          return 1;                                 // Коли повертається 1, то все гаразд
 }
+
+             //Alex перевірка на вагу м'яча
+
+             void gamepreparation::checkWeight(int weight)
+             {
+
+             try{
+                      if( weight < 1 ||  weight > 30 || !weight ){
+
+                             throw(Error(105));
+                             }
+
+                 }
+                 catch(Error &ex) {
+                    ex.whatError();
+                 }
+             }
 
 // При авторизації
 int ExeptionOn_done_clicked(QString playerName, QString password)
 {
-    Error * ex;
-    ex = new Error;
     char wordName;
     bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
     for (auto wordName : playerName) {
@@ -162,10 +163,8 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
     }
 
     if(checkBadSymbolsName) {
-        ex->whatError(306);
-        return ex->getErrorCode(306);
+        return 106;
     }
-
 
     // Перевірка на латинські букви пароля
     char wordPassword;
@@ -186,47 +185,22 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
     }
 
     if(checkBadSymbolsPassword) {
-        ex->getErrorCode(307);
-        ex->whatError(307);
-        return 307;
+        return 107;
     }
 
     try{
         if(playerName.length() == 0 && password.length() == 0)          // Коли нічого не введено
-            throw(308);
+            throw(Error(108));
         else if (playerName.length() <= 3)
-            throw (301);
+            throw (Error(101));
         else if(password.length() <= 3)
-            throw (302);
+            throw (Error(102));
         else if(password.length() >= 15)
-            throw (303);
+            throw (Error(103));
 
     }
-    catch(int codeError){
-        ex->whatError(codeError);
-        return ex->getErrorCode(codeError);
+    catch(Error &ex){
+        return ex.getErrorCode();
     }
-//    return 1;
-}
-
-//Alex перевірка на вагу м'яча
-
-void exception::checkWeight(int weight, QLineEdit *lineEdit_3 )
-{
-
-try{
-         if( weight < 0 ||  weight > 30 || !weight ){
-              throw(105);
-         }
-
-
-    }
-    catch(int codeError) {
-         lineEdit_3->setText("");
-       Error * ex;
-       ex = new Error;
-       ex->getErrorCode(codeError);
-       ex->whatError(codeError);
-    }
-
+    return 1;
 }

@@ -34,12 +34,10 @@ void registration::on_reg_clicked()
     QString login;
     int errorCode = ExceptionOn_reg_clicked(playerName, password, passwordCheck);
 
+    Error *error = new Error(errorCode);
+    error->whatError();
 
-    Error *error = new Error();
-    error->getErrorCode(errorCode);
-
-    switch (error->getErrorCode(errorCode)) {
-
+    switch (error->getErrorCode()) {
     case 101:
         ui->lineEdit_PlayerName->setText("");
         return;
