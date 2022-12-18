@@ -126,23 +126,23 @@ void authorization::on_done_clicked()
         ui->lineEdit->setText("");
         return;
 
-    case 102:
+    case 302:
         ui->lineEdit_2->setText("");
         return;
 
-    case 103:
+    case 303:
         ui->lineEdit_2->setText("");
         return;
 
-    case 106:
+    case 306:
         ui->lineEdit->setText("");
         return;
 
-    case 107:
+    case 307:
         ui->lineEdit_2->setText("");
         return;
 
-    case 108:
+    case 304:
         return;
 
     default:
