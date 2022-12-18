@@ -8,9 +8,12 @@
 class Error
 {
 public:
-    Error(int code);
-    void whatError();
-    int getErrorCode();
+
+    Error();
+    void whatError(int errorCode);
+    int getErrorCode(int codeError);
+
+  
 
 private:
     int errorCode;
