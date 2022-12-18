@@ -55,8 +55,10 @@ void registration::funct_registr() {
 // При реєстрції
 int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwordCheck)
 {
+
     Error * ex;
     ex = new Error;
+
           // Перевірка на латинські букви імені
           char wordName;
           bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
@@ -75,8 +77,10 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
           }
 
           if(checkBadSymbolsName) {
+
               ex->getErrorCode(106);
               ex->whatError(106);
+
               return 106;
           }
 
@@ -94,6 +98,7 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
                   qDebug() << latinica;
                   checkBadSymbolsPassword = true;
                   break;
+
               }
 
           }
@@ -121,6 +126,7 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
               /*
               //Alex   //перевірка на збіг паролей
               if(password == passwordCheck) {
+
               }
               else{ throw (Error(104)); }
               */
@@ -159,6 +165,7 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
         ex->whatError(306);
         return ex->getErrorCode(306);
     }
+
 
     // Перевірка на латинські букви пароля
     char wordPassword;
@@ -221,4 +228,5 @@ try{
        ex->getErrorCode(codeError);
        ex->whatError(codeError);
     }
+
 }

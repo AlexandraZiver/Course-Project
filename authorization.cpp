@@ -115,6 +115,7 @@ void authorization::on_done_clicked()
     QString playerName = ui->lineEdit->text();
     QString password = ui->lineEdit_2 ->text();
 
+
     int errorCode =  ExeptionOn_done_clicked(playerName, password);
     Error *error = new Error();
     error->getErrorCode(errorCode);
@@ -141,6 +142,7 @@ void authorization::on_done_clicked()
         return;
 
     case 304:
+
         return;
 
     default:
