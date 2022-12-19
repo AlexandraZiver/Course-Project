@@ -2,12 +2,9 @@
 #include "gamepreparation.h"
 #include <QMessageBox>
 
-Error::Error()
-{
+Error::Error(){
 
-}
-
-
+};
 void Error::whatError(int errorCode) {
     registration *reg;
     reg = new registration;

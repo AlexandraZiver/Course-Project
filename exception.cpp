@@ -11,7 +11,8 @@
 #include "player.h"
 #include "gamescene.h"
 #include <fstream>
-#include "error.h"
+#include <error.h>
+
 
 exception::exception()
 {

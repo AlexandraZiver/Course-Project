@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QMainWindow>
 #include <QTextStream>
+#include "error.h"
 
 
 
@@ -116,10 +117,11 @@ void authorization::on_done_clicked()
     QString password = ui->lineEdit_2 ->text();
 
     int errorCode =  ExeptionOn_done_clicked(playerName, password);
-    Error *error = new Error();
-    error->getErrorCode(errorCode);
+    Error * er;
+    er = new Error;
+    er->getErrorCode(errorCode);
 
-    switch (error->getErrorCode(errorCode)) {
+    switch (er->getErrorCode(errorCode)) {
     case 301:
         ui->lineEdit->setText("");
         return;
