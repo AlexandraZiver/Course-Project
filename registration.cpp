@@ -1,7 +1,6 @@
 #include "registration.h"
 #include <mainwindow.h>
 #include "authorization.h"
-#include "error.h"
 
 
 registration::registration(QWidget *parent) :
@@ -35,12 +34,10 @@ void registration::on_reg_clicked()
     QString login;
     int errorCode = ExceptionOn_reg_clicked(playerName, password, passwordCheck);
 
-    Error * er;
-    er = new Error;
-    er->getErrorCode(errorCode);
+    Error *error = new Error(errorCode);
+    error->whatError();
 
-    switch (er->getErrorCode(errorCode)) {
-
+    switch (error->getErrorCode()) {
     case 101:
         ui->lineEdit_PlayerName->setText("");
         return;

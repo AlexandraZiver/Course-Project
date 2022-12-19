@@ -19,7 +19,7 @@ public:
 signals:
     void firstWindow();
 
-public slots:
+private slots:
 
 
     void on_back_clicked();
@@ -43,6 +43,7 @@ public slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_clicked();
+    void checkWeight (int weight);
 
 
     void on_lineEdit_3_editingFinished();
