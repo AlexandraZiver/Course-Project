@@ -1,6 +1,7 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 #include <QString>
+#include "error.h"
 
 
 class exception

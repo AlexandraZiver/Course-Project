@@ -1,13 +1,10 @@
 #include "error.h"
 #include <QMessageBox>
 
-Error::Error(int code)
-{
-    errorCode = code;
-}
+Error::Error(){
 
-
-void Error::whatError() {
+};
+void Error::whatError(int errorCode) {
     registration *reg;
     reg = new registration;
 
