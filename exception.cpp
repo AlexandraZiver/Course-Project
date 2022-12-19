@@ -11,7 +11,9 @@
 #include "player.h"
 #include "gamescene.h"
 #include <fstream>
+
 #include <error.h>
+
 
 
 exception::exception()
@@ -56,8 +58,10 @@ void registration::funct_registr() {
 // При реєстрції
 int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwordCheck)
 {
+
     Error * ex;
     ex = new Error;
+
           // Перевірка на латинські букви імені
           char wordName;
           bool checkBadSymbolsName = false;             // Якщо true це означає що присутні заборонені символи
@@ -76,8 +80,10 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
           }
 
           if(checkBadSymbolsName) {
+
               ex->getErrorCode(106);
               ex->whatError(106);
+
               return 106;
           }
 
@@ -95,6 +101,7 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
                   qDebug() << latinica;
                   checkBadSymbolsPassword = true;
                   break;
+
               }
 
           }
@@ -122,6 +129,7 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
               /*
               //Alex   //перевірка на збіг паролей
               if(password == passwordCheck) {
+
               }
               else{ throw (Error(104)); }
               */
@@ -214,6 +222,29 @@ try{
          }
 
 
+        }
+        else {
+            qDebug() << latinica;
+            checkBadSymbolsPassword = true;
+            break;
+        }
+
+    }
+
+    if(checkBadSymbolsPassword) {
+        return 107;
+    }
+
+    try{
+        if(playerName.length() == 0 && password.length() == 0)          // Коли нічого не введено
+            throw(Error(108));
+        else if (playerName.length() <= 3)
+            throw (Error(101));
+        else if(password.length() <= 3)
+            throw (Error(102));
+        else if(password.length() >= 15)
+            throw (Error(103));
+
     }
     catch(int codeError) {
          lineEdit_3->setText("");
@@ -222,4 +253,5 @@ try{
        ex->getErrorCode(codeError);
        ex->whatError(codeError);
     }
+
 }

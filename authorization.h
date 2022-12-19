@@ -4,7 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include "exception.h"
+
 //#include "error.h"
+
 
 namespace Ui {
 class authorization;

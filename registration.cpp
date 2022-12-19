@@ -40,6 +40,7 @@ void registration::on_reg_clicked()
     er->getErrorCode(errorCode);
 
     switch (er->getErrorCode(errorCode)) {
+
     case 101:
         ui->lineEdit_PlayerName->setText("");
         return;
