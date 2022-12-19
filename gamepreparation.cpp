@@ -225,16 +225,6 @@ void gamepreparation::on_pushButton_2_clicked()
 }
 
 
-void gamepreparation::on_lineEdit_3_editingFinished()
-{
-     int weight = ui->lineEdit_3->text().toInt();
-         exception *ex;
-         ex = new exception;
-        ex->checkWeight(weight, ui->lineEdit_3 );
-}
-
-
-
 void gamepreparation::on_pushButton_clicked()
 {
     if(place=="place"){
@@ -250,6 +240,15 @@ void gamepreparation::on_pushButton_clicked()
         }
 }
 
+
+void gamepreparation::on_lineEdit_3_editingFinished()
+{
+     int weight = ui->lineEdit_3->text().toInt();
+    if( weight < 1 ||  weight > 30 || !weight ){
+         ui->lineEdit_3->setText("");
+        checkWeight(weight);}
+
+}
 // Alex
 
 
