@@ -2,6 +2,8 @@
 #include "ui_record.h"
 #include "mainwindow.h"
 
+extern bool isMusic;
+
 record::record(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::record)
@@ -16,6 +18,7 @@ record::~record()
 
 void record::on_back_clicked()
 {
+    clickSound(isMusic);
     MainWindow *mWindow;
     mWindow = new MainWindow;
     mWindow->show();

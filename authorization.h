@@ -5,12 +5,13 @@
 #include <QMessageBox>
 #include "exception.h"
 #include "error.h"
+#include "sound.h"
 
 namespace Ui {
 class authorization;
 }
 
-class authorization : public QDialog
+class authorization : public QDialog, public sound
 {
     Q_OBJECT
 
