@@ -7,13 +7,12 @@
 #include <QWidget>
 #include <QObject>
 #include <QFile>
-#include "sound.h"
 
 namespace Ui {
 class registration;
 }
 
-class registration : public QWidget, public sound
+class registration : public QWidget
 {
     Q_OBJECT
 

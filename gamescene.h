@@ -23,14 +23,13 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <QString>
-#include "sound.h"
 
 #define SCALE 100;
 #define PlayerSpeed 5;
 #define PlayerHeightJump 7;
 
 
-class Scene : public QGraphicsScene, public sound {
+class Scene : public QGraphicsScene {
     Q_OBJECT;
 public:
     Scene(qreal x, qreal y, qreal width, qreal height, b2World *world);
@@ -51,7 +50,7 @@ namespace Ui {
 class GameScene;
 }
 
-class GameScene : public QWidget, public sound
+class GameScene : public QWidget
 {
     Q_OBJECT
 

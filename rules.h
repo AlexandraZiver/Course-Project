@@ -2,13 +2,12 @@
 #define RULES_H
 
 #include <QDialog>
-#include "sound.h"
 
 namespace Ui {
 class rules;
 }
 
-class rules : public QDialog, public sound
+class rules : public QDialog
 {
     Q_OBJECT
 

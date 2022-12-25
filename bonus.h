@@ -10,9 +10,9 @@
 #include <QGraphicsRectItem>
 
 #include <QGraphicsPixmapItem>
-#include "sound.h"
 
-class Bonus : public QGraphicsPixmapItem, public sound {
+
+class Bonus : public QGraphicsPixmapItem {
 public:
     Bonus(int xspread);
     void advance(int phase) override;

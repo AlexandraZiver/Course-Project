@@ -11,11 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Records</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="recources.qrc">
-    <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
+   <string>Dialog</string>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
@@ -87,8 +83,6 @@ border: 0;
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="recources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

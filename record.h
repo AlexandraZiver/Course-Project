@@ -2,13 +2,12 @@
 #define RECORD_H
 
 #include <QDialog>
-#include "sound.h"
 
 namespace Ui {
 class record;
 }
 
-class record : public QDialog, public sound
+class record : public QDialog
 {
     Q_OBJECT
 
