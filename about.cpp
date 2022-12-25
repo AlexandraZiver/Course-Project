@@ -2,8 +2,6 @@
 #include "ui_about.h"
 #include "mainwindow.h"
 
-extern bool isMusic;
-
 about::about(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::about)
@@ -18,7 +16,6 @@ about::~about()
 
 void about::on_back_clicked()
 {
-    clickSound(isMusic);
     MainWindow *mWindow;
     mWindow = new MainWindow;
     mWindow->show();

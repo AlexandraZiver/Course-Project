@@ -1,9 +1,6 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
-QT += multimedia
-QT += multimediawidgets
 
 CONFIG += c++17
 
@@ -30,7 +27,6 @@ SOURCES += \
     registration.cpp \
     rules.cpp \
     scene.cpp \
-    sound.cpp \
     wall.cpp
 
 HEADERS += \
@@ -52,7 +48,6 @@ HEADERS += \
     registration.h \
     rules.h \
     scene.h \
-    sound.h \
     wall.h
 
 FORMS += \

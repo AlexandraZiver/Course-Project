@@ -8,7 +8,7 @@ extern int plr_2_Speed;
 extern int plr_2_HeightJump;
 
 extern bool bonusCreated;
-extern bool isMusic;
+
 
 extern qreal toB2(qreal value);
 
@@ -56,7 +56,7 @@ void Bonus::advance(int phase)
             {
                 plr_1_Speed = 2;
             }
-            bonusSound(isMusic);
+
             delete this;
             bonusCreated = false;
         }
@@ -74,7 +74,6 @@ void Bonus::advance(int phase)
             {
                 plr_2_Speed = 2;
             }
-            bonusSound(isMusic);
             delete this;
             bonusCreated = false;
         }

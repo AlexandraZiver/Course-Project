@@ -2,13 +2,12 @@
 #define ABOUT_H
 
 #include <QDialog>
-#include "sound.h"
 
 namespace Ui {
 class about;
 }
 
-class about : public QDialog, public sound
+class about : public QDialog
 {
     Q_OBJECT
 

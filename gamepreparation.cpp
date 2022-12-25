@@ -34,8 +34,6 @@ QString player1SkinPath;
 QString player2SkinPath;
 QString ballSkinPath;
 
-extern bool isMusic;
-
 
 
 gamepreparation::gamepreparation(QWidget *parent) :
@@ -68,7 +66,7 @@ gamepreparation::~gamepreparation()
 //Alex
 void gamepreparation::on_back_clicked()
 {
-    clickSound(isMusic);
+
     authorization *reg;
     reg = new authorization;
     reg->show();
@@ -81,8 +79,6 @@ void gamepreparation::on_back_clicked()
 
 void gamepreparation::pl1_change()
 {
-
-    clickSound(isMusic);
 
     if(player1Skin=="player1"){
         ui->player1->setPixmap(QPixmap(":/images/player3.png"));
@@ -99,8 +95,6 @@ void gamepreparation::pl1_change()
 
 void gamepreparation::pl2_change()
 {
-    clickSound(isMusic);
-
     if(player2Skin=="player2"){
         ui->player2->setPixmap(QPixmap(":/images/player4.png"));
         player2Skin="player4";
@@ -120,7 +114,6 @@ void gamepreparation::pl2_change()
 
 void gamepreparation::on_start_game_clicked()
 {
-    clickSound(isMusic);
     rules *_rules;
     _rules = new rules;
     _rules->show();
@@ -128,7 +121,6 @@ void gamepreparation::on_start_game_clicked()
 }
 
 void gamepreparation::ball_change() {
-    clickSound(isMusic);
 
     if(ballSkin=="ball1"){                                      // Средний мяч
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
@@ -157,13 +149,12 @@ void gamepreparation::ball_change() {
 
 void gamepreparation::on_plr1_rchange_clicked()
 {
-    clickSound(isMusic);
+
 }
 
 // Alex
 void gamepreparation::on_lineEdit_3_textEdited()
 {
-    clickSound(isMusic);
     int weight = ui->lineEdit_3->text().toInt();
     ballWeight = weight;
     if( weight > 5 &&  weight <= 20 ){
@@ -191,7 +182,6 @@ void gamepreparation::on_lineEdit_3_textEdited()
 
 void gamepreparation::on_lineEdit_3_textChanged()
 {
-    clickSound(isMusic);
 
     int weight = ui->lineEdit_3->text().toInt();
     ballWeight = weight;
@@ -221,7 +211,6 @@ void gamepreparation::on_lineEdit_3_textChanged()
 
 void gamepreparation::on_pushButton_2_clicked()
 {
-    clickSound(isMusic);
     if(place=="place"){
             ui->place->setPixmap(QPixmap(":/images/ship33.png"));
             place="place2";
@@ -248,7 +237,6 @@ void gamepreparation::on_lineEdit_3_editingFinished()
 
 void gamepreparation::on_pushButton_clicked()
 {
-    clickSound(isMusic);
     if(place=="place"){
             ui->place->setPixmap(QPixmap(":/images/ship33.png"));
             place="place2";

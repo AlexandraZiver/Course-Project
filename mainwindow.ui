@@ -123,24 +123,6 @@ border: 0;
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="soundButton">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>10</y>
-      <width>81</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/volume.png);
-background-repeat: no-repeat;
-border: 0;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
   </widget>
  </widget>
  <resources>
