@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QMainWindow>
 #include <QTextStream>
+#include "error.h"
 
 extern bool isMusic;
 
@@ -121,32 +122,33 @@ void authorization::on_done_clicked()
     QString playerName = ui->lineEdit->text();
     QString password = ui->lineEdit_2 ->text();
 
-    int errorCode = ExeptionOn_done_clicked(playerName, password);
-    Error *error = new Error(errorCode);
-    error->whatError();
+    int errorCode =  ExeptionOn_done_clicked(playerName, password);
+    Error * er;
+    er = new Error;
+    er->getErrorCode(errorCode);
 
-    switch (error->getErrorCode()) {
-    case 101:
+    switch (er->getErrorCode(errorCode)) {
+    case 301:
         ui->lineEdit->setText("");
         return;
 
-    case 102:
+    case 302:
         ui->lineEdit_2->setText("");
         return;
 
-    case 103:
+    case 303:
         ui->lineEdit_2->setText("");
         return;
 
-    case 106:
+    case 306:
         ui->lineEdit->setText("");
         return;
 
-    case 107:
+    case 307:
         ui->lineEdit_2->setText("");
         return;
 
-    case 108:
+    case 304:
         return;
 
     default:
