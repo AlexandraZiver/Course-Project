@@ -3,6 +3,8 @@
 #include "gamescene.h"
 #include "ui_rules.h"
 
+extern bool isMusic;
+
 rules::rules(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::rules)
@@ -20,6 +22,7 @@ rules::~rules()
 
 void rules::on_play_game_clicked()
 {
+    clickSound(isMusic);
     GameScene* gameScene;
     gameScene = new GameScene();
     gameScene->show();

@@ -38,5 +38,10 @@
         <file>images/speedBonus.png</file>
         <file>images/ball3.png</file>
         <file>images/ball4.png</file>
+        <file>menu.mp3</file>
+        <file>coolmusic.mp3</file>
+        <file>jump.wav</file>
+        <file>bonusSound.wav</file>
+        <file>images/pauseimage.png</file>
     </qresource>
 </RCC>

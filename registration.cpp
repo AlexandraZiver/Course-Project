@@ -3,6 +3,8 @@
 #include "authorization.h"
 #include "error.h"
 
+extern bool isMusic;
+
 
 registration::registration(QWidget *parent) :
     QWidget(parent),
@@ -18,6 +20,7 @@ registration::~registration()
 
 void registration::on_playNoReg_clicked()
 {
+    clickSound(isMusic);
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();
@@ -27,6 +30,8 @@ void registration::on_playNoReg_clicked()
 
 void registration::on_reg_clicked()
 {
+    clickSound(isMusic);
+
     funct_registr();
 
     QString playerName = ui->lineEdit_PlayerName->text();
@@ -85,6 +90,7 @@ void registration::on_reg_clicked()
 
 void registration::on_back_clicked()
 {
+    clickSound(isMusic);
     authorization *reg;
     reg = new authorization;
     reg->show();

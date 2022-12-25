@@ -2,13 +2,14 @@
 #define GAMEPREPARATION_H
 
 #include <QDialog>
+#include "sound.h"
 
 
 namespace Ui {
 class gamepreparation;
 }
 
-class gamepreparation : public QDialog
+class gamepreparation : public QDialog, public sound
 {
     Q_OBJECT
 
