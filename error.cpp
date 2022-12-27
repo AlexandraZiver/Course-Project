@@ -30,17 +30,9 @@ void Error::whatError(int errorCode) {
         QMessageBox::information(reg, "stop", "Помилка! Паролі не співпадають!");
         break;
 
-
-
-
-
     case 105:
         QMessageBox::information(gmp, "Помилка", "Ви помилились при введенні ваги! Введіть вагу від 1кг до 30кг");
        break;
-
-
-
-
 
     case 106:
         QMessageBox::information(reg, "kirillica", "Помилка в імені! Можна використовувати тільки латинські букви");
@@ -88,8 +80,9 @@ void Error::whatError(int errorCode) {
         QMessageBox::information(reg, "kirillica", "Помилка в паролі! Можна використовувати тільки латинські букви");
         break;
 
-
-
+    case 505:
+        QMessageBox::information(reg, "Помилка", "Логін чи пароль введені не вірно!");
+   break;
 
 
     default:

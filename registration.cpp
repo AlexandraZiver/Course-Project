@@ -27,7 +27,7 @@ void registration::on_playNoReg_clicked()
 
 void registration::on_reg_clicked()
 {
-    funct_registr();
+
 
     QString playerName = ui->lineEdit_PlayerName->text();
     QString password = ui->lineEdit_password->text();
@@ -74,6 +74,10 @@ void registration::on_reg_clicked()
         break;
     }
 
+    funct_registr();
+    Save();
+    record();
+    Save_record();
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();

@@ -6,6 +6,13 @@
 //#include "error.h"
 #include <QWidget>
 #include <QObject>
+#include <QString>
+#include <QMessageBox>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonDocument >
+#include <QJsonArray>
+#include <vector>
 #include <QFile>
 
 namespace Ui {
@@ -27,7 +34,12 @@ private slots:
 
     void on_back_clicked();
 
-     void funct_registr();
+    void funct_registr();
+    void Save();
+    void record();
+    void Save_record();
+
+
 
    
 
