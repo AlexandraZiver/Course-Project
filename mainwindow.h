@@ -36,7 +36,7 @@ private slots:
 
     void on_Records_clicked();
 
-    void on_soundButton_clicked();
+//    void on_soundButton_clicked();
 
 private:
     Ui::MainWindow *ui;
