@@ -3,13 +3,14 @@
 
 #include <QDialog>
 #include "mainwindow.h"
+#include "sound.h"
 
 
 namespace Ui {
 class Pause;
 }
 
-class Pause : public QDialog
+class Pause : public QDialog, public sound
 {
     Q_OBJECT
 

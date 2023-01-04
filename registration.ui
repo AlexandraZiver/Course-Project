@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Registration</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="recources.qrc">
+    <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -149,6 +153,8 @@ border:none;
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>
