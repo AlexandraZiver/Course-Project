@@ -8,12 +8,14 @@
 #include <QJsonDocument >
 #include <QJsonArray>
 #include <QFile>
+#include "sound.h"
+
 
 namespace Ui {
 class record;
 }
 
-class record : public QDialog
+class record : public QDialog, public sound
 {
     Q_OBJECT
 

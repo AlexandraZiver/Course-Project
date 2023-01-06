@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Pause</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="recources.qrc">
+    <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-image: url(:/images/pause1.png);
@@ -78,6 +82,8 @@ font-weiht:500;</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>

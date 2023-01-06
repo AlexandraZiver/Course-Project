@@ -48,6 +48,9 @@ extern QString ballSkinPath;        // Шлях до модельки м'яча
 extern std:: vector<std::pair<QString, QString>> db;
 extern std:: vector<std::pair<int, QString>> rec;
 
+
+extern bool isMusic;
+
 qreal fromB2(qreal value) {
     return value * SCALE;
 }
@@ -265,6 +268,7 @@ void Scene::keyPressEvent(QKeyEvent *event) {
         break;
     case Qt::Key_D:
 
+
         if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
             vel.x = plr_1_Speed;
             keyDPressed = true;
@@ -278,7 +282,9 @@ void Scene::keyPressEvent(QKeyEvent *event) {
         {
             vel.y = -plr_1_HeightJump;   // Высота прыжка
             counterPlayer1++;
+            jumpSound(isMusic);
         }
+
         break;
 
     case Qt::Key_Left:
@@ -299,6 +305,7 @@ void Scene::keyPressEvent(QKeyEvent *event) {
         {
             vel2.y = -plr_2_HeightJump;   // Высота прыжка
             counterPlayer2++;
+            jumpSound(isMusic);
         }
         break;
     }

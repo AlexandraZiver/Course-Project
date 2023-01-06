@@ -7,6 +7,8 @@
 #include <QTextStream>
 #include "error.h"
 
+extern bool isMusic;
+
 
 
 authorization::authorization(QWidget *parent) :
@@ -24,6 +26,7 @@ authorization::~authorization()
 
 void authorization::on_back_clicked()
 {
+    clickSound(isMusic);
     MainWindow *mWindow;
     mWindow = new MainWindow;
     mWindow->show();
@@ -34,6 +37,7 @@ void authorization::on_back_clicked()
 
 void authorization::on_playNoReg_clicked()
 {
+    clickSound(isMusic);
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();
@@ -44,6 +48,7 @@ void authorization::on_playNoReg_clicked()
 
 void authorization::on_reg_clicked()
 {
+    clickSound(isMusic);
     registration *reg;
     reg = new registration;
     reg->show();
@@ -57,13 +62,14 @@ void authorization::on_reg_clicked()
 
 void authorization::on_play_clicked()
 {
-
+    clickSound(isMusic);
 }
 
 
 //Alex
 void authorization::on_not_reg_clicked()
 {
+    clickSound(isMusic);
     gamepreparation *auth2;
     auth2 = new gamepreparation;
     auth2->show();
