@@ -2,7 +2,14 @@
 #define RECORD_H
 
 #include <QDialog>
+#include <QString>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonDocument >
+#include <QJsonArray>
+#include <QFile>
 #include "sound.h"
+
 
 namespace Ui {
 class record;
@@ -18,6 +25,8 @@ public:
 
 private slots:
     void on_back_clicked();
+
+    void on_show_json_clicked();
 
 private:
     Ui::record *ui;

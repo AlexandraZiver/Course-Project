@@ -18,40 +18,79 @@ exception::exception()
 {
 
 }
+std:: vector<std::pair<QString, QString>> db;
+std:: vector<std::pair<int, QString>> rec;
 
 // Function Samira
-void registration::funct_registr() {
+void registration::record()  // створює вектор з рекордами
+{
+
 
     QString login = ui->lineEdit_PlayerName->text();
-
-    QString password = ui->lineEdit_password->text();
+    //int password ;
     int _userRecord = 0;
+    rec.push_back({ _userRecord, login});
 
-    QFile fileOut("Baza.json");
-    QFile RecOut("Record.csv");
-    if(fileOut.open(QIODevice::Append | QIODevice::WriteOnly))
+}
+void registration::Save_record() // зберігає вектор з рекордами у файл
+{
+    QFile fileOut("record.json");
+    if (fileOut.open(QIODevice::WriteOnly))
     {
+
         qDebug() << "Файл существует 1";
 
-        if( RecOut.open(QIODevice::Append | QIODevice::WriteOnly))
-       {
-                qDebug() << "Файл существует";
-                //Если первый файл открыт для  записи успешн
-                QTextStream stream(&fileOut);
-                QTextStream Rec(&RecOut);
-                stream << login << ' ';
-                stream << password<<'\n';
-                Rec << login <<'\n';
-                Rec << _userRecord <<'\n';
+        QJsonArray arrayJson ;
+
+        for (int i = 0; i < rec.size(); i++)
+        {
+            QJsonObject jobj;
+            jobj.insert("_userRecord",QJsonValue::fromVariant(rec[i].first));
+            jobj.insert("login",QJsonValue::fromVariant(rec[i].second));
+
+            arrayJson.append(jobj);
         }
+
+         fileOut.write(QJsonDocument(arrayJson).toJson(QJsonDocument::Indented));
 
     }
 
-    fileOut.close();
-    RecOut.close();
-    // close();
 }
 
+
+
+void registration::funct_registr() // створює вектор з користувачами
+{
+
+    QString login = ui->lineEdit_PlayerName->text();
+    QString password = ui->lineEdit_passwordCheck->text();
+    db.push_back({login, password});
+}
+
+void registration::Save() // додає нового користувача у файл
+{
+    QFile fileOut("Baza.json");
+    if (fileOut.open(QIODevice::WriteOnly))
+    {
+
+        qDebug() << "Файл существует 1";
+
+        QJsonArray arrayJson ;
+
+        for (int i = 0; i < db.size(); i++)
+        {
+            QJsonObject jobj;
+            jobj.insert("login",QJsonValue::fromVariant(db[i].first));
+            jobj.insert("password",QJsonValue::fromVariant(db[i].second));
+
+            arrayJson.append(jobj);
+        }
+
+        fileOut.write(QJsonDocument(arrayJson).toJson(QJsonDocument::Indented));
+
+    }
+
+}
 
 // При реєстрції
 int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwordCheck)
@@ -195,6 +234,7 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
         else if(password.length() >= 15)
             throw (303);
 
+
     }
     catch(int codeError){
         ex->whatError(codeError);
@@ -223,3 +263,7 @@ try{
        ex->whatError(codeError);
     }
 }
+
+
+
+

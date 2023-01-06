@@ -69,6 +69,7 @@ private slots:
     void on_startNewGame_clicked();
     void on_pauseGame_clicked();
     void generateNewBonus();
+    void Save_record_1();
 
 
 private:

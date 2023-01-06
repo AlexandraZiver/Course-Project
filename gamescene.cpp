@@ -1,6 +1,7 @@
 #include "gamescene.h"
 #include "ui_gamescene.h"
 #include <mainwindow.h>
+#include "registration.h"
 
 
 #include <QGraphicsSceneMouseEvent>
@@ -44,7 +45,12 @@ extern QString player1SkinPath;     // Шлях до модельки гравц
 extern QString player2SkinPath;     // Шлях до модельки гравця 2
 extern QString ballSkinPath;        // Шлях до модельки м'яча
 
+extern std:: vector<std::pair<QString, QString>> db;
+extern std:: vector<std::pair<int, QString>> rec;
+
+
 extern bool isMusic;
+
 qreal fromB2(qreal value) {
     return value * SCALE;
 }
@@ -116,6 +122,30 @@ GameScene::~GameScene()
     delete world;
 }
 
+void GameScene::Save_record_1() // не працює
+{
+    if(player_1_Score == ScoreToWin)
+    {
+        for (int i = 0; i < rec.size(); i++)
+        {
+            for (int j = 0; j < db.size(); j++)
+            {
+                if (rec[i].second == db[j].first)
+                {
+                    QString login;
+                    int _userRecord;
+                    login = rec[i].second;
+                    _userRecord = rec[i].first;
+                    _userRecord = _userRecord+1;
+                    rec.push_back({ _userRecord, login});
+
+                }
+            }
+        }
+
+    }
+
+}
 
 void GameScene::score() {
 
@@ -126,6 +156,10 @@ void GameScene::score() {
         ui->startNewGame->show();
         endGame();
         is_created = true;
+
+
+        Save_record_1();
+
 
         // Сброс бонусів
         plr_1_Speed = PlayerSpeed;

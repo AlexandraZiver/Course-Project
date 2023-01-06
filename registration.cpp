@@ -79,6 +79,10 @@ void registration::on_reg_clicked()
         break;
     }
 
+    funct_registr();
+    Save();
+    record();
+    Save_record();
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();
