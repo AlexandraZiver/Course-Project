@@ -21,7 +21,7 @@ exception::exception()
 std:: vector<std::pair<QString, QString>> db;
 std:: vector<std::pair<int, QString>> rec;
 
-
+//Samira
 void registration::read_rec()
 {
     int _userRecord ;
@@ -52,7 +52,6 @@ void registration::read_rec()
 
   fileOut.close();
 }
-
 
 void registration::read_db()
 {
@@ -85,7 +84,6 @@ void registration::read_db()
   fileOut.close();
 }
 
-// Function Samira
 void registration::record()  // створює вектор з рекордами
 {
     int size = 0;
@@ -108,6 +106,7 @@ void registration::record()  // створює вектор з рекордам�
     rec.push_back({ _userRecord, login});
 
 }
+
 void registration::Save_record() // зберігає вектор з рекордами у файл
 {
     QFile fileOut("record.json");
@@ -133,17 +132,6 @@ void registration::Save_record() // зберігає вектор з рекор�
 
 }
 
-void registration::removing_file()
-{
-    QFile fileOut("Baza.json");
-
-    if (fileOut.open(QIODevice::WriteOnly))
-    {    if (fileOut.remove())
-        {
-            qDebug() << "file removed";
-        }
-    }
-}
 void registration::funct_registr() // створює вектор з користувачами
 {
     int size = 0;

@@ -30,6 +30,8 @@ private slots:
 
     void on_show_sql_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::record *ui;
 

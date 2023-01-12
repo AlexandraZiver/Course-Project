@@ -22,7 +22,7 @@ b2Body* PlayerBody2;
 
 int player_1_Score = 0;             // Счёт первого игрока
 int player_2_Score = 0;             // Счёт второго игрока
-int ScoreToWin = 3;
+int ScoreToWin = 7;
 
 bool is_player_1_goal = false;      // true - первый (левый) игрок забил, false - второй (правый) игрок забил
 bool is_created = true;             // Создан ли мяч? true потому что в начале он создан
@@ -173,9 +173,7 @@ void GameScene::read_rec()
             }
         }
      }
-
-    Save_record();
-    QApplication::quit();
+    Save_record();  
     fileOut.close();
 }
 void GameScene::Save_record() // зберігає вектор з рекордами у файл
@@ -207,11 +205,8 @@ void GameScene::score() {
         ui->winLabel->show();
         ui->startNewGame->show();
         endGame();
+        player_1_Score = 0;
         is_created = true;
-
-
-
-
 
         // Сброс бонусів
         plr_1_Speed = PlayerSpeed;
@@ -224,6 +219,7 @@ void GameScene::score() {
         ui->winLabel->show();
         ui->startNewGame->show();
         endGame();
+        player_2_Score = 0;
         is_created = true;
 
         // Сброс бонусів

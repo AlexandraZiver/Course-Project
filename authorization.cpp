@@ -56,10 +56,6 @@ void authorization::on_reg_clicked()
 }
 
 
-
-
-
-
 void authorization::on_play_clicked()
 {
     clickSound(isMusic);
@@ -78,7 +74,6 @@ void authorization::on_not_reg_clicked()
 
 
 //Samira
-
 bool rightEntrancy = true;
 QString Users_name;
 
@@ -87,7 +82,6 @@ void authorization::Entrancy()
     bool error = false;
     Error * ex;
     ex = new Error;
-    //rightEntrancy = true;
     registration *reg;
     reg = new registration;
 
@@ -178,7 +172,6 @@ void authorization::on_done_clicked()
         return;
     }
 
-   // Entrancy();
     gamepreparation *auth;
     auth = new gamepreparation;
     auth->show();
