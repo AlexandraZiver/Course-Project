@@ -28,8 +28,16 @@ private slots:
 
     void on_show_json_clicked();
 
+    void on_show_sql_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::record *ui;
+
+    void Save_xml();
+
+    void Read_xml();
 };
 
 #endif // RECORD_H
