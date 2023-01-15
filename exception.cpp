@@ -8,7 +8,6 @@
 #include <mainwindow.h>;
 #include "ball.h"
 #include "wall.h"
-#include "player.h"
 #include "gamescene.h"
 #include <fstream>
 #include <error.h>
@@ -323,6 +322,7 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
         ex->whatError(codeError);
         return ex->getErrorCode(codeError);
     }
+  return 1;
 }
 
 //перевірка на вагу м'яча
