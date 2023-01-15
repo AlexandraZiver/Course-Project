@@ -8,7 +8,6 @@ Data::Data()
 {
 
 }
-
 //Samira
 void record::Save_xml(){
    // Открываем файл для Записи с помощью пути, указанного в lineEditWrite

@@ -4,7 +4,7 @@
 #include "error.h"
 
 extern bool isMusic;
-
+extern QString Users_name;
 
 registration::registration(QWidget *parent) :
     QWidget(parent),
@@ -27,7 +27,7 @@ void registration::on_playNoReg_clicked()
     this->close();
 }
 
-QString Users_name_reg;
+
 void registration::on_reg_clicked()
 {
     clickSound(isMusic);
@@ -37,7 +37,7 @@ void registration::on_reg_clicked()
     QString password = ui->lineEdit_password->text();
     QString passwordCheck = ui->lineEdit_passwordCheck->text();
     QString login;
-    Users_name_reg = playerName;
+    Users_name = playerName;
     int errorCode = ExceptionOn_reg_clicked(playerName, password, passwordCheck);
 
     Error * er;
