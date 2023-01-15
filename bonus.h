@@ -18,8 +18,8 @@ public:
     void advance(int phase) override;
     int yspeed =  2;
 private:
-    QString bonusType;
-    QColor bonusColor;
+    QString bonus_type_;
+    QColor bonus_color_;
 
 };
 

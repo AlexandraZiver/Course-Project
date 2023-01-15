@@ -197,6 +197,9 @@ background-image: url(:/images/arrow-r.png);background-repeat: no-repeat;</strin
    </property>
   </widget>
   <widget class="QLineEdit" name="Gamer1">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -208,9 +211,8 @@ background-image: url(:/images/arrow-r.png);background-repeat: no-repeat;</strin
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 0, 0);
 
-color: rgb(253, 177, 167);
 border: 2px solid #fff; 
-color: #fff;
+color: #1e272e;
 background-color: rgb(255, 176, 167);
 
 padding-left: 30px;
@@ -223,6 +225,9 @@ border-radius:10%;
    </property>
   </widget>
   <widget class="QLineEdit" name="Gamer2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>620</x>
@@ -235,7 +240,7 @@ border-radius:10%;
     <string notr="true">background-color: rgb(255, 0, 0);
 color: rgb(253, 177, 167);
 border: 2px solid #fff; 
-color: #fff;
+color: #1e272e;
 background-color: rgb(255, 176, 167);
 padding-left: 30px;
 border-radius:10%;</string>
@@ -317,6 +322,9 @@ border-radius:10%;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="location">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -329,7 +337,7 @@ border-radius:10%;</string>
     <string notr="true">background-color: rgb(255, 0, 0);
 color: rgb(253, 177, 167);
 border: 2px solid #fff; 
-color: #fff;
+color: #1e272e;
 background-color: rgb(255, 176, 167);
 padding-left: 30px;
 border-radius:10%;</string>

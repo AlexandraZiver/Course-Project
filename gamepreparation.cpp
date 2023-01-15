@@ -27,12 +27,12 @@ QString player2Skin = "player2";
 QString place = "place";
 QString ballSkin = "ball1";
 
-qreal ballSize;
-qreal ballWeight;
-QString gameMapPath;
-QString player1SkinPath;
-QString player2SkinPath;
-QString ballSkinPath;
+qreal ball_size;
+qreal ball_weight;
+QString game_map_path;
+QString player_1_skin_path;
+QString player_2_skin_path;
+QString ball_skin_path;
 
 extern bool isMusic;
 
@@ -53,12 +53,12 @@ gamepreparation::gamepreparation(QWidget *parent) :
     ui->player1->setPixmap(QPixmap(":/images/player1.png"));
     ui->player2->setPixmap(QPixmap(":/images/player2.png"));
 
-    gameMapPath = "background-image: url(:/images/ship1020.png)";           // За замовчуванням буде карта з кораблем
-    player1SkinPath = ":/images/player1.png";
-    player2SkinPath = ":/images/player2.png";
-    ballSkinPath = ":/images/ball.png";
-    ballSize = 0.3;
-    ballWeight = 1;
+    game_map_path = "background-image: url(:/images/ship1020.png)";           // За замовчуванням буде карта з кораблем
+    player_1_skin_path = ":/images/player1.png";
+    player_2_skin_path = ":/images/player2.png";
+    ball_skin_path = ":/images/ball.png";
+    ball_size = 0.3;
+    ball_weight = 1;
 }
 
 gamepreparation::~gamepreparation()
@@ -87,12 +87,12 @@ void gamepreparation::pl1_change()
     if(player1Skin=="player1"){
         ui->player1->setPixmap(QPixmap(":/images/player3.png"));
         player1Skin="player3";
-        player1SkinPath = ":/images/player3.png";
+        player_1_skin_path = ":/images/player3.png";
     }
     else if(player1Skin=="player3"){
         ui->player1->setPixmap(QPixmap(":/images/player1.png"));
         player1Skin="player1";
-        player1SkinPath = ":/images/player1.png";
+        player_1_skin_path = ":/images/player1.png";
     }
 
 }
@@ -104,12 +104,12 @@ void gamepreparation::pl2_change()
     if(player2Skin=="player2"){
         ui->player2->setPixmap(QPixmap(":/images/player4.png"));
         player2Skin="player4";
-        player2SkinPath = ":/images/player4.png";
+        player_2_skin_path = ":/images/player4.png";
     }
     else if(player2Skin=="player4"){
         ui->player2->setPixmap(QPixmap(":/images/player2.png"));
         player2Skin="player2";
-        player2SkinPath = ":/images/player2.png";
+        player_2_skin_path = ":/images/player2.png";
     }
 
 }
@@ -134,22 +134,22 @@ void gamepreparation::ball_change() {
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ui->lineEdit_3->setText(""); // удаление строки введения при выборе мяча кнопками Александра
         ballSkin="ball2";
-        ballSize = 0.4;
-        ballSkinPath = ":/images/ball2.png";
+        ball_size = 0.4;
+        ball_skin_path = ":/images/ball2.png";
     }
     else if(ballSkin=="ball2"){                                 // Большой мяч
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ui->lineEdit_3->setText("");
         ballSkin="ball3";
-        ballSize = 0.55;
-        ballSkinPath = ":/images/ball4.png";
+        ball_size = 0.55;
+        ball_skin_path = ":/images/ball4.png";
     }
     else if (ballSkin=="ball3") {                               // Маленький мяч
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ui->lineEdit_3->setText("");
         ballSkin="ball1";
-        ballSize = 0.3;
-        ballSkinPath = ":/images/ball.png";
+        ball_size = 0.3;
+        ball_skin_path = ":/images/ball.png";
     }
 }
 
@@ -165,26 +165,26 @@ void gamepreparation::on_lineEdit_3_textEdited()
 {
     clickSound(isMusic);
     int weight = ui->lineEdit_3->text().toInt();
-    ballWeight = weight;
+    ball_weight = weight;
     if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
-        ballSize = 0.4;
-        ballSkinPath = ":/images/ball2.png";
+        ball_size = 0.4;
+        ball_skin_path = ":/images/ball2.png";
 
     }
     if( weight > 20 &&  weight <= 30){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
-        ballSize = 0.55;
-        ballSkinPath = ":/images/ball4.png";
+        ball_size = 0.55;
+        ball_skin_path = ":/images/ball4.png";
 
     }
     if ( weight <= 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
-        ballSize = 0.3;
-        ballSkinPath = ":/images/ball.png";
+        ball_size = 0.3;
+        ball_skin_path = ":/images/ball.png";
     }
 }
 
@@ -194,23 +194,23 @@ void gamepreparation::on_lineEdit_3_textChanged()
     clickSound(isMusic);
 
     int weight = ui->lineEdit_3->text().toInt();
-    ballWeight = weight;
+    ball_weight = weight;
     if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
         ballSkin="ball2";
-        ballSize = 0.4;
+        ball_size = 0.4;
 
     }
     if( weight > 20 &&  weight <= 30){
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
         ballSkin="ball3";
-        ballSize = 0.55;
+        ball_size = 0.55;
 
     }
     if ( weight <= 5 ) {
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
         ballSkin="ball1";
-        ballSize = 0.3;
+        ball_size = 0.3;
 
     }
 
@@ -225,13 +225,13 @@ void gamepreparation::on_pushButton_2_clicked()
     if(place=="place"){
             ui->place->setPixmap(QPixmap(":/images/ship33.png"));
             place="place2";
-            gameMapPath = "background-image: url(:/images/ship1020.png)";
+            game_map_path = "background-image: url(:/images/ship1020.png)";
         }
 
         else if(place=="place2"){
             ui->place->setPixmap(QPixmap(":/images/island3.png"));
             place="place";
-            gameMapPath = "background-image: url(:/images/place1020.png)";
+            game_map_path = "background-image: url(:/images/place1020.png)";
         }
 }
 
@@ -252,13 +252,13 @@ void gamepreparation::on_pushButton_clicked()
     if(place=="place"){
             ui->place->setPixmap(QPixmap(":/images/ship33.png"));
             place="place2";
-            gameMapPath = "background-image: url(:/images/ship1020.png)";
+            game_map_path = "background-image: url(:/images/ship1020.png)";
         }
 
         else if(place=="place2"){
             ui->place->setPixmap(QPixmap(":/images/island3.png"));
             place="place";
-            gameMapPath = "background-image: url(:/images/place1020.png)";
+            game_map_path = "background-image: url(:/images/place1020.png)";
         }
 }
 

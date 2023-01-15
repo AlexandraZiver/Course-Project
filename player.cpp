@@ -1,13 +1,13 @@
 #include "gamescene.h"
 
-extern b2Body* PlayerBody1;
-extern b2Body* PlayerBody2;
+extern b2Body* player_1_body;
+extern b2Body* player_2_body;
 
-extern qreal fromB2(qreal value);
-extern qreal toB2(qreal value);
+extern qreal FromB2(qreal value);
+extern qreal ToB2(qreal value);
 
-extern int counterPlayer1;
-extern int counterPlayer2;
+extern int jump_counter_player_1;
+extern int jump_counter_player_2;
 
 extern bool is_restart;
 
@@ -24,28 +24,28 @@ Player_1::Player_1(b2World* world, QPointF initPos, QString skinPath)
 
     b2PolygonShape shape;
 
-    shape.SetAsBox(toB2(pixmap().width()/2), toB2(pixmap().height()/2));
+    shape.SetAsBox(ToB2(pixmap().width()/2), ToB2(pixmap().height()/2));
 
-    PlayerBody1 = world->CreateBody(&playerBodyDef);
-    PlayerBody1->CreateFixture(&shape, 5);
-    PlayerBody1->SetFixedRotation(true);
+    player_1_body = world->CreateBody(&playerBodyDef);
+    player_1_body->CreateFixture(&shape, 5);
+    player_1_body->SetFixedRotation(true);
 
 }
 
 void Player_1::advance(int phase)
 {
     if(phase) {
-        setPos(fromB2(PlayerBody1->GetPosition().x), fromB2(PlayerBody1->GetPosition().y));
+        setPos(FromB2(player_1_body->GetPosition().x), FromB2(player_1_body->GetPosition().y));
 
-        b2Vec2 vel = PlayerBody1->GetLinearVelocity();
-        b2Vec2 pos = PlayerBody1->GetPosition();
+        b2Vec2 vel = player_1_body->GetLinearVelocity();
+        b2Vec2 pos = player_1_body->GetPosition();
         if(pos.x > 4.3658 && pos.x < 5.661) {   // Перегородка, движение в этом интервале сводится к 0.
             vel.x = 0;
-            PlayerBody1->SetLinearVelocity(vel);
+            player_1_body->SetLinearVelocity(vel);
         }
         // Для double jump. Когда герой на земле а это y = 5.385
         if(pos.y <= 5.400 && pos.y >= 5.10) {
-            counterPlayer1 = 0;
+            jump_counter_player_1 = 0;
         }
 
     }
@@ -58,7 +58,7 @@ void Player_1::advance(int phase)
 
 Player_1::~Player_1()
 {
-    PlayerBody1->GetWorld()->DestroyBody(PlayerBody1);
+    player_1_body->GetWorld()->DestroyBody(player_1_body);
 }
 
 Player_2::Player_2(b2World* world, QPointF initPos, QString skinPath)
@@ -75,27 +75,27 @@ Player_2::Player_2(b2World* world, QPointF initPos, QString skinPath)
 
     b2PolygonShape shape;
 
-    shape.SetAsBox(toB2(pixmap().width()/2), toB2(pixmap().height()/2));
+    shape.SetAsBox(ToB2(pixmap().width()/2), ToB2(pixmap().height()/2));
 
-    PlayerBody2 = world->CreateBody(&playerBodyDef);
-    PlayerBody2->CreateFixture(&shape, 5);
-    PlayerBody2->SetFixedRotation(true);
+    player_2_body = world->CreateBody(&playerBodyDef);
+    player_2_body->CreateFixture(&shape, 5);
+    player_2_body->SetFixedRotation(true);
 }
 
 void Player_2::advance(int phase) {
     if(phase) {
-        setPos(fromB2(PlayerBody2->GetPosition().x), fromB2(PlayerBody2->GetPosition().y));
+        setPos(FromB2(player_2_body->GetPosition().x), FromB2(player_2_body->GetPosition().y));
 
-        b2Vec2 vel = PlayerBody2->GetLinearVelocity();
-        b2Vec2 pos = PlayerBody2->GetPosition();
+        b2Vec2 vel = player_2_body->GetLinearVelocity();
+        b2Vec2 pos = player_2_body->GetPosition();
 
         if(pos.x > 4.3658 && pos.x < 5.639) {   // Перегородка, движение в этом интервале сводится к 0.
             vel.x = 0;
-            PlayerBody2->SetLinearVelocity(vel);
+            player_2_body->SetLinearVelocity(vel);
         }
 
         if(pos.y <= 5.400 && pos.y >= 5.10) {
-            counterPlayer2 = 0;
+            jump_counter_player_2 = 0;
         }
 
     }
@@ -107,5 +107,5 @@ void Player_2::advance(int phase) {
 }
 
 Player_2::~Player_2() {
-    PlayerBody2->GetWorld()->DestroyBody(PlayerBody2);
+    player_2_body->GetWorld()->DestroyBody(player_2_body);
 }

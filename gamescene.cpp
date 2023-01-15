@@ -10,43 +10,43 @@
 #include <QDebug>
 #include <QMessageBox>
 
-Player_1* pl1;
-Player_2* pl2;
+Player_1* player_1;
+Player_2* player_2;
 Ball* gameBall;
 
-Bonus* gameBonus;
+Bonus* game_bonus;
 
-b2Body* ballBody;
-b2Body* PlayerBody1;
-b2Body* PlayerBody2;
+b2Body* ball_body;
+b2Body* player_1_body;
+b2Body* player_2_body;
 
-int player_1_Score = 0;             // Счёт первого игрока
-int player_2_Score = 0;             // Счёт второго игрока
+int player_1_score = 0;             // Рахунок першого гравця
+int player_2_score = 0;             // Рахунок другого гравця
 int ScoreToWin = 7;
 
 bool is_player_1_goal = false;      // true - первый (левый) игрок забил, false - второй (правый) игрок забил
-bool is_created = true;             // Создан ли мяч? true потому что в начале он создан
+bool is_ball_created = true;             // Создан ли мяч? true потому что в начале он создан
 bool is_paused = false;             // Стоит ли пауза. Изначально не стоит - false
-bool bonusCreated = false;          // Чи створен Бонус
+bool is_bonus_created = false;          // Чи створен Бонус
 
-int plr_1_Speed = PlayerSpeed;              // Швидкість гравця
-int plr_1_HeightJump = PlayerHeightJump;    // Высота стрибка
+int player_1_speed = PlayerSpeed;              // Швидкість гравця
+int player_2_speed = PlayerSpeed;
+int player_1_jump_height = PlayerHeightJump;    // Высота стрибка
+int player_2_jump_height = PlayerHeightJump;
 
-int plr_2_Speed = PlayerSpeed;
-int plr_2_HeightJump = PlayerHeightJump;
+int jump_counter_player_1 = 0;             // double jump for Player1     200 row
+int jump_counter_player_2 = 0;             // double jump for Player2
 
-int counterPlayer1 = 0;             // double jump for Player1     200 row
-int counterPlayer2 = 0;             // double jump for Player2
-
-extern qreal ballSize;              // приходит с gamepreparation.cpp
+extern qreal ball_size;              // приходит с gamepreparation.cpp
 extern qreal exitBool;              // приходит с паузы
 extern qreal continueBool;          // приходит с паузы
 
-extern QString gameMapPath;         // Карта
-extern QString player1SkinPath;     // Шлях до модельки гравця 1
-extern QString player2SkinPath;     // Шлях до модельки гравця 2
-extern QString ballSkinPath;        // Шлях до модельки м'яча
+extern QString game_map_path;         // Карта
+extern QString player_1_skin_path;     // Шлях до модельки гравця 1
+extern QString player_2_skin_path;     // Шлях до модельки гравця 2
+extern QString ball_skin_path;        // Шлях до модельки м'яча
 
+// Samira
 extern std:: vector<std::pair<QString, QString>> db;
 extern QString Users_name;
 extern QString Users_name_reg;
@@ -55,11 +55,11 @@ extern std:: vector<std::pair<int, QString>> rec;
 
 extern bool isMusic;
 
-qreal fromB2(qreal value) {
+qreal FromB2(qreal value) {
     return value * SCALE;
 }
 
-qreal toB2(qreal value) {
+qreal ToB2(qreal value) {
     return value/SCALE;
 }
 
@@ -68,7 +68,6 @@ GameScene::GameScene(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GameScene)
 {
-
     ui->setupUi(this);
     ui->winLabel->hide();
     ui->startNewGame->hide();
@@ -81,9 +80,7 @@ GameScene::GameScene(QWidget *parent) :
     scene = new Scene(0, 0, 10, 6, world);      // x, y, width, height
 
     ui->graphicsView->setScene(scene);
-    ui->graphicsView->setStyleSheet(gameMapPath);
-
-//    scene->addRect(scene->sceneRect());                   // Квадрат сцени
+    ui->graphicsView->setStyleSheet(game_map_path);
 
     scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, 5.95), 0));    // Підлога
     scene->addItem(new Wall(world, QSizeF(10, 0.1), QPointF(5, -8), 0));    // Потолок
@@ -91,18 +88,18 @@ GameScene::GameScene(QWidget *parent) :
     scene->addItem(new Wall(world, QSizeF(20, 0.1), QPointF(10, 3), 90));       // Стіна справа
     scene->addItem(new Wall(world, QSizeF(4, 0.2), QPointF(5, 4.5), 90));      // Перегородка по центру (сітка)
 
-    pl1 = new Player_1(world, QPointF(1, 5.40), player1SkinPath);
-    pl2 = new Player_2(world, QPointF(7, 5.40), player2SkinPath);
-    scene->addItem(pl1);
-    scene->addItem(pl2);
+    player_1 = new Player_1(world, QPointF(1, 5.40), player_1_skin_path);
+    player_2 = new Player_2(world, QPointF(7, 5.40), player_2_skin_path);
+    scene->addItem(player_1);
+    scene->addItem(player_2);
 
-    gameBall = new Ball(world, ballSize, QPointF(5, 0.5), ballSkinPath);
+    gameBall = new Ball(world, ball_size, QPointF(5, 0.5), ball_skin_path);
     scene->addItem(gameBall);
 
 
     generateBonus = new QTimer(this);
     connect(generateBonus, SIGNAL(timeout()),
-            this, SLOT(generateNewBonus()));
+            this, SLOT(GenerateNewBonus()));
     generateBonus->start(30000);
 
     frameTimer = new QTimer(this);
@@ -114,7 +111,7 @@ GameScene::GameScene(QWidget *parent) :
 
     scoreTimer = new QTimer(this);
     connect(scoreTimer, SIGNAL(timeout()),
-            this, SLOT(score()));
+            this, SLOT(Score()));
     scoreTimer->start(1000);
 
 }
@@ -195,141 +192,133 @@ void GameScene::Save_record() // зберігає вектор з рекорда
 
 }
 
-void GameScene::score() {
+void GameScene::Score() {
 
-    if(player_1_Score == ScoreToWin) {
+    if(player_1_score == ScoreToWin) {
 
         read_rec();
-        ui->scorePlayer1->setText(QString::number(player_1_Score));
+        ui->scorePlayer1->setText(QString::number(player_1_score));
         ui->winLabel->setText(QString("Gratz Team Red WIN"));
-        ui->winLabel->show();
-        ui->startNewGame->show();
-        endGame();
-        player_1_Score = 0;
-        is_created = true;
+        EndGame();
 
-        // Сброс бонусів
-        plr_1_Speed = PlayerSpeed;
-        plr_1_HeightJump = PlayerHeightJump;
-        plr_2_Speed = PlayerSpeed;
-        plr_2_HeightJump = PlayerHeightJump;
-    } else if(player_2_Score == ScoreToWin) {
-        ui->scorePlayer2->setText(QString::number(player_2_Score));
+    } else if(player_2_score == ScoreToWin) {
+        ui->scorePlayer2->setText(QString::number(player_2_score));
         ui->winLabel->setText(QString("Gratz Team Blue WIN"));
-        ui->winLabel->show();
-        ui->startNewGame->show();
-        endGame();
-        player_2_Score = 0;
-        is_created = true;
+        EndGame();
 
-        // Сброс бонусів
-        plr_1_Speed = PlayerSpeed;
-        plr_1_HeightJump = PlayerHeightJump;
-        plr_2_Speed = PlayerSpeed;
-        plr_2_HeightJump = PlayerHeightJump;
     }
 
-    if(!is_created && is_player_1_goal && !is_paused) {                   // is_created = false когда был гол и мячик удалился в Ball::advance() | первый игрок забил
-        is_created = true;
-        gameBall = new Ball(world, ballSize, QPointF(3, 2), ballSkinPath);
-        ballBody->SetType(b2_staticBody);
-        QTimer::singleShot(1000, this, SLOT(ballSleep()));
+    if(!is_ball_created && is_player_1_goal && !is_paused) {                   // is_ball_created = false когда был гол и мячик удалился в Ball::advance() | первый игрок забил
+        is_ball_created = true;
+        gameBall = new Ball(world, ball_size, QPointF(3, 2), ball_skin_path);
+        ball_body->SetType(b2_staticBody);
+        QTimer::singleShot(1000, this, SLOT(BallSleep()));
         scene->addItem(gameBall);
-        ui->scorePlayer1->setText(QString::number(player_1_Score));
-        qDebug()  << "Score: " << player_1_Score << " : " << player_2_Score;
+        ui->scorePlayer1->setText(QString::number(player_1_score));
+        qDebug()  << "Score: " << player_1_score << " : " << player_2_score;
 
         // Сброс бонусів
-        plr_1_Speed = PlayerSpeed;
-        plr_1_HeightJump = PlayerHeightJump;
-        plr_2_Speed = PlayerSpeed;
-        plr_2_HeightJump = PlayerHeightJump;
+        player_1_speed = PlayerSpeed;
+        player_1_jump_height = PlayerHeightJump;
+        player_2_speed = PlayerSpeed;
+        player_2_jump_height = PlayerHeightJump;
     }
-    else if(!is_created && !is_player_1_goal && !is_paused) {             // второй игрок забил
-        is_created = true;
-        gameBall = new Ball(world, ballSize, QPointF(7, 2), ballSkinPath);
-        ballBody->SetType(b2_staticBody);
-        QTimer::singleShot(1000, this, SLOT(ballSleep()));
+    else if(!is_ball_created && !is_player_1_goal && !is_paused) {             // второй игрок забил
+        is_ball_created = true;
+        gameBall = new Ball(world, ball_size, QPointF(7, 2), ball_skin_path);
+        ball_body->SetType(b2_staticBody);
+        QTimer::singleShot(1000, this, SLOT(BallSleep()));
         scene->addItem(gameBall);
-        ui->scorePlayer2->setText(QString::number(player_2_Score));
-        qDebug()  << "Score: " << player_1_Score << " : " << player_2_Score;
+        ui->scorePlayer2->setText(QString::number(player_2_score));
+        qDebug()  << "Score: " << player_1_score << " : " << player_2_score;
 
         // Сброс бонусів
-        plr_1_Speed = PlayerSpeed;
-        plr_1_HeightJump = PlayerHeightJump;
-        plr_2_Speed = PlayerSpeed;
-        plr_2_HeightJump = PlayerHeightJump;
+        player_1_speed = PlayerSpeed;
+        player_1_jump_height = PlayerHeightJump;
+        player_2_speed = PlayerSpeed;
+        player_2_jump_height = PlayerHeightJump;
     }
 }
 
 
-void GameScene::ballSleep() {
+void GameScene::BallSleep() {
     if(!is_paused) {
-        ballBody->SetType(b2_dynamicBody);
+        ball_body->SetType(b2_dynamicBody);
     }
 }
 
 
-void GameScene::endGame() {
-    PlayerBody1->SetType(b2_staticBody);
-    PlayerBody2->SetType(b2_staticBody);
+void GameScene::EndGame() {
+    ui->winLabel->show();
+    ui->startNewGame->show();
+    player_1_body->SetType(b2_staticBody);
+    player_2_body->SetType(b2_staticBody);
     is_paused = true;
+    game_bonus->yspeed = 0;
+    is_ball_created = true;
+
+    // Сброс бонусів
+    player_1_speed = PlayerSpeed;
+    player_1_jump_height = PlayerHeightJump;
+    player_2_speed = PlayerSpeed;
+    player_2_jump_height = PlayerHeightJump;
 }
 
 
-void GameScene::startGame() {
+void GameScene::StartGame() {
     ui->startNewGame->hide();
     ui->winLabel->hide();
-    PlayerBody1->SetType(b2_dynamicBody);
-    PlayerBody2->SetType(b2_dynamicBody);
+    player_1_body->SetType(b2_dynamicBody);
+    player_2_body->SetType(b2_dynamicBody);
+    is_paused = false;
+    game_bonus->yspeed = 2;
+    is_ball_created = false;
 
     // Обновление счёта
-    player_1_Score = 0;
-    player_2_Score = 0;
-    ui->scorePlayer1->setText(QString::number(player_1_Score));
-    ui->scorePlayer2->setText(QString::number(player_2_Score));
-
-    is_paused = false;
-    is_created = false;
+    player_1_score = 0;
+    player_2_score = 0;
+    ui->scorePlayer1->setText(QString::number(player_1_score));
+    ui->scorePlayer2->setText(QString::number(player_2_score));
 
 }
 
 
-bool keyAPressed = false;
-bool keyDPressed = false;
+bool key_A_pressed = false;
+bool key_D_pressed = false;
 
-bool keyLeftPressed = false;
-bool keyRightPressed = false;
+bool key_Left_pressed = false;
+bool key_Right_pressed = false;
 
 void Scene::keyPressEvent(QKeyEvent *event) {
     // Player 1
-       b2Vec2 pos = PlayerBody1->GetPosition();
-       b2Vec2 vel = PlayerBody1->GetLinearVelocity();
+       b2Vec2 pos = player_1_body->GetPosition();
+       b2Vec2 vel = player_1_body->GetLinearVelocity();
 
     // Player 2
-       b2Vec2 pos2 = PlayerBody2->GetPosition();
-       b2Vec2 vel2 = PlayerBody2->GetLinearVelocity();
+       b2Vec2 pos2 = player_2_body->GetPosition();
+       b2Vec2 vel2 = player_2_body->GetLinearVelocity();
 
     switch(event->key()) {
     case Qt::Key_A:
-            vel.x = -plr_1_Speed;
-            keyAPressed = true;
+            vel.x = -player_1_speed;
+            key_A_pressed = true;
         break;
     case Qt::Key_D:
 
 
         if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
-            vel.x = plr_1_Speed;
-            keyDPressed = true;
+            vel.x = player_1_speed;
+            key_D_pressed = true;
         }
         break;
 
     case Qt::Key_W:
 
         // counter обновляется в Player_1::advance
-        if(pos.y > 2 && counterPlayer1 < 2)
+        if(pos.y > 2 && jump_counter_player_1 < 2)
         {
-            vel.y = -plr_1_HeightJump;   // Высота прыжка
-            counterPlayer1++;
+            vel.y = -player_1_jump_height;   // Высота прыжка
+            jump_counter_player_1++;
             jumpSound(isMusic);
         }
 
@@ -337,28 +326,28 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 
     case Qt::Key_Left:
         if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке  // зацепка
-            vel2.x = -plr_2_Speed;
-            keyLeftPressed = true;
+            vel2.x = -player_2_speed;
+            key_Left_pressed = true;
         }
         break;
 
     case Qt::Key_Right:
-            vel2.x = plr_2_Speed;
-            keyRightPressed = true;
+            vel2.x = player_2_speed;
+            key_Right_pressed = true;
         break;
 
     case Qt::Key_Up:
 
-        if(pos2.y > 2 && counterPlayer2 < 2)
+        if(pos2.y > 2 && jump_counter_player_2 < 2)
         {
-            vel2.y = -plr_2_HeightJump;   // Высота прыжка
-            counterPlayer2++;
+            vel2.y = -player_2_jump_height;   // Высота прыжка
+            jump_counter_player_2++;
             jumpSound(isMusic);
         }
         break;
     }
-    PlayerBody1->SetLinearVelocity(vel);
-    PlayerBody2->SetLinearVelocity(vel2);
+    player_1_body->SetLinearVelocity(vel);
+    player_2_body->SetLinearVelocity(vel2);
 }
 
 
@@ -366,56 +355,56 @@ void Scene::keyPressEvent(QKeyEvent *event) {
 void Scene::keyReleaseEvent(QKeyEvent * event)
 {
     // Player 1
-       b2Vec2 pos = PlayerBody1->GetPosition();
-       b2Vec2 vel = PlayerBody1->GetLinearVelocity();
+       b2Vec2 pos = player_1_body->GetPosition();
+       b2Vec2 vel = player_1_body->GetLinearVelocity();
 
     // Player 2
-       b2Vec2 pos2 = PlayerBody2->GetPosition();
-       b2Vec2 vel2 = PlayerBody2->GetLinearVelocity();
+       b2Vec2 pos2 = player_2_body->GetPosition();
+       b2Vec2 vel2 = player_2_body->GetLinearVelocity();
 
 
        // player 1
-       if(event->key() == Qt::Key_A && !keyDPressed) {
+       if(event->key() == Qt::Key_A && !key_D_pressed) {
            vel.x = 0;
        }
-       else if(event->key() == Qt::Key_D && !keyAPressed) {
+       else if(event->key() == Qt::Key_D && !key_A_pressed) {
            if(pos.x > 0 && pos.x < 4.3658) {   // Что бы он не смог двигаться по перегородке
                 vel.x = 0;
            }
        }
 
        // player 2
-       if(event->key() == Qt::Key_Left && !keyRightPressed) {
+       if(event->key() == Qt::Key_Left && !key_Right_pressed) {
            if(pos2.x < 10 && pos2.x > 5.63) {   // Что бы он не смог двигаться по перегородке
                vel2.x = 0;
            }
        }
-       else if(event->key() == Qt::Key_Right && !keyLeftPressed) {
+       else if(event->key() == Qt::Key_Right && !key_Left_pressed) {
             vel2.x = 0;
        }
 
        switch(event->key()) {
        case Qt::Key_A:
-                keyAPressed = false;
+                key_A_pressed = false;
             break;
        case Qt::Key_D:
-                keyDPressed = false;
+                key_D_pressed = false;
             break;
        case Qt::Key_Left:
-           keyLeftPressed = false;
+           key_Left_pressed = false;
            break;
        case Qt::Key_Right:
-           keyRightPressed = false;
+           key_Right_pressed = false;
            break;
 
         }
-    PlayerBody1->SetLinearVelocity(vel);
-    PlayerBody2->SetLinearVelocity(vel2);
+    player_1_body->SetLinearVelocity(vel);
+    player_2_body->SetLinearVelocity(vel2);
 }
 
 
 Scene::Scene(qreal x, qreal y, qreal width, qreal height, b2World *world)
-    : QGraphicsScene(fromB2(x), fromB2(y), fromB2(width), fromB2(height))
+    : QGraphicsScene(FromB2(x), FromB2(y), FromB2(width), FromB2(height))
 {
     this->world = world;
 }
@@ -429,7 +418,7 @@ void Scene::advance() {
 
 void GameScene::on_startNewGame_clicked()
 {
-    startGame();
+    StartGame();
 }
 
 
@@ -439,28 +428,28 @@ b2Vec2 pastPLayer2Vel;
 
 void GameScene::on_pauseGame_clicked()
 {
-    if(PlayerBody1->GetType() == b2_dynamicBody && PlayerBody2->GetType() == b2_dynamicBody) {      // paused
+    if(player_1_body->GetType() == b2_dynamicBody && player_2_body->GetType() == b2_dynamicBody) {      // paused
         is_paused = true;
-        pastBallVel = ballBody->GetLinearVelocity();
-        pastPlayer1Vel = PlayerBody1->GetLinearVelocity();
-        pastPLayer2Vel = PlayerBody2->GetLinearVelocity();
+        pastBallVel = ball_body->GetLinearVelocity();
+        pastPlayer1Vel = player_1_body->GetLinearVelocity();
+        pastPLayer2Vel = player_2_body->GetLinearVelocity();
 
-        PlayerBody1->SetType(b2_staticBody);
-        PlayerBody2->SetType(b2_staticBody);
-        ballBody->SetType(b2_staticBody);
+        player_1_body->SetType(b2_staticBody);
+        player_2_body->SetType(b2_staticBody);
+        ball_body->SetType(b2_staticBody);
 
-        if(bonusCreated)
-        gameBonus->yspeed = 0;
+        if(is_bonus_created)
+        game_bonus->yspeed = 0;
 //Alex
         hide();
         pause = new Pause();
         pause->setModal(true);
         pause->exec();
        if(exitBool) {
-           player_1_Score = 0;
-           player_2_Score = 0;
-           ui->scorePlayer1->setText(QString::number(player_1_Score));
-           ui->scorePlayer2->setText(QString::number(player_2_Score));
+           player_1_score = 0;
+           player_2_score = 0;
+           ui->scorePlayer1->setText(QString::number(player_1_score));
+           ui->scorePlayer2->setText(QString::number(player_2_score));
            scene->clear();
            exitBool= false;
            is_paused = false;
@@ -472,16 +461,16 @@ if(continueBool) {
     this->show();
 //Alex
         is_paused = false;
-               PlayerBody1->SetType(b2_dynamicBody);
-               PlayerBody2->SetType(b2_dynamicBody);
-               ballBody->SetType(b2_dynamicBody);
+               player_1_body->SetType(b2_dynamicBody);
+               player_2_body->SetType(b2_dynamicBody);
+               ball_body->SetType(b2_dynamicBody);
 
-               ballBody->SetLinearVelocity(pastBallVel);
-               PlayerBody1->SetLinearVelocity(pastPlayer1Vel);
-               PlayerBody2->SetLinearVelocity(pastPLayer2Vel);
+               ball_body->SetLinearVelocity(pastBallVel);
+               player_1_body->SetLinearVelocity(pastPlayer1Vel);
+               player_2_body->SetLinearVelocity(pastPLayer2Vel);
 
-               if(bonusCreated)
-               gameBonus->yspeed = 2;
+               if(is_bonus_created)
+               game_bonus->yspeed = 2;
                continueBool = false;
 
                //Alex
@@ -490,12 +479,12 @@ if(continueBool) {
     }
         }
 
-void GameScene::generateNewBonus()
+void GameScene::GenerateNewBonus()
 {
     if(!is_paused) {
-        gameBonus = new Bonus(scene->sceneRect().width());
-        scene->addItem(gameBonus);
-        bonusCreated = true;
+        game_bonus = new Bonus(scene->sceneRect().width());
+        scene->addItem(game_bonus);
+        is_bonus_created = true;
     }
 }
 

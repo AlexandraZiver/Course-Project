@@ -17,8 +17,7 @@ public:
     ~Ball();
     //sleep?
     void advance (int phase) override;
-    int attractivePover();
-    qreal destinyCalculation();
+    qreal DestinyCalculation();
 private:
 
 };
