@@ -68,11 +68,16 @@ public slots:
 
 private slots:
     void on_startNewGame_clicked();
+
     void on_pauseGame_clicked();
+
     void generateNewBonus();
+
     void Save_record();
+
     void read_rec();
 
+    void change_record();
 
 private:
     Ui::GameScene *ui;

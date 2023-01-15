@@ -113,18 +113,28 @@ void authorization::Entrancy()
             qDebug() << pass_correct;
 
             if (Login_correct == login && pass_correct ==password)
-                        {
-                                     error = true;
+            {
+                error = true;
 
-                        }
+            }
         }
    }
+
    rightEntrancy = error;
-   if (error == false)
-   {
-        QMessageBox::information(reg, "Помилка", "Логін чи пароль введені не вірно!");
+
+   try {
+       if (error == false)
+           throw(505);
    }
 
+   catch(int codeError)
+              {
+                  QMessageBox::information(reg, "Помилка", "Логін чи пароль введені не вірно!");
+                  ui->lineEdit_2->setText("");
+                 // rightEntrancy = false;
+                  ex->getErrorCode(codeError);
+                  ex->whatError(codeError);
+              }
 }
 
 void authorization::on_done_clicked()

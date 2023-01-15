@@ -46,13 +46,13 @@ border: 0;
 font: 700 10pt &quot;Segoe UI&quot;;</string>
    </property>
    <property name="text">
-    <string>XML</string>
+    <string>JSON</string>
    </property>
   </widget>
   <widget class="QPushButton" name="show_json">
    <property name="geometry">
     <rect>
-     <x>385</x>
+     <x>388</x>
      <y>175</y>
      <width>41</width>
      <height>24</height>
@@ -64,7 +64,7 @@ border: 0;
 font: 700 10pt &quot;Segoe UI&quot;;</string>
    </property>
    <property name="text">
-    <string>  JSON</string>
+    <string>XML</string>
    </property>
   </widget>
   <widget class="QPushButton" name="back">
@@ -95,6 +95,11 @@ border: 0;
      <height>141</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat: no-repeat;
+border: 0;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
+   </property>
   </widget>
   <widget class="QTextEdit" name="textEdit_2">
    <property name="geometry">
@@ -105,20 +110,40 @@ border: 0;
      <height>141</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat: no-repeat;
+font: 300 9pt &quot;Segoe UI&quot;;</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>180</y>
+     <x>518</x>
+     <y>175</y>
      <width>41</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Segoe UI</family>
      <pointsize>10</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat: no-repeat;
+border: 0;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
    </property>
    <property name="text">
     <string>  JSON</string>
@@ -132,6 +157,11 @@ border: 0;
      <width>81</width>
      <height>141</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat: no-repeat;
+border: 0;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
    </property>
   </widget>
  </widget>
