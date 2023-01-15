@@ -1,32 +1,32 @@
 #include "bonus.h"
 
-extern Bonus* gameBonus;
-extern int plr_1_Speed;
-extern int plr_1_HeightJump;
+extern Bonus* game_bonus;
+extern int player_1_speed;
+extern int player_1_jump_height;
 
-extern int plr_2_Speed;
-extern int plr_2_HeightJump;
+extern int player_2_speed;
+extern int player_2_jump_height;
 
-extern bool bonusCreated;
+extern bool is_bonus_created;
 extern bool isMusic;
 
-extern qreal toB2(qreal value);
+extern qreal ToB2(qreal value);
 
 Bonus::Bonus(int xspread) : QGraphicsPixmapItem(0)
 {
-    int bonusTypeRand = rand() % 3 +1;
+    int bonusTypeRand = rand() % 3 + 1;
 
     if(bonusTypeRand == 1) {
         setPixmap(QPixmap(":/images/speedBonus.png"));
-        bonusType = "speedBonus";
+        bonus_type_ = "speedBonus";
     }
     else if(bonusTypeRand == 2) {
         setPixmap(QPixmap(":/images/jumpBonus.png"));
-        bonusType = "jumpBonus";
+        bonus_type_ = "jumpBonus";
     }
     else if(bonusTypeRand == 3) {
         setPixmap(QPixmap(":/images/negativeSpeedBonus.png"));
-        bonusType = "negativeSpeedBonus";
+        bonus_type_ = "negativeSpeedBonus";
     }
 
     setPos(rand() % (xspread - pixmap().width()), 0);
@@ -37,46 +37,46 @@ void Bonus::advance(int phase)
 
     if(phase) {
         moveBy(0, yspeed);
-        QPointF pos = gameBonus->pos();
-        if(toB2(pos.y()) > 5.5) {
+        QPointF pos = game_bonus->pos();
+        if(ToB2(pos.y()) > 5.5) {
             delete this;
             return;
         }
 
         if(data(0).toBool()) {                          // player 1
-            if(bonusType == "speedBonus")
+            if(bonus_type_ == "speedBonus")
             {
-                plr_1_Speed = 13;
+                player_1_speed = 10;
             }
-            else if(bonusType == "jumpBonus")
+            else if(bonus_type_ == "jumpBonus")
             {
-                plr_1_HeightJump = 10;
+                player_1_jump_height = 10;
             }
-            else if(bonusType == "negativeSpeedBonus")
+            else if(bonus_type_ == "negativeSpeedBonus")
             {
-                plr_1_Speed = 2;
+                player_1_speed = 2;
             }
             bonusSound(isMusic);
             delete this;
-            bonusCreated = false;
+            is_bonus_created = false;
         }
 
         if(data(1).toBool()) {                          // player 2
-            if(bonusType == "speedBonus")
+            if(bonus_type_ == "speedBonus")
             {
-                plr_2_Speed = 13;
+                player_2_speed = 13;
             }
-            else if(bonusType == "jumpBonus")
+            else if(bonus_type_ == "jumpBonus")
             {
-                plr_2_HeightJump = 10;
+                player_2_jump_height = 10;
             }
-            else if(bonusType == "negativeSpeedBonus")
+            else if(bonus_type_ == "negativeSpeedBonus")
             {
-                plr_2_Speed = 2;
+                player_2_speed = 2;
             }
             bonusSound(isMusic);
             delete this;
-            bonusCreated = false;
+            is_bonus_created = false;
         }
     }
 }

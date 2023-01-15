@@ -109,16 +109,24 @@ border: 0;
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>180</y>
+     <x>518</x>
+     <y>178</y>
      <width>41</width>
      <height>20</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Segoe UI</family>
      <pointsize>10</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-repeat: no-repeat;
+border: 0;
+font: 700 10pt &quot;Segoe UI&quot;;</string>
    </property>
    <property name="text">
     <string>  JSON</string>

@@ -61,15 +61,15 @@ public:
     ~GameScene();
 
 public slots:
-    void score();
-    void ballSleep();
-    void endGame();
-    void startGame();
+    void Score();
+    void BallSleep();
+    void EndGame();
+    void StartGame();
+    void GenerateNewBonus();
 
 private slots:
     void on_startNewGame_clicked();
     void on_pauseGame_clicked();
-    void generateNewBonus();
     void Save_record();
     void read_rec();
 

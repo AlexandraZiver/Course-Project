@@ -1,17 +1,17 @@
 #include "wall.h"
 
 
-extern qreal fromB2(qreal value);
+extern qreal FromB2(qreal value);
 
 Wall::Wall(b2World *world, QSizeF size, QPointF initPos, qreal angle):
     QGraphicsRectItem(0)
 {
-    setRect(-fromB2(size.width()/2), -fromB2(size.height()/2),
-            fromB2(size.width()), fromB2(size.height()));          // Задаём геометрию
+    setRect(-FromB2(size.width()/2), -FromB2(size.height()/2),
+            FromB2(size.width()), FromB2(size.height()));          // Задаём геометрию
 
     setBrush(QBrush(Qt::transparent));             // Задаём цвет
     setPen(QPen(Qt::transparent));
-    setPos(fromB2(initPos.x()), fromB2(initPos.y()));
+    setPos(FromB2(initPos.x()), FromB2(initPos.y()));
     setRotation(angle);                     // Поворот
 
     // Создание объекта тела

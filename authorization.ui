@@ -14,7 +14,7 @@
    <string>Register</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="recources.qrc">
     <normaloff>:/images/icon.ico</normaloff>:/images/icon.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -60,8 +60,8 @@ background-repeat: no-repeat;</string>
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>230</y>
+     <x>125</x>
+     <y>225</y>
      <width>281</width>
      <height>35</height>
     </rect>
@@ -156,6 +156,8 @@ border:none;
   <zorder>reg</zorder>
   <zorder>not_reg</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>
