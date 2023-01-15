@@ -1,6 +1,6 @@
 #include "pause.h"
 #include "ui_pause.h"
-//Alex
+//
 qreal exitBool = false;
 qreal continueBool = false;
 extern bool isMusic;
@@ -46,4 +46,3 @@ void Pause::on_continueButton_clicked()
    this->close();
 
 }
-//Alex

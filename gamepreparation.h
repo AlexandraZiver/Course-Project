@@ -35,19 +35,19 @@ public slots:
 
 
     void on_plr1_rchange_clicked();
-    //Alex
+    //
 
-    void on_lineEdit_3_textEdited();
+    void on_lineGetWeight_textEdited();
 
-    void on_lineEdit_3_textChanged();
+    void on_lineGetWeight_textChanged();
 
-    void on_pushButton_2_clicked();
+    void on_placeChangeR_clicked();
 
-    void on_pushButton_clicked();
+    void on_placeChangeL_clicked();
 
 
-    void on_lineEdit_3_editingFinished();
-    //Alex
+    void on_lineGetWeight_editingFinished();
+    //
 
 
 

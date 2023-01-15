@@ -443,7 +443,7 @@ void GameScene::on_pauseGame_clicked()
 
         if(is_bonus_created)
         game_bonus->yspeed = 0;
-//Alex
+//
         hide();
         pause = new Pause();
         pause->setModal(true);
@@ -462,7 +462,6 @@ void GameScene::on_pauseGame_clicked()
 
 if(continueBool) {
     this->show();
-//Alex
         is_paused = false;
                player_1_body->SetType(b2_dynamicBody);
                player_2_body->SetType(b2_dynamicBody);
@@ -476,7 +475,7 @@ if(continueBool) {
                game_bonus->yspeed = 2;
                continueBool = false;
 
-               //Alex
+//
 
 }
     }

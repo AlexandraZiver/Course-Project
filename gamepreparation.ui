@@ -302,7 +302,7 @@ background-image:url(:/images/arrow-l.png);background-repeat: no-repeat;</string
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="lineGetWeight">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -346,7 +346,7 @@ border-radius:10%;</string>
     <string>Локація</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="placeChangeL">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -364,7 +364,7 @@ background-repeat: no-repeat;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="placeChangeR">
    <property name="geometry">
     <rect>
      <x>510</x>
