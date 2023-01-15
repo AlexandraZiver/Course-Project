@@ -47,9 +47,7 @@ extern QString player_2_skin_path;     // Шлях до модельки гра�
 extern QString ball_skin_path;        // Шлях до модельки м'яча
 
 // Samira
-extern std:: vector<std::pair<QString, QString>> db;
 extern QString Users_name;
-extern QString Users_name_reg;
 extern std:: vector<std::pair<int, QString>> rec;
 
 
@@ -122,61 +120,10 @@ GameScene::~GameScene()
     delete scene;
     delete world;
 }
-
-void GameScene::read_rec()
-{
-    int _userRecord ;
-    QString _login ;
-    QFile fileOut("record.json");
-   if( fileOut.open(QIODevice::ReadOnly | QIODevice::Text ))
-   {
-
-        QJsonDocument json= QJsonDocument().fromJson(fileOut.readAll());
-        qDebug() << "read_rec is open";
-        QJsonArray arrayJson = json.array();
-
-        for (int i=0; i < arrayJson.size();i++)
-        {
-            qDebug() << arrayJson[i];
-            QJsonObject jobj = arrayJson[i].toObject();
-            QJsonValue    userRecord = jobj["_userRecord"];
-            QJsonValue    login = jobj["login"];
-            _login = login.toString();
-            _userRecord = userRecord.toInt();
-            qDebug() << _login;
-            qDebug() << _userRecord;
-
-            if(rec.size() == 0)
-            {
-                rec.push_back({_userRecord, _login});
-                qDebug() << "rec.size == 0";
-            }
-        }
-
-        for (int i = 0; i < rec.size(); i++)
-        {
-            QString login;
-            int _userRecord;
-
-            if (rec[i].second == Users_name || rec[i].second == Users_name_reg)
-            {
-                login = rec[i].second;
-                _userRecord = rec[i].first;
-                _userRecord++;
-                rec.erase(rec.begin() + i);
-                qDebug() <<  Users_name;
-                rec.push_back({ _userRecord, login});
-                break;
-            }
-        }
-     }
-    Save_record();  
-    fileOut.close();
-}
 void GameScene::Save_record() // зберігає вектор з рекордами у файл
 {
     QFile fileOut("record.json");
-    if (fileOut.open(QIODevice::WriteOnly | QIODevice::Truncate))
+    if (fileOut.open(QIODevice::WriteOnly| QIODevice::Truncate ))
     {
         qDebug() << "Save_record is open";
         QJsonArray arrayJson ;
@@ -189,22 +136,78 @@ void GameScene::Save_record() // зберігає вектор з рекорда
         }
          fileOut.write(QJsonDocument(arrayJson).toJson(QJsonDocument::Indented));
     }
+fileOut.close();
+}
 
+void GameScene::read_rec()
+{
+    int _userRecord ;
+    QString _login ;
+    QFile fileOut("record.json");
+   if( fileOut.open(QIODevice::ReadOnly | QIODevice::Text ))
+   {
+        QJsonDocument json= QJsonDocument().fromJson(fileOut.readAll());
+        qDebug() << "read rec is open";
+
+        QJsonArray arrayJson = json.array();
+        for (int i=0; i < arrayJson.size();i++)
+        {
+         qDebug() << arrayJson[i];
+        QJsonObject jobj = arrayJson[i].toObject();
+        QJsonValue    userRecord = jobj["_userRecord"];
+        QJsonValue    login = jobj["login"];
+        _login = login.toString();
+        _userRecord = userRecord.toInt();
+        qDebug() << _login;
+        qDebug() << _userRecord;
+
+          rec.push_back({_userRecord, _login});
+        }
+    }
+  fileOut.close();
+}
+
+void GameScene::change_record()  // створює вектор з рекордами
+{
+    int size = 0;
+    QFile fileOut("record.json");
+
+   if( fileOut.open(QIODevice::ReadOnly | QIODevice::Text ))
+   {
+       size = fileOut.size();
+       if (size != 0)
+       {
+           rec.clear();
+       }
+       read_rec();
+   }
+   for (int i = 0; i < rec.size(); i++)
+   {
+       if (rec[i].second == Users_name)
+       {
+           rec[i].first++;
+           qDebug() <<  Users_name;
+       }
+   }
+    fileOut.close();
 }
 
 void GameScene::Score() {
 
     if(player_1_score == ScoreToWin) {
 
-        read_rec();
+        change_record();
+        Save_record();
         ui->scorePlayer1->setText(QString::number(player_1_score));
         ui->winLabel->setText(QString("Gratz Team Red WIN"));
         EndGame();
+        player_1_score = 0;
 
     } else if(player_2_score == ScoreToWin) {
         ui->scorePlayer2->setText(QString::number(player_2_score));
         ui->winLabel->setText(QString("Gratz Team Blue WIN"));
         EndGame();
+        player_2_score = 0;
 
     }
 
