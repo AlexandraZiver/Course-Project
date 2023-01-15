@@ -34,8 +34,6 @@ MainWindow::MainWindow(QWidget *parent)
     else if (!isMusic ) {
 
         musicOutput->setVolume(0);
-        //music->stop();
-        //isM = true;
     }
 
 
@@ -94,7 +92,6 @@ void MainWindow::soundButton() {
                                                 "background-repeat: no-repeat;\n"
                                                 "border: 0"));
         musicOutput->setVolume(0);
-        //music->stop();
         isM = false;
 
 

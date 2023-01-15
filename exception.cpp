@@ -8,7 +8,6 @@
 #include <mainwindow.h>;
 #include "ball.h"
 #include "wall.h"
-#include "player.h"
 #include "gamescene.h"
 #include <fstream>
 #include <error.h>
@@ -243,16 +242,10 @@ int ExceptionOn_reg_clicked(QString playerName, QString password, QString passwo
                   throw (102);
               else if(password.length() >= 15)
                   throw (103);
-              else if(password != passwordCheck)            // Alex перевірка на збіг паролей
+              else if(password != passwordCheck)            //  перевірка на збіг паролей
                   throw (104);
 
 
-              /*
-              //Alex   //перевірка на збіг паролей
-              if(password == passwordCheck) {
-              }
-              else{ throw (Error(104)); }
-              */
           }
           catch(int codeError){
               Error * ex;
@@ -329,10 +322,10 @@ int ExeptionOn_done_clicked(QString playerName, QString password)
         ex->whatError(codeError);
         return ex->getErrorCode(codeError);
     }
-//    return 1;
+  return 1;
 }
 
-//Alex перевірка на вагу м'яча
+//перевірка на вагу м'яча
 
 void exception::checkWeight(int weight, QLineEdit *lineEdit_3 )
 {

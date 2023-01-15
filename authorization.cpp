@@ -62,7 +62,7 @@ void authorization::on_play_clicked()
 }
 
 
-//Alex
+//
 void authorization::on_not_reg_clicked()
 {
     clickSound(isMusic);
@@ -129,9 +129,7 @@ void authorization::Entrancy()
 
    catch(int codeError)
               {
-                  QMessageBox::information(reg, "Помилка", "Логін чи пароль введені не вірно!");
                   ui->lineEdit_2->setText("");
-                 // rightEntrancy = false;
                   ex->getErrorCode(codeError);
                   ex->whatError(codeError);
               }

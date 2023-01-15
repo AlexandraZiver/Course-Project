@@ -65,18 +65,6 @@ gamepreparation::~gamepreparation()
 {
     delete ui;
 }
-//Alex
-void gamepreparation::on_back_clicked()
-{
-    clickSound(isMusic);
-    authorization *reg;
-    reg = new authorization;
-    reg->show();
-    this->close();
-
-}
-
-//Alex
 
 
 void gamepreparation::pl1_change()
@@ -114,10 +102,6 @@ void gamepreparation::pl2_change()
 
 }
 
-
-
-
-
 void gamepreparation::on_start_game_clicked()
 {
     clickSound(isMusic);
@@ -132,21 +116,21 @@ void gamepreparation::ball_change() {
 
     if(ballSkin=="ball1"){                                      // Средний мяч
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
-        ui->lineEdit_3->setText(""); // удаление строки введения при выборе мяча кнопками Александра
+        ui->lineGetWeight->setText(""); // удаление строки введения при выборе мяча кнопками Александра
         ballSkin="ball2";
         ball_size = 0.4;
         ball_skin_path = ":/images/ball2.png";
     }
     else if(ballSkin=="ball2"){                                 // Большой мяч
         ui->ball->setPixmap(QPixmap(":/images/ball3.png"));
-        ui->lineEdit_3->setText("");
+        ui->lineGetWeight->setText("");
         ballSkin="ball3";
         ball_size = 0.55;
         ball_skin_path = ":/images/ball4.png";
     }
     else if (ballSkin=="ball3") {                               // Маленький мяч
         ui->ball->setPixmap(QPixmap(":/images/ball.png"));
-        ui->lineEdit_3->setText("");
+        ui->lineGetWeight->setText("");
         ballSkin="ball1";
         ball_size = 0.3;
         ball_skin_path = ":/images/ball.png";
@@ -160,11 +144,12 @@ void gamepreparation::on_plr1_rchange_clicked()
     clickSound(isMusic);
 }
 
-// Alex
-void gamepreparation::on_lineEdit_3_textEdited()
+
+
+void gamepreparation::on_lineGetWeight_textEdited()
 {
     clickSound(isMusic);
-    int weight = ui->lineEdit_3->text().toInt();
+    int weight = ui->lineGetWeight->text().toInt();
     ball_weight = weight;
     if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
@@ -189,11 +174,11 @@ void gamepreparation::on_lineEdit_3_textEdited()
 }
 
 
-void gamepreparation::on_lineEdit_3_textChanged()
+void gamepreparation::on_lineGetWeight_textChanged()
 {
     clickSound(isMusic);
 
-    int weight = ui->lineEdit_3->text().toInt();
+    int weight = ui->lineGetWeight->text().toInt();
     ball_weight = weight;
     if( weight > 5 &&  weight <= 20 ){
         ui->ball->setPixmap(QPixmap(":/images/ball2.png"));
@@ -219,7 +204,7 @@ void gamepreparation::on_lineEdit_3_textChanged()
 
 
 
-void gamepreparation::on_pushButton_2_clicked()
+void gamepreparation::on_placeChangeR_clicked()
 {
     clickSound(isMusic);
     if(place=="place"){
@@ -236,17 +221,17 @@ void gamepreparation::on_pushButton_2_clicked()
 }
 
 
-void gamepreparation::on_lineEdit_3_editingFinished()
+void gamepreparation::on_lineGetWeight_editingFinished()
 {
-     int weight = ui->lineEdit_3->text().toInt();
+     int weight = ui->lineGetWeight->text().toInt();
          exception *ex;
          ex = new exception;
-        ex->checkWeight(weight, ui->lineEdit_3 );
+        ex->checkWeight(weight, ui->lineGetWeight );
 }
 
 
 
-void gamepreparation::on_pushButton_clicked()
+void gamepreparation::on_placeChangeL_clicked()
 {
     clickSound(isMusic);
     if(place=="place"){
@@ -261,8 +246,17 @@ void gamepreparation::on_pushButton_clicked()
             game_map_path = "background-image: url(:/images/place1020.png)";
         }
 }
+void gamepreparation::on_back_clicked()
+{
+    clickSound(isMusic);
+    authorization *reg;
+    reg = new authorization;
+    reg->show();
+    this->close();
 
-// Alex
+}
+
+
 
 
 
