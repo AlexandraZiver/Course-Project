@@ -23,8 +23,6 @@ private slots:
 void on_menuBtn_clicked();
 void on_continueButton_clicked();
    void on_exitBtn_clicked();
-public slots:
- void slot();
 
 
 private:
