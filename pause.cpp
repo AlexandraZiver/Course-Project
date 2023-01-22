@@ -17,10 +17,6 @@ Pause::~Pause()
     delete ui;
 }
 
-void Pause::slot()
-{
-
-}
 void Pause::on_exitBtn_clicked()
 {
     clickSound(isMusic);
